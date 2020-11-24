@@ -12,11 +12,23 @@ Resúmenes teóricos y ejercicios prácticos realizados por Ángel Garrido Álva
 
 1.1.2. [IDE - Entorno de Desarrollo](#id112)
 
+### Módulo 1 - TEMA 2 - Fundamentos de Programación en JAVA
+
+1.2.1. [ Introducción a JAVA](#id121)
+
+1.2.2. [ Programación con JAVA](#id122)
+
+1.2.3. [ Estructuras de Control](#id123)
+
+1.2.4. [ Arrays](#id124)
+
+
+_________________________________________________________________________________
 
 
 ### Módulo 1 - TEMA 1 - Desarrollo de aplicaciones en JAVA
 
-#### 1.1.1. [ Introducción a la programación] <a name="id111"></a>
+#### 1.1.1. Introducción a la programación <a name="id111"></a>
 
 Existen muchos tipos de software: 
 * instalados localmente
@@ -231,7 +243,7 @@ Todas se puede subdividir en programación declarativa e imperativa:
 
 
 
-#### 1.1.2. [IDE - Entorno de Desarrollo] <a name="id112"></a>
+#### 1.1.2. IDE - Entorno de Desarrollo <a name="id112"></a>
 
 * Aplicación que nos ayuda en la tarea de creación de nuestros proyectos de software. 
 * Es un editor de código, un compilador, un depurador y un constructor de interfaz gráfica (GUI).
@@ -246,3 +258,201 @@ Todas se puede subdividir en programación declarativa e imperativa:
 * El Intérprete: Los intérpretes se diferencian de los compiladores en que solo realizan la traducción a medida que se va ejecutando el código. En lenguajes interpretados como PHP o Javascript, el IDE va ejecutando el código línea a línea como si se tratara del entorno de producción (lo que se conoce como máquina virtual).
 
 * Depurador (Debugger): El depurador es una herramienta que nos permite comprobar el funcionamiento de nuestro código, examina paso a paso, instrucción a instrucción, la ejecución de un programa y cambios que se produzcan en las variables del programa o en los registros del procesador. El depurador nos va a permitir detener el programa en un punto de ruptura para examinar los caminos o el valor de los datos que tienen en cada momento.
+
+##### JDK
+* Java Development Kit (JDK) es un software que provee herramientas de desarrollo para la creación de programas en Java. Puede instalarse en una computadora local o en una unidad de red.
+
+* En la unidad de red se pueden tener las herramientas distribuidas en varias computadoras y trabajar como una sola aplicación.
+
+_______________________________________________________________________________________________________________________________________________________________
+
+### Módulo 1 - TEMA 2 - Fundamentos de Programación en JAVA
+
+#### 1.2.1. Introducción a JAVA <a name="id121"></a>
+Java es un conjunto de: 
+    * un lenguaje
+    * una plataforma de desarrollo (JDK - Java Development Kit)
+    * un entorno de ejecución para los programas compilados (JRE - Java Runtime Environment)
+        * Portabilidad: gratuito y disponible principales SO 
+        * Los programas se compilan en un lenguaje intermedio, ByteCode que es interpretado por la máquina virtual (JVM) del entorno de ejecución (JRE) y así se obtiene la portabilidad. 
+        * JRE intermediario entre el código ByteCode y los distintos sistemas operativos existentes.
+    * un conjunto de librerías de desarrollo. (Java API - Java Application Programming Interface).
+
+* Desarrollado por Sun Microsystems, 1995.
+* Valorado por ser independiente del SO en el que trabaja.
+    
+
+ 
+##### Proceso de edición y compilación.
+* Se sigue el proceso: 
+    * edición del código fuente (con el IDE)
+    * compilación (con Javac - Java Compilator o con el IDE - comprueba que el código fuente se compone de palabras válidas en Java y que los comandos Java tienen una sintaxis correcta.) 
+    * y ejecución (compilación genera un fichero de tipo class en Bytcode para que JVM lo interprete y ejecute la aplicación)
+
+* El código fuente se compila para obtener el Bytecode que será interpretado por la JVM
+
+##### Codificación de programas Java.
+ 
+Legibilidad: fácil de entender y de leer.
+
+Corrección.- Un programa debe cumplir los requisitos funcionales y técnicos establecidos en la fase de especificación. Durante la fase de prueba se verificará.
+
+Eficiencia.- tiempo que tarda el programa en ejecutarse, recursos que consume.
+
+
+#### 1.2.2. Programación con JAVA <a name="id122"></a>
+
+
+##### Estructura general de un programa en Java.
+```java
+/*
+
+* Este programa muestra el texto “Hola Mundo, programo en Java” por la consola.
+
+*/
+
+public class HolaMundo{ //Definición de la clase
+
+    public static void main (String[] args){ //método principal
+
+    System.out.println("Hola Mundo, programo en Java"); //Sentencias
+
+    }
+
+}
+```
+
+* In Java, void keyword is used with the method declaration to specify that this particular method is not going to return any value after completing its execution.
+* The only difference between println() and print() method is that println() throws the cursor to the next line after printing the desired result whereas print() method keeps the cursor on the same line.
+##### Programa en Java: calcular área y perímetro de un cuadrado:
+
+```java
+
+public class areayperimetro{
+
+    public static void main (String[] args){
+
+        // Declaramos las variables para trabajar con ellas.
+        double lado =5.0, area, perimetro; //double: tipo de dato decimal doble
+        area = lado*lado;
+        perimetro = lado+lado+lado+lado; // o bien 4*lado;
+        
+        System.out.println("El area es: ",area);
+
+        System.out.println("El perímetro es: ",perimetro);
+    }
+}
+
+/*
+El area es: 25.0
+El perímetro es: 20.0
+*/
+```
+
+##### Saltos de línea y espacios:
+
+* Los saltos de linea se hacen con \n 
+```java
+public class SoyAntonio {
+    public static void main (String[] args){
+
+        System.out.print("Hola");
+        System.out.print(" ");
+        System.out.print("soy Antonio");
+        System.out.print("\nVS\n");//Meto dos saltos de línea
+        System.out.print("Hola");
+        System.out.print("soy Antonio");
+    }
+}
+
+/*
+Hola soy Antonio
+VS
+Holasoy Antonio
+ */
+```
+
+
+##### Variables
+**Requisitos de los Identificadores de las Variables**
+
+* Un identificador debe de comenzar con una letra que puede ser seguida de más letras o dígitos. Una letra es cualquier símbolo del alfabeto y un dígito son cualquier carácter entre ‘0’ y ‘9’. 
+* Un identificador no puede llamarse igual que las palabras reservadas que tienen los lenguajes de programación. Por ejemplo no podemos usar un identificador llamado for o while.
+* Un identificador escrito en minúscula es totalmente distinto del mismo identificador en mayúscula, es decir, pvp y PVP serían dos variables totalmente distintas. Java diferencia entre las letras mayúsculas y minúsculas.
+* Los identificadores correspondientes a una clase deberán de empezar siempre con la primera en mayúscula y si se trata de nombres compuestos no se usara el _ para separar y cada nombre su primer carácter en mayúscula, como por ejemplo HolaMundo, Persona, Profesor, Academia …
+* Los identificadores para variables y métodos deberán de comenzar siempre con el primer carácter en minúscula y no se debe de usar un _ para separar en caso de compuestos, como por ejemplo: sueldo, calcularSueldo, getNombre …
+
+En Java hay que decir el tipo de dato que tiene cada variable
+
+```java
+public class variables {
+    public static void main(String[] args) {
+        int dia = 28;
+        int mes = 7;
+        int ano = 2018;
+
+        System.out.println("día " + dia + " del mes " + mes + " de " + ano);
+    }
+}
+```
+También se puede expresar de las siguientes formas:
+
+```java
+public class variables {
+    public static void main(String[] args) {
+        int dia;
+        int mes;
+        int ano;
+
+        dia = 3;
+        mes = 12;
+        ano = 1979;
+    }
+}
+```
+```java
+public class variables {
+    public static void main(String[] args) {
+        int dia, mes, ano;
+
+        dia = 3;
+        mes = 12;
+        ano = 1979;
+    }
+}
+```
+##### Tipos de datos
+
+![tipos de datos](img/tipos_datos.jpg)
+
+[fuente](https://www.aprenderaprogramar.com/index.php?option=com_content&view=article&id=419:tipos-de-datos-java-tipos-primitivos-int-boolean-y-objeto-string-array-o-arreglo-variables-cu00621b&catid=68&Itemid=188)
+
+Caracteres:
+![caracteres](img/caracteres..png)
+Fuente: Máster en Diseño y Programación de Aplicaciones Java JEE - Universidad de Alcalá
+
+##### OPERADORES 
+
+###### OPERADORES MATEMÁTICOS
+![operadores](img/Operadores%20Matemáticos.png)
+
+###### OPERADORES INCREMENTO Y DECREMENTO
+![operadores](img/operadores_incremento_decremento.png)
+
+###### OPERADORES LÓGICOS 
+![operadores](img/OperadoresLógicos.png)
+
+###### OPERADORES RELACIONALES
+![operadores](img/operadoresRelacionales.png)
+
+###### OPERADORES CON DESPLAZAMIENTO
+![operadores](img/operadoresDesplazamiento.png)
+
+
+Fuente: Máster en Diseño y Programación de Aplicaciones Java JEE - Universidad de Alcalá
+
+
+#### 1.2.3. Estructuras de Control <a name="id123"></a>
+
+#### 1.2.4. Arrays <a name="id124"></a>
+
