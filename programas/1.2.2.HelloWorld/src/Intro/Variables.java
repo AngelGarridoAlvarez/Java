@@ -1,4 +1,6 @@
-public class variables {
+package Intro;
+
+public class Variables {
     public static void main(String[] args) {
         int dia = 28;
         int mes = 7;

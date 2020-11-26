@@ -1,4 +1,4 @@
-/*
+package Intro;/*
 
  * Este programa muestra el texto “Hola Mundo, programo en Java” por la consola.
 

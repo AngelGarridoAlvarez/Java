@@ -454,5 +454,16 @@ Fuente: Máster en Diseño y Programación de Aplicaciones Java JEE - Universida
 
 #### 1.2.3. Estructuras de Control <a name="id123"></a>
 
+Programa principal java se compone de sentencias.
+
+Flujo de un programa: orden de ejecución de las sentencias
+
+Estructuras de control permiten modificar el flujo normal de un programa.
+    * Selectivas.
+    * Iterativas o repetitivas.
+    
+    
+[Estructuras de control](programas/1.2.2.HelloWorld/src/EstructurasControl)
+
 #### 1.2.4. Arrays <a name="id124"></a>
 

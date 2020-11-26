@@ -1,4 +1,6 @@
-public class areayperimetro {
+package Intro;
+
+public class Area_y_Perimetro {
     public static void main (String[] args){
 
         // Declaramos las variables para trabajar con ellas.
@@ -11,3 +13,6 @@ public class areayperimetro {
         System.out.println("El perímetro es: " + perimetro);
     }
 }
+
+//La palabra void indica que el método main no retorna ningún valor.
+// La forma (String args[]) es la definición de los argumentos que recibe el método main.
