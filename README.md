@@ -322,6 +322,10 @@ public class HolaMundo{ //Definición de la clase
 }
 ```
 
+![img](img/public-static-void-main-string-args-2.png)
+
+[fuente](https://www.journaldev.com/)
+
 * In Java, void keyword is used with the method declaration to specify that this particular method is not going to return any value after completing its execution.
 * The only difference between println() and print() method is that println() throws the cursor to the next line after printing the desired result whereas print() method keeps the cursor on the same line.
 ##### Programa en Java: calcular área y perímetro de un cuadrado:
@@ -454,16 +458,56 @@ Fuente: Máster en Diseño y Programación de Aplicaciones Java JEE - Universida
 
 #### 1.2.3. Estructuras de Control <a name="id123"></a>
 
-Programa principal java se compone de sentencias.
+**Estructuras Selectivas / Condicionales**
+* if
+* if else
+* if else if
+* Switch (solo valores int o char)
+* Ternario (no recomendado - poca legibilidad código)
 
-Flujo de un programa: orden de ejecución de las sentencias
+**Estructuras Iterativas / Bucles**
+* while
+* do-while
+* for
 
-Estructuras de control permiten modificar el flujo normal de un programa.
+
+
+[Ejemplos](programas/1.2.2.HelloWorld/src/EstructurasControl)
+
+
+[**Ejercicio Feedback 1.2.**](programas/1.2.2.HelloWorld/src/EstructurasControl/EjercicioFeedback12.java)
+
+Un centro de estudios nos ha solicitado que realicemos un algoritmo para saber la motivación que tienen los alumnos para estudiar programación.
+
+Para ello quiere realizar una serie de preguntas y según la respuesta valorar su interés por estos estudios.
+
+Cada respuesta tendrá un valor de 0 o 1 siendo el resultado el porcentaje total la suma de los valores obtenidos.
+
+Si el valor obtenido en el primer intento es superior al 80% el ejercicio le dará la enhorabuena, si es inferior le pedirá volver a realizar el test con todas las preguntas dos veces mas. (El alumno solo podrá realizar la prueba tres veces).
+
+Una vez realizado el test la tres veces, si la media de los resultados es inferior al 50%, se le pedirá que se lo comente a su profesor. Si es superior el programa terminara y le dará la enhorabuena.
+
+Las preguntas para realizar son:
+
+Te gustan las computadoras.  Si(1)  No(0)
+Disfrutas con la resolución de problemas. Si(1) No(0)
+Quieres trabajar en equipo. Si(1) No(0)
+Te agrada aprender por descubrimiento o prefieres que te indiquen las cosas paso a paso. Si(1) No(0)
+Eres creativo. Si(1) No(0)
+Eres resolutivo. Si(1) No(0)
+Te rindes al primer intento Si(0) No(0)
+Estas dispuesto a tener que actualizar tu conocimiento a lo largo de tu vida Si(1) No(0)
+
+___________________________________
+* Programa principal java se compone de sentencias.
+
+* Flujo de un programa: orden de ejecución de las sentencias
+
+* Estructuras de control permiten modificar el flujo normal de un programa.
     * Selectivas.
     * Iterativas o repetitivas.
     
     
-[Estructuras de control](programas/1.2.2.HelloWorld/src/EstructurasControl)
 
 #### 1.2.4. Arrays <a name="id124"></a>
 

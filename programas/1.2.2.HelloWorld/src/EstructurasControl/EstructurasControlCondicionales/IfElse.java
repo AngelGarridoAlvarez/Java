@@ -1,4 +1,4 @@
-package EstructurasControl;
+package EstructurasControl.EstructurasControlCondicionales;
 
 import java.util.Scanner;
 

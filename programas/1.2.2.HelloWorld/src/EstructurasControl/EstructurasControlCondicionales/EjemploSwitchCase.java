@@ -1,4 +1,4 @@
-package EstructurasControl;
+package EstructurasControl.EstructurasControlCondicionales;
 
 import java.util.Scanner; //Importo la libería Scanner para poder recoger datos por consola
 
