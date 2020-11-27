@@ -169,7 +169,7 @@ public class EjercicioFeedback12 {
             System.out.println("El resultado del último test es del " + ((motivacionAlumno / 8) * 100) + "%");
         }
 
-        //Salgo del bucle las condiciones de dentro del while() no se cumplen
+        //Salgo del bucle
 
         System.out.println("La motivación total del alumno es del " + ((motivacionTotal / (8 * contador) * 100) + "%"));
 
