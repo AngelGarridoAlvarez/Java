@@ -472,10 +472,10 @@ Fuente: Máster en Diseño y Programación de Aplicaciones Java JEE - Universida
 
 
 
-[Ejemplos](programas/1.2.2.HelloWorld/src/EstructurasControl)
+[Ejemplos](EclipseWorkSpace/1.2.FundamentosJava/src)
 
 
-[**Ejercicio Feedback 1.2.**](programas/1.2.2.HelloWorld/src/EstructurasControl/EjercicioFeedback12.java)
+[**Ejercicio Feedback 1.2.**](EclipseWorkSpace/EjercicioFeedback1/src/ejercicio1/Ejercicio1.java)
 
 Un centro de estudios nos ha solicitado que realicemos un algoritmo para saber la motivación que tienen los alumnos para estudiar programación.
 
