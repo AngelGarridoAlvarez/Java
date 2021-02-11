@@ -609,8 +609,7 @@ public class Arrays {
 }
 
 ```
-
-#### Arrays de varias dimensiones / Matrices:
+#### Arrays de varias dimensiones / Matrices: [Matrix.java](EclipseWorkSpace\1.2.FundamentosJava\src\arrays\Matrixays.java)
 
 * Para declarar matrices utilizamos tantos grupos de corchetes como dimensiones queremos en el array.
 
@@ -667,7 +666,7 @@ numeros[2][1] = 6;
     * ejemplo2 creamos una matriz no cuadrada de 3 filas de 3, 4 y 2 columnas respectivamente
 
 ```java
-int numeros1[][] = {{5,1}, {9,2};
+int numeros1[][] = {{5,1}, {9,2}};
 int numeros2[][] = {{5,1,3}, {9,2,8,5},  {3,7}};
 ```
 
