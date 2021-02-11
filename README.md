@@ -508,8 +508,8 @@ ___________________________________
     * Iterativas o repetitivas.
     
     
-
-#### 1.2.4. Arrays <a name="id124"></a>
+___________________________________
+## 1.2.4. Arrays <a name="id124"></a>
 
 * Se debe definir tamaño al inicio (elementos máximos)
 * Todos los elementos del mismo tipo
@@ -527,7 +527,7 @@ int numeros[]
 Alumno alumnos[]
 ```
 
-####Formas de declarar arrays:
+#### Formas de declarar arrays:
 ```java
 //Declaramos como variables tipo array num1 y num2, en este caso da = la colacación delos corchetes
 int num1[];
@@ -540,9 +540,190 @@ int n1[], n2; //aquí n1 es un array pero n2 es un int
 int[] n3,n4; //aquí n3 y n4 son arrays
 ```
 
-####Formas de crear arrays:
+#### Formas de crear arrays:
 ```java
 numeros = new int[5]; //array numeros puede contener 5 int
 
 alumnos = new Alumno[3];// array Alumnos puede contener 5 objetos alumno
+```
+Intro: [Arrays.java](EclipseWorkSpace\1.2.FundamentosJava\src\arrays\Arrays.java)
+```java
+package arrays;
+
+public class Arrays {
+
+	public static void main(String[] args) {
+		
+		
+		//Creamos el array, es obligatorio dar un taño
+		numeros = new int[5];
+		
+		
+		//Almacenamos elementos en el array:
+		
+		numeros[0]= 10;
+		numeros[1]= 20;
+		numeros[2]= 30;
+		numeros[3]= 40;
+		numeros[4]= 50;
+		
+		
+		System.out.println(numeros[0]); //10
+		
+		//Bucle For
+		
+		for(int i=0; i<numeros.length; i++) {
+			System.out.print(numeros[i] + " ");//10 20 30 40 50 
+		}
+		
+        System.out.print("\n");//Meto un salto de línea
+
+		//Bucle For-each
+		
+		//En el bucle for each no se precisa indicar el indice de los elementos:
+		
+		int numeros2[] = {1,2,3,4,5,6};
+		int numeros3[] = new int[] {7,8,9,10};
+		
+		for(int num : numeros2) {
+			System.out.print(num + ", "); //1, 2, 3, 4, 5, 6, 
+
+		};
+        
+		System.out.print("\n:-)\n");//Meto dos saltos de línea y una carita
+		
+		for(int numerito : numeros3) {
+			System.out.print(numerito + " ~ "); 
+		}
+
+        //Salida por pantalla
+        /*
+        10
+        10 20 30 40 50 
+        1, 2, 3, 4, 5, 6, 
+        :-)
+        7 ~ 8 ~ 9 ~ 10 ~ 
+        */
+
+	}
+}
+
+```
+
+#### Arrays de varias dimensiones / Matrices:
+
+* Para declarar matrices utilizamos tantos grupos de corchetes como dimensiones queremos en el array.
+
+
+    ```java
+    // Declarar una variable de tipo array de dos dimensiones
+
+    int [][] numeros;
+    ```
+
+#### <u>Crear Matrices cuadradas:</u>
+
+* = Nº de columnas para todas las filas
+
+* En el siguiente ejemplo creamos la matriz números con 3 filas y 2 columnas y también creamos la matriz alumnos con 2 filas y 2 columnas.
+
+```java
+numeros = new int[3][2];
+alumnos = new alumno[2][2];
+```
+
+#### <u>Crear Matrices no cuadradas:</u>
+
+* != Nº de columnas para todas las filas
+
+* En el siguiente ejemplo creamos una matriz no cuadrada con 2 filas, la primera de ellas contendrá 3 columnas y la segunda contendrá 2 columnas.
+
+```java
+int [][] nums = new int[2][];
+
+nums[0] = new int[3];
+nums[1] = new int[2];
+```
+
+#### <u>Almacenar elementos en una matriz</u>
+
+* Para almacenar elementos necesitamos acceder a sus índices fila y columna.
+
+```java
+// Almacenar elementos en una matriz
+
+numeros[0][0] = 1;
+numeros[0][1] = 2;
+numeros[1][0] = 3;
+numeros[1][1] = 4;
+numeros[2][0] = 5;
+numeros[2][1] = 6;
+```
+
+#### <u>Declarar, crear y almacenar elementos</u>
+
+* Podemos unificar todas estas tareas en una sola instrucción:
+    * ejemplo1 creamos una matriz cuadrada de 2 filas y 2 columnas
+    * ejemplo2 creamos una matriz no cuadrada de 3 filas de 3, 4 y 2 columnas respectivamente
+
+```java
+int numeros1[][] = {{5,1}, {9,2};
+int numeros2[][] = {{5,1,3}, {9,2,8,5},  {3,7}};
+```
+
+#### <u>Acceder a un elemento</u>
+
+* Accedemos al elemento 2 de la fila 1
+```java
+System.out.println(numeros[0][2])
+```
+
+#### <u>Recorrer una matriz</u>
+
+
+**BUCLE FOR**
+
+Necesitamos de dos bucles anidados. El primero de ellos es el encargado de recorrer el array de las filas con el índice i mientras que el segundo es quien recorre el array de las columnas. Este código es válido para recorrer matrices cuadradas y no cuadradas.
+
+```java
+// Crear el array especificamos las filas y columnas
+
+numeros = new int[3][2];
+
+
+// Llenar de elementos el array
+
+numeros[0][0] = 6;
+numeros[0][1] = 2;
+numeros[1][0] = 4;
+numeros[1][1] = 3;
+numeros[2][0] = 9;
+numeros[2][1] = 8;
+
+// Recorrer un array
+for(int fila=0; fila<numeros.length; fila++){
+    for(int col = 0; col<numeros[fila].length; col++){
+        System.out.print(numeros[fila][col] + " ");
+    }
+System.out.println();
+}
+```
+
+**BUCLE FOR-EACH**
+
+Con el bucle for-each nuevamente necesitamos de dos bucles anidados. El primero nos devuelve los arrays de las columnas que recorremos en el bucle interno. El resultado que obtenemos es el que vemos a continuación.
+
+```java
+int numeros2[][] = {{5,1,3},
+{9,2},
+{3,7,3,6,9,1}};
+
+
+for(int[] columnas : numeros2){
+   for(int num : columnas){
+      System.out.print(num + " ");
+  }
+System.out.println();
+
+}
 ```
