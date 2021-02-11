@@ -511,3 +511,38 @@ ___________________________________
 
 #### 1.2.4. Arrays <a name="id124"></a>
 
+* Se debe definir tamaño al inicio (elementos máximos)
+* Todos los elementos del mismo tipo
+* Una vez fijado el tamaño no se puede redimensionar
+
+Tipos de array
+
+```java
+//Array con tipos primitivos
+
+int numeros[]
+
+//Array de objetos
+
+Alumno alumnos[]
+```
+
+####Formas de declarar arrays:
+```java
+//Declaramos como variables tipo array num1 y num2, en este caso da = la colacación delos corchetes
+int num1[];
+ 
+int [] num2;
+ 
+//En estos casos influye la colocación de los corchetes
+int n1[], n2; //aquí n1 es un array pero n2 es un int
+ 
+int[] n3,n4; //aquí n3 y n4 son arrays
+```
+
+####Formas de crear arrays:
+```java
+numeros = new int[5]; //array numeros puede contener 5 int
+
+alumnos = new Alumno[3];// array Alumnos puede contener 5 objetos alumno
+```
