@@ -15,7 +15,7 @@ public class Arrays {
 		int[] n3, n4; //en este caso n3 y n4 son arrays
 		
 		
-		//Creamos el array, es obligatorio dar un taño
+		//Creamos el array, es obligatorio dar un tamaño
 		numeros = new int[5];
 		
 		
@@ -36,7 +36,7 @@ public class Arrays {
 			System.out.print(numeros[i] + " ");//10 20 30 40 50 
 		}
 		
-        System.out.print("\n");//Meto dos saltos de línea
+        System.out.print("\n");//Meto un salto de línea
 
 		//Bucle For-each
 		
@@ -49,7 +49,7 @@ public class Arrays {
 			System.out.print(num + ", ");
 		};
         
-		System.out.print("\n:-)\n");//Meto dos saltos de línea
+		System.out.print("\n:-)\n");//Meto dos saltos de línea y una carita
 		
 		for(int numerito : numeros3) {
 			System.out.print(numerito + " ~ ");
