@@ -607,9 +607,36 @@ public class Arrays {
 
 	}
 }
+```
+
+#### COPIAR ELEMENTOS DE UN ARRAY EN OTRO:
+
+* System.arraycopy(array origen, posición inicio array origen, array destino, posición inicio array destino, nªde elementos a copiar)
+
+**Ejemplo1:**
+
+* Copiamos 3 elementos del array nums comenzando en el índice 2 y los pegamos en el array números a partir de la posición con índice 1.
+```java
+System.arraycopy(nums, 2, numeros, 1, 3)
+```
+
+**Ejemplo2:**
+
+```java
+		int numeritos1[] = { 1, 1, 1, 1, 1, 1 };
+		int numeritos123[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+		System.arraycopy(numeritos1, 0, numeritos123, 0, 6);
+
+		// hacemos un for each para que me imprima todo por pantalla:
+
+		for (int elemento : numeritos123) {
+			System.out.print(elemento + ", "); //1, 1, 1, 1, 1, 1, 7, 8, 9, 10, 
+        }
+```java
 
 ```
-#### Arrays de varias dimensiones / Matrices: [Matrix.java](EclipseWorkSpace\1.2.FundamentosJava\src\arrays\Matrixays.java)
+#### MATRICES: ARRAYS DE VARIAS DIMENSIONES: [Matrix.java](EclipseWorkSpace\1.2.FundamentosJava\src\arrays\Matrixays.java)
 
 * Para declarar matrices utilizamos tantos grupos de corchetes como dimensiones queremos en el array.
 
@@ -726,3 +753,5 @@ System.out.println();
 
 }
 ```
+
+
