@@ -753,6 +753,6 @@ System.out.println();
 
 }
 ```
-[EJERCICIOS CON SOLUCIONES](Ejercicios\1.2.4.Arrays)
+[EJERCICIOS CON SOLUCIONES](Ejercicios/1.2.4.Arrays)
 
 
