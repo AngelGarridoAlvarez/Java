@@ -19,8 +19,11 @@ Resúmenes teóricos y ejercicios prácticos realizados por Ángel Garrido Álva
 1.2.2. [ Programación con JAVA](#id122)
 
 1.2.3. [ Estructuras de Control](#id123)
+* [**Ejercicio Feedback 1.2.**](#id12e)
 
 1.2.4. [ Arrays](#id124)
+
+* [**Ejercicio Feedback 1.2.4 - Bucles**](#id124e)
 
 
 _________________________________________________________________________________
@@ -475,7 +478,9 @@ Fuente: Máster en Diseño y Programación de Aplicaciones Java JEE - Universida
 [Ejemplos](EclipseWorkSpace/1.2.FundamentosJava/src)
 
 
-[**Ejercicio Feedback 1.2.**](EclipseWorkSpace/EjercicioFeedback1/src/ejercicio1/Ejercicio1.java)
+
+_______________________________
+[**Ejercicio Feedback 1.2.**](EclipseWorkSpace/EjercicioFeedback1/src/ejercicio1/Ejercicio1.java)<a name="id12e"></a>
 
 Un centro de estudios nos ha solicitado que realicemos un algoritmo para saber la motivación que tienen los alumnos para estudiar programación.
 
@@ -498,6 +503,7 @@ Eres resolutivo. Si(1) No(0)
 Te rindes al primer intento Si(0) No(0)
 Estas dispuesto a tener que actualizar tu conocimiento a lo largo de tu vida Si(1) No(0)
 
+[**Solución**](EclipseWorkSpace/EjercicioFeedback1/src/ejercicio1/Ejercicio1.java)
 ___________________________________
 * Programa principal java se compone de sentencias.
 
@@ -755,6 +761,43 @@ System.out.println();
 ```
 [EJERCICIOS CON SOLUCIONES](Ejercicios/1.2.4.Arrays)
 
-[Ejercicio Feedback 1.2.4 - Bucles](EclipseWorkSpace/EjercicioFeedback1/src/ejercicio124Bucles/Ejercicio124.java)
+[**Ejercicio Feedback 1.2.4 - Bucles**](EclipseWorkSpace/EjercicioFeedback1.2.4-Bucles/src/ejercicio124Bucles/ejercicio124Bucles.java/) 
+<a name="id124e"></a>
 
+Escriba un programa que te permita jugar a la “primitiva”.  Para facilitar la labor de depuración de errores, cada vez que el usuario introduzca un número se mostrará el boleto con los números que debe acertar.
 
+Las condiciones del ejercicio son:
+
+El programa debe generar una secuencia de números no repetidos como si fuera un boleto (9 números; mayores de 10 y menores de 100).
+
+* ejemplo: 12 21 35 46 88 72 94 49 27
+
+Después el usuario escribirá un numero, 
+
+Si existe, mostrará lo siguiente: 
+
+* 12 21 35 XX 88 72 94 49 27
+
+Si no existe, mostrará lo siguiente:
+
+* Número 78 no existe
+
+* 12 21 35 46 88 72 94 49 27
+
+Se puede salir de la aplicación cuando el usuario escriba 0.
+
+En caso de tener todos los números tachados, se mostrará:
+
+* Te ha tocado la primitiva. Eres millonario.
+
+Existirá un número máximo de 15 intentos para acertar los números del boleto.
+
+ 
+
+Ayuda: Para crear un número aleatorio en Java
+
+```java
+ int valor = Math.floor(Math.random()*99+10);
+```
+
+[**Solución**](EclipseWorkSpace/EjercicioFeedback1.2.4-Bucles/src/ejercicio124Bucles/ejercicio124Bucles.java/) 
