@@ -54,7 +54,7 @@ public class Arrays {
 			System.out.print(numerito + " ~ ");
 		}
 		
-		System.out.print("\n" + "COPIAR ELEMENTOS DE UN ARRAU EN OTRO" + "\n");// Meto dos saltos de línea y una carita
+		System.out.print("\n" + "COPIAR ELEMENTOS DE UN ARRAY EN OTRO" + "\n");// Meto dos saltos de línea y una carita
 
 
 		// COPIAR ELEMENTOS DE UN ARRAY EN OTRO:
@@ -79,7 +79,7 @@ public class Arrays {
 		// hacemos un for each para que me imprima todo por pantalla:
 
 		for (int elemento : numeritos123) {
-			System.out.print(elemento + ", ");
+			System.out.print(elemento + ", "); //1, 1, 1, 1, 1, 1, 7, 8, 9, 10, 
 		}
 
 	}
