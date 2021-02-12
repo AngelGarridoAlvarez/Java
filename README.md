@@ -755,6 +755,6 @@ System.out.println();
 ```
 [EJERCICIOS CON SOLUCIONES](Ejercicios/1.2.4.Arrays)
 
-[Ejercicio Feedback 1.2.4 - Bucles](EclipseWorkSpace/EjercicioFeedback1/src/ejercicio124Bucles)
+[Ejercicio Feedback 1.2.4 - Bucles](EclipseWorkSpace/EjercicioFeedback1/src/ejercicio124Bucles/Ejercicio124.java)
 
 
