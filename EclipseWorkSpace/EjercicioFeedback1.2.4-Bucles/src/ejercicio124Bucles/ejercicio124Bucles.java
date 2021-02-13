@@ -26,55 +26,92 @@ import java.util.Scanner;//importo el método Scanner para poder recoger datos
 
 public class ejercicio124Bucles {
 	public static void main(String[] args) {
-		
-		//Creo objeto scan de la clase Scanner para recoger datos por consola
-        Scanner scan = new Scanner(System.in);
-    	
-    	//VARIABLES
-        int boleto[]; //Declaro la variable tipo array boleto
-        String boletoString[]; //Declaro la variable boletoString para poder introducir letras
-    	boleto = new int[9]; //El array boleto puede contener 9 int
-    	boletoString = new String[9];
-    	int numeroElegido;
-    	int intento = 0; //para contar los intentos
-    	int intentoOk = 0; //para contar los intentos acertados
-    	String num1 = Integer.toString(boleto[0]);
-    	
-    	//Asigno valores a cada elemento del boleto con un bucle for:
-    	
-    	for(int i=0; i<boleto.length; i++) {
-    		//Generar valores aleatorios entre 2 números: int r = (int) (Math.random() * (upper - lower)) + lower;
-    		
-        	boleto[i] = (int)((Math.random()*(99-11)) + 11);
-        	boletoString[i] = Integer.toString(boleto[i]); 
-    	}
-    	
-    	// Imprimo boleto por pantalla:
-    	
-    	System.out.println("El boleto es: "); 
-        System.out.println(boleto[0] + " " + boleto[1] + " " + boleto[2] + " " + boleto[3] + " " + boleto[4] + " " + boleto[5] + " " + boleto[6] + " " + boleto[7] + " " + boleto[8]);
-    	
-        // Mientras se cumplan las condiciones del while (14 intentos) me van a pedir que introduzca un número
-      
-        while ((intento < 14) && (intentoOk < 9)) {
-        	System.out.println("Introduce un número comprendido mayor que 10 y menor que 99; te quedan " + (14 - intento) + " intentos.");
-        	numeroElegido = scan.nextInt();
-        	intento +=1;
-        	for(int i = 0; i < boleto.length; i++) {
-        		if (numeroElegido == boleto[i]) {
-        	    	System.out.println("Has acertado!"); 
-        	    	intentoOk += 1;
-        	    	boletoString[i] = "XX";
-        		}
-        	}
-            System.out.println(boletoString[0] + " " + boletoString[1] + " " + boletoString[2] + " " + boletoString[3] + " " + boletoString[4] + " " + boletoString[5] + " " + boletoString[6] + " " + boletoString[7] + " " + boletoString[8]);
-        };
-        
-        if (intentoOk == 9) {
-        	System.out.println("Te ha tocado la primitiva. Eres millonario.");
-        } else {
-        	System.out.println("Has alcanzado los 14 intentos permitidos, mejor dedicate a otra cosa.");
 
-        }
-    	
-}}
+		// Creo objeto scan de la clase Scanner para recoger datos por consola
+		Scanner scan = new Scanner(System.in);
+
+		// VARIABLES
+		int boleto[]; // Declaro la variable tipo array boleto
+		String boletoString[]; // Declaro la variable boletoString para poder introducir letras
+		boleto = new int[9]; // El array boleto puede contener 9 int
+		boletoString = new String[9];
+		int numeroElegido;
+		int intento = 0; // para contar los intentos
+		int intentoOk = 0; // para contar los intentos acertados
+
+		// Asigno valores a cada elemento del boleto con un bucle for:
+
+		for (int i = 0; i < boleto.length; i++) {
+			// Generar valores aleatorios entre 2 números: int r = (int) (Math.random() *
+			// (upper - lower)) + lower;
+
+			boleto[i] = (int) ((Math.random() * (99 - 11)) + 11);
+			boletoString[i] = Integer.toString(boleto[i]);
+		}
+
+		// Compruebo que todos los valores del array son diferentes, si hay dos números iguales, lo muestro por pantalla y salgo de la aplicación
+
+		for (int i1 = 0; i1 < boleto.length; i1++) {
+			for (int i2 = 0; i2 < boleto.length; i2++) {
+				if ((boleto[i1] == Integer.parseInt(boletoString[i2])) && (i1 != i2)) {
+
+					System.out.println("El boleto es: ");
+					System.out.println(boleto[0] + " " + boleto[1] + " " + boleto[2] + " " + boleto[3] + " " + boleto[4]
+							+ " " + boleto[5] + " " + boleto[6] + " " + boleto[7] + " " + boleto[8]);
+
+					System.out
+							.println("El valor " + boleto[i1] + " está repetido en las posiciones " + i1 + " y " + i2);
+					System.out.println(
+							"Reinicia la aplicación hasta que te salga un boleto válido sin elementos repetidos");
+					System.exit(0);
+
+				}
+			}
+
+		}
+
+		// Imprimo boleto por pantalla:
+
+		System.out.println("El boleto es: ");
+		System.out.println(boleto[0] + " " + boleto[1] + " " + boleto[2] + " " + boleto[3] + " " + boleto[4] + " "
+				+ boleto[5] + " " + boleto[6] + " " + boleto[7] + " " + boleto[8]);
+
+		// Mientras se cumplan las condiciones del while (14 intentos) me van a pedir
+		// que introduzca un número
+
+		while ((intento < 14) && (intentoOk < 9)) {
+			System.out.println("Introduce un número comprendido mayor que 10 y menor que 99; te quedan "
+					+ (14 - intento) + " intentos.");
+			numeroElegido = scan.nextInt();
+			
+			// Si pulsamos 0, salimos de la applicación
+			
+			if (numeroElegido == 0) {
+				System.out.println("Has pulsado 0: 'Salir de la aplicación'");
+				System.exit(0);
+			
+			// Si pulsamos un valor != 0 continua con la aplicación
+			} else {
+				intento += 1;
+				for (int i = 0; i < boleto.length; i++) {
+					if (numeroElegido == boleto[i]) {
+						System.out.println("Has acertado!");
+						intentoOk += 1;
+						boletoString[i] = "XX";
+					}
+				}
+				System.out.println(boletoString[0] + " " + boletoString[1] + " " + boletoString[2] + " "
+						+ boletoString[3] + " " + boletoString[4] + " " + boletoString[5] + " " + boletoString[6] + " "
+						+ boletoString[7] + " " + boletoString[8]);
+			}
+		}
+		;
+
+		if (intentoOk == 9) {
+			System.out.println("Te ha tocado la primitiva. Eres millonario.");
+		} else {
+			System.out.println("Has alcanzado los 14 intentos permitidos, mejor dedicate a otra cosa.");
+
+		}
+	}
+}
