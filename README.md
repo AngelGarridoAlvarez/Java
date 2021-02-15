@@ -816,11 +816,182 @@ Ayuda: Para crear un número aleatorio en Java
 _________________________________________________________________________________
 ### Módulo 1 - TEMA 3 - POO - Programación Orientada a Objetos
 
-1.3.1. POO - Programación Orientada a Objetos <a name="id131"></a>
+**1.3.1. POO - Programación Orientada a Objetos** <a name="id131"></a>
 
-1.3.2. Clases Avanzadas <a name="id132"></a>
+**POO (Programación Orientada a Objetos)**
+* Las aplicaciones informáticas han aumentado su complejidad.
+* Más manejable cuando se descompone en piezas más simples: los objetos.
 
-1.3.3. Excepciones y Aserciones <a name="id133"></a>
+* POO trabaja con una colección de objetos:
+    * Se crean
+    * Interaccionan
+    * Y dejan de existir cuando no son útiles. 
 
-1.3.4. Colecciones <a name="id134"></a>
+**Clases vs objetos**:
+
+* La  clase  es  el archivo  .java  para  definir  un  cliente  y los  objetos  son  los recursos dinámicos que se generan en la memoria.
+
+* Las clases se pueden ver como una plantilla que representa un esquema simplificado. 
+* Una clase equivale a una representación abstracta de un conjunto de objetos que comparten los mismos atributos y comportamientos.
+* La plantilla a partir de la cual se va a generar el objeto.
+
+
+* Un objeto es una instancia de una clase, que tiene una identidad propia y un estado. 
+* La identidad del objeto se define a través de su identificador, mientras que el estado se define por el valor de sus atributos. 
+* El comportamiento de un objeto viene determinado por el comportamiento de la clase a la que pertenece.
+* Un objeto es un recurso dinámico que se crea y se almacena en memoria durante un tiempo determinado.
+* A los objetos también se les conoce con el nombre de instancias de clase porque realmente esto es lo que son, una copia de la clase con unos valores determinados.
+* El ciclo de vida de un objeto comienza con su declaración, su instanciación y su uso en los programas java, hasta que finalmente desaparece. Cuando el objeto desaparece, Java libera la memoria asignada al mismo y la reutiliza. El programador o desarrollador no debe de preocuparse en liberar la memoria que usan los objetos.
+
+
+**CLASES**
+* class NombreDeClase 
+```java
+class Circulo {
+		int x;
+		int y;
+		int radio;
+	}
+
+```
+
+**Instanciar objetos a partir de una clase**
+```java
+Circulo circulo1;
+Circulo mi_circulo;
+```
+Pero para crear y asignar un espacio en memoria al objeto es necesario realizar la instanciación haciendo uso del operador new
+```java
+circulo1 = new Circulo();
+mi_circulo = new Circulo();
+```
+
+**Declaraciones de Clases**
+
+* Para declarar una clase nos debemos ajustar a la sintaxis de Java. Se debe seguir este orden:
+
+1. Declaración del  paquete:  
+    * Un  paquete  cumple  una  función  similar  a  una carpeta en Windows.
+    * El paquete nos sirve para organizar nuestros recursos y además poder implementar niveles de acceso como veremos más adelante.
+2. Importaciones: 
+    * En una clase podremos utilizar otras clases ya creadas. 
+    * Estas pueden ser  del  propio  API    o  también  clases  desarrolladas  por  terceras personas. 
+    * Para poder acceder a otras clases es necesario importarlas previamente.
+3. Declaración de la clase: 
+    * Aquí se definirán los recursos de la clase.
+
+```java
+package unaClase;
+
+public class Persona {
+
+    //Propiedades o atributos:
+    private String nombre;
+    private String telf;
+    private String nif;
+    private int edad;
+
+    //Constructor
+    public Persona(){
+
+    }
+
+    //Método
+    public void muestraDatos(){
+
+        System.out.println("nif: " + nif + " nombre: " + nombre + " edad: " + edad);
+    }
+}
+```
+
+* Propiedades/Atributos/Campos: características de nuestra clase.
+* Construcotres(de objetos): método especifico que se invoca cada vez que creamos un objeto tipo persona.
+* Métodos; acciones que se pueden llevar a cabo sobre una persona.
+
+**PROPIEDADES**
+Propiedad:
+* Variable golbal a la que se puede acceder desde cualquier otro recurso dentro de la misma clase.
+* Según sea public, private o proteccted se podrá acceder desde otras clases o no.
+
+Sintaxis para declarar una propiedad:
+```
+acceso tipo nombre
+```
+* Acceso:
+    * private: solo se pueden acceder desde la propia clase que los define.
+    * protected: solo se puede acceder desde la clase que lo define y desde las subclases.
+    * public: se puede acceder libremente desde otras clases.
+
+* Tipo: puede ser un tipo primitivo de Java o un identificar de  una clase.
+* Nombre del atributo: debe de cumplir las normas de los identificadores y se recomienda usar sustantivos que representen la información que almacenan.
+
+```java
+public int numero;
+private String nombre;
+protected double medida;
+long capital;
+```
+
+**Declaración de métodos**
+
+* Podremos invocar  a  un  método  tantas  veces  como  se  quiera  por  lo  cual  nos  permite  una reutilización de código.
+* Se pueden invocar desde otro recurso declarado en la misma clase y dependiendo de su acceso, se podrá llamar desde otras clases.
+
+La sintaxis para declarar un método es la siguiente:
+
+1. Si el método no devuelve ningún dato:
+```
+acceso void nombreMetodo(){
+}
+```
+
+2. Si el método devuelve un dato:
+```
+acceso tipoDevuelto nombreMetodo(){
+}
+```
+
+Ejemplo 1:
+```java
+
+public void mostrarDatos(){
+// Lógica de negocio
+}
+ 
+private void abrirConexion(){
+// Lógica de negocio
+}
+```
+
+Ejemplo 2:
+```java
+public int sumar(int num1, int num2){ 
+return n1 + n2;
+}
+ 
+public String getNombre(){
+return nombre;
+ 
+}
+```
+**VISIBILIDAD DE ACCESO**
+Para declarar el acceso a un miembro de la casle podemos utilizar:
+
+![Acceso a Métodos](img/accesoMétodos.jpg)
+
+* Default es cuando no ponemos ningún identificador de acceso.
+
+[Ejemplo Clases y Ojetos](Ejercicios/1.3.1.POO/Ejemplo_ClasesObjetos)
+
+_________________________________________________________________________________
+
+**1.3.2. Clases Avanzadas** <a name="id132"></a>
+
+_________________________________________________________________________________
+
+**1.3.3. Excepciones y Aserciones** <a name="id133"></a>
+
+_________________________________________________________________________________
+
+**1.3.4. Colecciones** <a name="id134"></a>
 _________________________________________________________________________________
