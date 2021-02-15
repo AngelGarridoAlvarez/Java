@@ -28,6 +28,7 @@ Resúmenes teóricos y ejercicios prácticos realizados por Ángel Garrido Álva
 ### Módulo 1 - TEMA 3 - POO - Programación Orientada a Objetos
 
 1.3.1. [ POO - Programación Orientada a Objetos](#id131)
+* [**Ejercicio Feedback 1.3.1 - POO**](#id131e)
 
 1.3.2. [ Clases Avanzadas](#id132)
 
@@ -981,7 +982,154 @@ Para declarar el acceso a un miembro de la casle podemos utilizar:
 
 * Default es cuando no ponemos ningún identificador de acceso.
 
-[Ejemplo Clases y Ojetos](Ejercicios/1.3.1.POO/Ejemplo_ClasesObjetos)
+[Ejemplo Clases y Ojetos](EclipseWorkSpace/1.3.1.POO/Ejemplo_ClasesObjetos)
+
+**ENCAPSULACIÓN DE CLASES**
+* Una clase encapsulada es una clase que declara todas sus pripiedades como privadas.
+* Solo se puede acceder a ella a traves de los métodos get() y set().
+
+![Encapsulación de clases](img/encapsulación.png)
+
+
+* Toda propiedad privada va a tener asociados dos métodos públicos (get y set). 
+* Podemos modificar el valor de la propiedad (método set) o recuperar su valor (método get).
+
+* Al generar  una instancia  de una clase no encapsulada,  como  las propiedades  son publicas, puedo acceder directamente a ellas y establecer cualquier valor mientras que sea un numero entero.
+
+* Para evitar la introducción de datos erróneos optamos por encapsular la clase, de esta forma tengo que acceder a las propiedades a través del método setXXX() en el cual puedo  incorporar  la  lógica  de  negocio  necesaria  para  poder  controlar  si  el  valor introducido es correcto.
+
+
+Veamos un ejemplo:
+
+```java
+public class Vehiculo {
+    // Propiedades/ Atributos de la clase Vehiculo.
+    // Al no especificar "public" en cada atributo, solo se puede acceder desde la clase
+    String matricula;
+	String marca;
+	String modelo;
+	String color;
+	double tarifa;
+	boolean disponibilidad;
+
+	// Método constructor de la clase Vehiculo
+	public Vehiculo (String matricula, String marca, String modelo, String Color, double tarifa){
+		this.matricula = matricula;
+		this.marca = marca;
+		this.modelo = modelo;
+		this.color = color;
+		this.tarifa = tarifa;
+		this.disponibilidad = false;
+	}
+	//Definición de los métodos get
+	public String getMatricula() {
+		return this.matricula;
+	}
+	public String getMarta() {
+		return this.marca;
+	}
+	public String getModelo() {
+		return this.modelo;
+	}
+	public String getColor() {
+		return this.color;
+	}
+	public double getTarifa() {
+		return this.tarifa;
+	}
+	public  boolean getDisponible() {
+		return this.disponible;
+	}
+	// Definición de los metodos set
+	public void setTarifa(double tarifa) {
+		this.tarifa = tarifa;
+	}
+	public void setColor(String color) {
+		this.color=color;
+	}
+	public void setDisponibilidad(boolean disponibilidad) {
+		this.disponibilidad=disponibilidad;
+}
+
+```
+
+En nuestro ejemplo, en la clase Vehículo vamos a necesitar un método get para cada uno de sus atributos y otro método set para los atributos que se puedan modificar una vez que se haya instanciado al objeto.
+
+
+**CONSTRUCTORES**
+* Para crear un objeto se usa el operador new. 
+* Si no se ha definido un método constructor para la clase tendremos que instanciar al objeto indicando el nombre de la clase y a continuación los paréntesis ().
+
+```java
+circulo1 = new Circulo();
+mi_circulo = new Circulo();
+```
+
+* En el caso de que la clase disponga de un método constructor no es posible instanciar un objeto usando la opción anterior, es decir, tendremos que usar al método constructor.
+```java
+Vehiculo mi_vehiculo = new Vehiculo(“5858 BPP”,”Renault”,”Megane Coupe”,”Naranja”,100.50);
+```
+
+* En una clase se pueden definir uno o más métodos constructores para inicializar los atributos de un objeto. 
+
+* En nuestra clase Vehiculo se ha definido un método constructor que inicializa los atributos matricula, marca, modelo, color y tarifa como se puede observar a continuación:
+
+![constructor vehículo](img/cosntructorVehiculo.png)
+
+<u>Sobrecarga de constructores</u>
+
+* En Java tanto con métodos como con constructores podemos sobrecargarlos (poner más de uno)
+* Dependiendo del número de parámetros y el orden de los tipos se realizaran funciones independendientes.
+
+![sobre carga constructor](img/constructoressobrecarga.png)
+
+[Ejercicios y soluciones](Ejercicios/1.3.1.POO)
+
+
+[**Ejercicio Feedback 1.3.1 - Bucles**](EclipseWorkSpace/EjercicioFeedback131POO/src/ejercicio124Bucles/ejercicio131POO.java/) 
+<a name="id131e"></a>
+
+Nos piden hacer un programa orientado a objetos sobre un cine (solo de una sala) tiene un conjunto de asientos (8 filas por 9 columnas, por ejemplo).
+
+Del cine nos interesa conocer la película que se está reproduciendo y el precio de la entrada en el cine.
+
+De las películas nos interesa saber el título, duración, edad mínima y director.
+
+Del espectador, nos interesa saber su nombre, edad y el dinero que tiene.
+
+Los asientos son etiquetados por una letra (columna) y un número (fila), la fila 1 empieza al final de la matriz como se muestra en la tabla. También deberemos saber si está ocupado o no el asiento.
+
+ 
+
+8 A 8 B 8 C 8 D 8 E 8 F 8 G 8 H 8 I
+
+7 A 7 B 7 C 7 D 7 E 7 F 7 G 7 H 7 I
+
+6 A 6 B 6 C 6 D 6 E 6 F 6 G 6 H 6 I
+
+5 A 5 B 5 C 5 D 5 E 5 F 5 G 5 H 5 I
+
+4 A 4 B 4 C 4 D 4 E 4 F 4 G 4 H 4 I
+
+3 A 3 B 3 C 3 D 3 E 3 F 3 G 3 H 3 I
+
+2 A 2 B 2 C 2 D 2 E 2 F 2 G 2 H 2 I
+
+1 A 1 B 1 C 1 D 1 E 1 F 1 G 1 H 1 I
+
+ 
+
+Realizaremos una pequeña simulación, en el que generaremos muchos espectadores y los sentaremos aleatoriamente (no podemos donde ya este ocupado).
+
+En esta versión sentaremos a los espectadores de uno en uno.
+
+Solo se podrá sentar si tienen el suficiente dinero, hay espacio libre y tiene edad para ver la película, en caso de que el asiento este ocupado le buscamos uno libre.
+
+Los datos del espectador y la película pueden ser totalmente aleatorios.
+
+
+[**Solución**](EclipseWorkSpace/EjercicioFeedback131POO/src/ejercicio124Bucles/ejercicio131POO.java/)
+
 
 _________________________________________________________________________________
 
