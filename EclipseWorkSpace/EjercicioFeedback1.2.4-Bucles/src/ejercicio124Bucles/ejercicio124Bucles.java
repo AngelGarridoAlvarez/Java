@@ -1,28 +1,28 @@
 package ejercicio124Bucles;
 /*
  * generar boleto (secuencia) de: 
- * 		9 números
+ * 		9 nï¿½meros
  * 		no repetidos
- * 		10 < números <100
- * 		ejemplo: 12 21 35 46 88 72 94 49 27 (mostraremos los números siempre en pantalla para depurar errores)
+ * 		10 < nï¿½meros <100
+ * 		ejemplo: 12 21 35 46 88 72 94 49 27 (mostraremos los nï¿½meros siempre en pantalla para depurar errores)
  * 
- * Se pide un número al usuario: 35
+ * Se pide un nï¿½mero al usuario: 35
  * 		Si existe 12 21 XX 46 88 72 94 49 27
- * 		Si no existe: El número 78 no existe
+ * 		Si no existe: El nï¿½mero 78 no existe
  * 
- * Si pulsamos 0, salimos de la aplicación
+ * Si pulsamos 0, salimos de la aplicaciï¿½n
  * 
  * 
- * Si todos los números tachados:
+ * Si todos los nï¿½meros tachados:
  * 		;
  * 
- * 14 intentos máximo
+ * 14 intentos mï¿½ximo
  * 
- * Ayuda: crear número aleatorio en java:  
+ * Ayuda: crear nï¿½mero aleatorio en java:  
  * 		int valor = Math.floor(Math.random()*99+10);
  */
 
-import java.util.Scanner;//importo el método Scanner para poder recoger datos
+import java.util.Scanner;//importo el mï¿½todo Scanner para poder recoger datos
 
 public class ejercicio124Bucles {
 	public static void main(String[] args) {
@@ -42,14 +42,14 @@ public class ejercicio124Bucles {
 		// Asigno valores a cada elemento del boleto con un bucle for:
 
 		for (int i = 0; i < boleto.length; i++) {
-			// Generar valores aleatorios entre 2 números: int r = (int) (Math.random() *
+			// Generar valores aleatorios entre 2 nï¿½meros: int r = (int) (Math.random() *
 			// (upper - lower)) + lower;
 
 			boleto[i] = (int) ((Math.random() * (99 - 11)) + 11);
 			boletoString[i] = Integer.toString(boleto[i]);
 		}
 
-		// Compruebo que todos los valores del array son diferentes, si hay dos números iguales, lo muestro por pantalla y salgo de la aplicación
+		// Compruebo que todos los valores del array son diferentes, si hay dos nï¿½meros iguales, lo muestro por pantalla y salgo de la aplicaciï¿½n
 
 		for (int i1 = 0; i1 < boleto.length; i1++) {
 			for (int i2 = 0; i2 < boleto.length; i2++) {
@@ -60,9 +60,9 @@ public class ejercicio124Bucles {
 							+ " " + boleto[5] + " " + boleto[6] + " " + boleto[7] + " " + boleto[8]);
 
 					System.out
-							.println("El valor " + boleto[i1] + " está repetido en las posiciones " + i1 + " y " + i2);
+							.println("El valor " + boleto[i1] + " estï¿½ repetido en las posiciones " + i1 + " y " + i2);
 					System.out.println(
-							"Reinicia la aplicación hasta que te salga un boleto válido sin elementos repetidos");
+							"Reinicia la aplicaciï¿½n hasta que te salga un boleto vï¿½lido sin elementos repetidos");
 					System.exit(0);
 
 				}
@@ -77,20 +77,20 @@ public class ejercicio124Bucles {
 				+ boleto[5] + " " + boleto[6] + " " + boleto[7] + " " + boleto[8]);
 
 		// Mientras se cumplan las condiciones del while (14 intentos) me van a pedir
-		// que introduzca un número
+		// que introduzca un nï¿½mero
 
 		while ((intento < 14) && (intentoOk < 9)) {
-			System.out.println("Introduce un número comprendido mayor que 10 y menor que 99; te quedan "
+			System.out.println("Introduce un nï¿½mero mayor que 10 y menor que 99; te quedan "
 					+ (14 - intento) + " intentos.");
 			numeroElegido = scan.nextInt();
 			
-			// Si pulsamos 0, salimos de la applicación
+			// Si pulsamos 0, salimos de la applicaciï¿½n
 			
 			if (numeroElegido == 0) {
-				System.out.println("Has pulsado 0: 'Salir de la aplicación'");
+				System.out.println("Has pulsado 0: 'Salir de la aplicaciï¿½n'");
 				System.exit(0);
 			
-			// Si pulsamos un valor != 0 continua con la aplicación
+			// Si pulsamos un valor != 0 continua con la aplicaciï¿½n
 			} else {
 				intento += 1;
 				for (int i = 0; i < boleto.length; i++) {
