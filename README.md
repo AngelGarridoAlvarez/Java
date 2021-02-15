@@ -25,6 +25,17 @@ Resúmenes teóricos y ejercicios prácticos realizados por Ángel Garrido Álva
 
 * [**Ejercicio Feedback 1.2.4 - Bucles**](#id124e)
 
+### Módulo 1 - TEMA 3 - POO - Programación Orientada a Objetos
+
+1.3.1. [ POO - Programación Orientada a Objetos](#id131)
+
+1.3.2. [ Clases Avanzadas](#id132)
+
+1.3.3. [ Excepciones y Aserciones](#id133)
+
+1.3.4. [ Colecciones](#id134)
+
+
 
 _________________________________________________________________________________
 
@@ -800,4 +811,16 @@ Ayuda: Para crear un número aleatorio en Java
  int valor = Math.floor(Math.random()*99+10);
 ```
 
-[**Solución**](EclipseWorkSpace/EjercicioFeedback1.2.4-Bucles/src/ejercicio124Bucles/ejercicio124Bucles.java/) 
+[**Solución**](EclipseWorkSpace/EjercicioFeedback1.2.4-Bucles/src/ejercicio124Bucles/ejercicio124Bucles.java/)
+
+_________________________________________________________________________________
+### Módulo 1 - TEMA 3 - POO - Programación Orientada a Objetos
+
+1.3.1. POO - Programación Orientada a Objetos <a name="id131"></a>
+
+1.3.2. Clases Avanzadas <a name="id132"></a>
+
+1.3.3. Excepciones y Aserciones <a name="id133"></a>
+
+1.3.4. Colecciones <a name="id134"></a>
+_________________________________________________________________________________
