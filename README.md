@@ -1128,7 +1128,7 @@ Solo se podrá sentar si tienen el suficiente dinero, hay espacio libre y tiene 
 Los datos del espectador y la película pueden ser totalmente aleatorios.
 
 
-[**Solución**](EclipseWorkSpace/EjercicioFeedback131POO/src/ejercicio124Bucles/ejercicio131POO.java/)
+[**Solución**](EclipseWorkSpace\EjercicioFeedback1.3.1-POO)
 
 
 _________________________________________________________________________________
