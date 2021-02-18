@@ -1247,8 +1247,22 @@ public void println(String s);
 
 * Cuando se escribe el código para llamar a uno de estos métodos, se elige el método adecuado en función del tipo de argumento o argumentos que se suministran.
 
+<u>Sobrecarga de Constructores</u>
+
+* Cuando se instancia un objeto, el programa puede ser capaz de suministrar varios constructores basándose en los datos del objeto que se está creando. 
+* Por ejemplo, un sistema de nóminas podría ser capaz de crear un objeto Empleado si conoce todos los datos básicos sobre la persona: nombre, salario base y fecha de nacimiento.
+* Puede que, en alguna ocasión, el sistema no conozca el salario base o la fecha de nacimiento.
+    * Si hemos sobrecargado con contructores que contemplen estos casos, se poddrá crear un objeto unque no se conozca el salario o la fecha de nacimiento.
+
+<u>Las sublcases no heredan sus constructores.</u>
+* Las clases sólo pueden obtener un constructor de dos maneras: 
+    * Debe escribirlo el programador,
+    * Si éste no lo escribe, debe usar el constructor predeterminado.
+
+[EJERCICIOS HERENCIAS](Ejercicios/1.3.2.ClasesAvanzadas)
 
 
+**LA CLASE OBJECT**
 
 _________________________________________________________________________________
 
