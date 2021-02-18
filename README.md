@@ -1086,7 +1086,7 @@ Vehiculo mi_vehiculo = new Vehiculo(“5858 BPP”,”Renault”,”Megane Coupe
 [Ejercicios y soluciones de repaso](Ejercicios/1.3.1.POO)
 
 
-[**Ejercicio Feedback 1.3.1 - Bucles**](EclipseWorkSpace/EjercicioFeedback131POO/src/ejercicio124Bucles/ejercicio131POO.java/) 
+[**Ejercicio Feedback 1.3.1 - Bucles**](EclipseWorkSpace/EjercicioFeedback1.3.1-POO) 
 <a name="id131e"></a>
 
 Nos piden hacer un programa orientado a objetos sobre un cine (solo de una sala) tiene un conjunto de asientos (8 filas por 9 columnas, por ejemplo).
@@ -1128,7 +1128,7 @@ Solo se podrá sentar si tienen el suficiente dinero, hay espacio libre y tiene 
 Los datos del espectador y la película pueden ser totalmente aleatorios.
 
 
-[**Solución**](EclipseWorkSpace\EjercicioFeedback1.3.1-POO)
+[**Solución**](EclipseWorkSpace/EjercicioFeedback1.3.1-POO)
 
 
 _________________________________________________________________________________
