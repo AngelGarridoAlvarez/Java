@@ -1135,6 +1135,121 @@ ________________________________________________________________________________
 
 **1.3.2. Clases Avanzadas** <a name="id132"></a>
 
+**HERENCIA** 
+
+<u>Herencia Sencilla / Herencia Simple</u>
+* Una clase soolo puede heredar de otra, no de varias a la vez
+
+<u>Ejemplo:</u>
+* superclase/clase base/clase madre: Empleado
+* subclase/clase derivada/clase hija: Gerente
+* subclase de Gerente: Director (hereda de Gerente y de Empleado)
+
+```java
+//Clase Madre empleado
+public class Empleado {
+    public String nombre;
+    public double salario;
+    public Date fechaNacimiento;
+
+    public String getDetails(){
+        return "Nombre: " + nombre
+    }
+}
+
+//Clase hija Gerente: hereda de la madre
+
+public class Gerente extends Empleado {
+    protected String departamento;
+}
+
+//Si lo hicieramos sin herencia pondríamos:
+public class Empleado {
+    public String nombre;
+    public double salario;
+    public Date fechaNacimiento;
+    protected String departamento;
+
+    public String getDetails(){
+        return "Nombre: " + nombre
+    }
+}
+```
+
+Un subclase puede heredar de otra subclase, heredando todos los elementos de las clases superiores:
+```java
+
+public class Director extends Gerente {
+    protected double vechicoloEmpresa;
+    
+    //Vemos que el método getDetails es diferente que en la clase madre Empleado, pero se sobreescribe al cumplir los 3 requisitos 
+    public double aumentarComision(){ 
+        return ... ;
+    }
+}
+```
+
+<u>Sobreescritura de Métodos</u>
+
+Un método de una subclase puede sobreescribir al método de la clase madre si coinciden:
+* El nombre del método.
+* El tipo de retorno.
+* La lista de argumentos en caso de que tenga.
+
+Reglas adicionales sobreescritura de métodos
+* No se puede hacer el método sobreescrito menos accesible.
+* Si el método original no tiene clausula throws no se la podemos poner. 
+    * Indica que si el método original no lanza excepciones, el sobreescrito tampoco.
+* Si el método original SÍ tiene clausula throws:
+    * Podemos quitar la clausula throws en el método sobreescrito.
+    * Podemos dejar la clausula throws, pero esta debe lanzar las mismas excepciones o una subclase de ella.
+
+```java
+public class Gerente extends Empleado {
+    protected String departamento;
+    
+    //Vemos que el método getDetails es diferente que en la clase madre Empleado, pero se sobreescribe al cumplir los 3 requisitos 
+    public String getDetails(){ 
+        return "Nombre: " + nombre + "\n
+        Salario: " + salario  
+    }
+}
+```
+<u>Llamada a Métodos Sobreescritos</u>
+
+* Un método de una subclase puede llamar a un método de una superclase utilizando la palabra clave super.
+* El método no tiene por qué estar definido en la clase de nivel inmediatamente superior, puede heredarse de alguna clase situada más arriba en la jerarquía.
+
+
+```java
+public class Gerente extends Empleado {
+    protected String departamento;
+    
+    public String getDetails(){ 
+        //Llamamos al método de la superclase y añadimos info al método
+        return super.getDetails() +
+        "\nDepartamento: " + departamento;
+    }
+}
+```
+
+<u>Sobrecarga de Métodos</u>
+* En algunos casos, puede que quiera escribir en la misma clase varios métodos que realizan la misma tarea básica pero con diferentes argumentos. 
+* Java y otros lenguajes de programación permiten reutilizar un mismo nombre de método para varios métodos. 
+* Esto sólo funciona si las circunstancias bajo las que se hace la llamada permiten distinguir cuál es el método necesario. 
+    * Ejemplo: numero de argumentos y su tipo:
+
+```java
+public void println(int i);
+public void println(float f);
+public void println(String s);
+```
+
+* Cuando se escribe el código para llamar a uno de estos métodos, se elige el método adecuado en función del tipo de argumento o argumentos que se suministran.
+
+
+
+
 _________________________________________________________________________________
 
 **1.3.3. Excepciones y Aserciones** <a name="id133"></a>
