@@ -1083,7 +1083,7 @@ Vehiculo mi_vehiculo = new Vehiculo(“5858 BPP”,”Renault”,”Megane Coupe
 
 ![sobre carga constructor](img/constructoressobrecarga.png)
 
-[Ejercicios y soluciones](Ejercicios/1.3.1.POO)
+[Ejercicios y soluciones de repaso](Ejercicios/1.3.1.POO)
 
 
 [**Ejercicio Feedback 1.3.1 - Bucles**](EclipseWorkSpace/EjercicioFeedback131POO/src/ejercicio124Bucles/ejercicio131POO.java/) 
