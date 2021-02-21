@@ -1288,7 +1288,7 @@ ________________________________________________________________________________
 ## 5.1 - Diseño de interfaces gráficas con Swing<a name="id151"></a>
 
 ### POO en Eclipse con interfaz gráfica
-*  [App ventana principal](EclipseWorkSpace\pruebaGraficos\src\pruebaGraficos\ventanaPrincipal.java)
+*  [App ventana principal](EclipseWorkSpace/pruebaGraficos/src/pruebaGraficos/ventanaPrincipal.java)
 
 * Necesitamos instalar windows builder para trabajar con Swing en el IDE Eclipse:
 
@@ -1326,7 +1326,7 @@ src - botón derecho - new - other
 
 * Para poder trabajar aquí tene mos que arrastrar la propiedad "Layout - absolute layout" del menú de la imagen anterior, hasta el interior de la ventana
 
-* En nuestra [App ventana principal](EclipseWorkSpace\pruebaGraficos\src\pruebaGraficos\ventanaPrincipal.java) probamos los diferentes componentes
+* En nuestra [App ventana principal](EclipseWorkSpace/pruebaGraficos/src/pruebaGraficos/ventanaPrincipal.java) probamos los diferentes componentes
 ![img](img/12.png)
 
 
