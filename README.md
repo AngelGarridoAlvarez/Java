@@ -1,49 +1,53 @@
-# Java
-
 ![Java](java.jpg)
 
 Resúmenes teóricos y ejercicios prácticos realizados por Ángel Garrido Álvarez durante el Máster en Diseño y Programación de Aplicaciones Java JEE - Universidad de Alcalá
 
-## Indice
+# Módulo 1
 
-### Módulo 1 - TEMA 1 - Desarrollo de aplicaciones en JAVA
+## 1 - Desarrollo de aplicaciones en JAVA
 
-1.1.1. [ Introducción a la programación](#id111)
+1.1. [ Introducción a la programación](#id111)
 
-1.1.2. [IDE - Entorno de Desarrollo](#id112)
+1.2. [IDE - Entorno de Desarrollo](#id112)
 
-### Módulo 1 - TEMA 2 - Fundamentos de Programación en JAVA
+## 2 - Fundamentos de Programación en JAVA
 
-1.2.1. [ Introducción a JAVA](#id121)
+2.1. [ Introducción a JAVA](#id121)
 
-1.2.2. [ Programación con JAVA](#id122)
+2.2. [ Programación con JAVA](#id122)
 
-1.2.3. [ Estructuras de Control](#id123)
+2.3. [ Estructuras de Control](#id123)
 * [**Ejercicio Feedback 1.2.**](#id12e)
 
-1.2.4. [ Arrays](#id124)
+2.4. [ Arrays](#id124)
 
 * [**Ejercicio Feedback 1.2.4 - Bucles**](#id124e)
 
-### Módulo 1 - TEMA 3 - POO - Programación Orientada a Objetos
+## 3 - POO - Programación Orientada a Objetos
 
-1.3.1. [ POO - Programación Orientada a Objetos](#id131)
+3.1. [ POO - Programación Orientada a Objetos](#id131)
 * [**Ejercicio Feedback 1.3.1 - POO**](#id131e)
 
-1.3.2. [ Clases Avanzadas](#id132)
+3.2. [ Clases Avanzadas](#id132)
 
-1.3.3. [ Excepciones y Aserciones](#id133)
+3.3. [ Excepciones y Aserciones](#id133)
 
-1.3.4. [ Colecciones](#id134)
+3.4. [ Colecciones](#id134)
 
+## 4 - Mecanismos de Entrada / Salida
 
+4.1. [Gestión de E/S por terminal y ficheros](#id141)
+
+## 5 - Diseño de interfaces
+
+5.1 [Diseño de interfaces gráficas con Swing](#id151)
 
 _________________________________________________________________________________
 
 
-### Módulo 1 - TEMA 1 - Desarrollo de aplicaciones en JAVA
+# TEMA 1 - Desarrollo de aplicaciones en JAVA
 
-#### 1.1.1. Introducción a la programación <a name="id111"></a>
+## 1.1. Introducción a la programación <a name="id111"></a>
 
 Existen muchos tipos de software: 
 * instalados localmente
@@ -51,7 +55,7 @@ Existen muchos tipos de software:
 
 Proyectos de software tienen ciclo de vida de desarrollo, pasos a seguir para desarrollar una aplicación que depende de metodología que utilicemos.
 
-##### Concepto: programa informático
+### Concepto: programa informático
 **Programa**:
 * conjunto de órdenes que se ejecutan en el ordenador para conseguir un objetivo.
 * capaces de hacer tres tipos de operaciones:
@@ -75,7 +79,7 @@ Proyectos de software tienen ciclo de vida de desarrollo, pasos a seguir para de
     * Bajo nivel: lenguajes con comandos y funciones cercanas al modo en el que procesa los datos una computadora (código máquina, ensamblador)
     * Alto nivel: lenguajes con sintaxis más cercana a la forma en la que nos comunicamos los humanos.
 
-###### Código fuente, código objeto y código ejecutable
+### Código fuente, código objeto y código ejecutable
 **Código Fuente**: 
 * conjunto de instrucciones escritas en un lenguaje de programación.
 * no pueden ser directamente ejecutados por la computadora. 
@@ -102,7 +106,7 @@ Proyectos de software tienen ciclo de vida de desarrollo, pasos a seguir para de
 * Diferentes para cada SO
 
 
-###### Clasificación de lenguajes de programación por técnica utilizada
+### Clasificación de lenguajes de programación por técnica utilizada
 
 **Secuencial**: va ejecutando las sentencias en orden una detrás de otra.
 
@@ -135,7 +139,7 @@ Todas se puede subdividir en programación declarativa e imperativa:
     * sin especificar exactamente el proceso para llevarlo a cabo
     
 
-##### Ingeniería de Software
+### Ingeniería de Software
 
 * comprende todos los aspectos de la creación del software:
     * Definición, mantenimiento, etc.
@@ -238,7 +242,7 @@ Todas se puede subdividir en programación declarativa e imperativa:
             * Difícil de documentar.
 
 
-##### Herramientas CASE (Computer Aided Software Engineering)
+### Herramientas CASE (Computer Aided Software Engineering)
 * aplicaciones que nos ayudan a aumentar la productividad en el desarrollo del software.
 * Objetivos:
     * Aumentar la calidad del producto.
@@ -258,7 +262,7 @@ Todas se puede subdividir en programación declarativa e imperativa:
 
 
 
-#### 1.1.2. IDE - Entorno de Desarrollo <a name="id112"></a>
+## 1.2. IDE - Entorno de Desarrollo <a name="id112"></a>
 
 * Aplicación que nos ayuda en la tarea de creación de nuestros proyectos de software. 
 * Es un editor de código, un compilador, un depurador y un constructor de interfaz gráfica (GUI).
@@ -281,9 +285,9 @@ Todas se puede subdividir en programación declarativa e imperativa:
 
 _______________________________________________________________________________________________________________________________________________________________
 
-### Módulo 1 - TEMA 2 - Fundamentos de Programación en JAVA
+# TEMA 2 - Fundamentos de Programación en JAVA
 
-#### 1.2.1. Introducción a JAVA <a name="id121"></a>
+## 2.1. Introducción a JAVA <a name="id121"></a>
 Java es un conjunto de: 
     * un lenguaje
     * una plataforma de desarrollo (JDK - Java Development Kit)
@@ -298,7 +302,7 @@ Java es un conjunto de:
     
 
  
-##### Proceso de edición y compilación.
+### Proceso de edición y compilación.
 * Se sigue el proceso: 
     * edición del código fuente (con el IDE)
     * compilación (con Javac - Java Compilator o con el IDE - comprueba que el código fuente se compone de palabras válidas en Java y que los comandos Java tienen una sintaxis correcta.) 
@@ -306,19 +310,19 @@ Java es un conjunto de:
 
 * El código fuente se compila para obtener el Bytecode que será interpretado por la JVM
 
-##### Codificación de programas Java.
+### Codificación de programas Java.
  
-Legibilidad: fácil de entender y de leer.
+* Legibilidad: fácil de entender y de leer.
 
-Corrección.- Un programa debe cumplir los requisitos funcionales y técnicos establecidos en la fase de especificación. Durante la fase de prueba se verificará.
+* Corrección.- Un programa debe cumplir los requisitos funcionales y técnicos establecidos en la fase de especificación. Durante la fase de prueba se verificará.
 
-Eficiencia.- tiempo que tarda el programa en ejecutarse, recursos que consume.
-
-
-#### 1.2.2. Programación con JAVA <a name="id122"></a>
+* Eficiencia.- tiempo que tarda el programa en ejecutarse, recursos que consume.
 
 
-##### Estructura general de un programa en Java.
+## 2.2. Programación con JAVA <a name="id122"></a>
+
+
+### Estructura general de un programa en Java.
 ```java
 /*
 
@@ -368,7 +372,7 @@ El perímetro es: 20.0
 */
 ```
 
-##### Saltos de línea y espacios:
+### Saltos de línea y espacios:
 
 * Los saltos de linea se hacen con \n 
 ```java
@@ -392,7 +396,7 @@ Holasoy Antonio
 ```
 
 
-##### Variables
+### Variables
 **Requisitos de los Identificadores de las Variables**
 
 * Un identificador debe de comenzar con una letra que puede ser seguida de más letras o dígitos. Una letra es cualquier símbolo del alfabeto y un dígito son cualquier carácter entre ‘0’ y ‘9’. 
@@ -440,7 +444,7 @@ public class variables {
     }
 }
 ```
-##### Tipos de datos
+### Tipos de datos
 
 ![tipos de datos](img/tipos_datos.jpg)
 
@@ -450,28 +454,28 @@ Caracteres:
 ![caracteres](img/caracteres..png)
 Fuente: Máster en Diseño y Programación de Aplicaciones Java JEE - Universidad de Alcalá
 
-##### OPERADORES 
+### OPERADORES 
 
-###### OPERADORES MATEMÁTICOS
+#### OPERADORES MATEMÁTICOS
 ![operadores](img/Operadores%20Matemáticos.png)
 
-###### OPERADORES INCREMENTO Y DECREMENTO
+#### OPERADORES INCREMENTO Y DECREMENTO
 ![operadores](img/operadores_incremento_decremento.png)
 
-###### OPERADORES LÓGICOS 
+#### OPERADORES LÓGICOS 
 ![operadores](img/OperadoresLógicos.png)
 
-###### OPERADORES RELACIONALES
+#### OPERADORES RELACIONALES
 ![operadores](img/operadoresRelacionales.png)
 
-###### OPERADORES CON DESPLAZAMIENTO
+#### OPERADORES CON DESPLAZAMIENTO
 ![operadores](img/operadoresDesplazamiento.png)
 
 
 Fuente: Máster en Diseño y Programación de Aplicaciones Java JEE - Universidad de Alcalá
 
 
-#### 1.2.3. Estructuras de Control <a name="id123"></a>
+## 2.3. Estructuras de Control <a name="id123"></a>
 
 **Estructuras Selectivas / Condicionales**
 * if
@@ -527,7 +531,7 @@ ___________________________________
     
     
 ___________________________________
-## 1.2.4. Arrays <a name="id124"></a>
+## 2.4. Arrays <a name="id124"></a>
 
 * Se debe definir tamaño al inicio (elementos máximos)
 * Todos los elementos del mismo tipo
@@ -545,7 +549,7 @@ int numeros[]
 Alumno alumnos[]
 ```
 
-#### Formas de declarar arrays:
+### Formas de declarar arrays:
 ```java
 //Declaramos como variables tipo array num1 y num2, en este caso da = la colacación delos corchetes
 int num1[];
@@ -558,7 +562,7 @@ int n1[], n2; //aquí n1 es un array pero n2 es un int
 int[] n3,n4; //aquí n3 y n4 son arrays
 ```
 
-#### Formas de crear arrays:
+### Formas de crear arrays:
 ```java
 numeros = new int[5]; //array numeros puede contener 5 int
 
@@ -627,7 +631,7 @@ public class Arrays {
 }
 ```
 
-#### COPIAR ELEMENTOS DE UN ARRAY EN OTRO:
+### COPIAR ELEMENTOS DE UN ARRAY EN OTRO:
 
 * System.arraycopy(array origen, posición inicio array origen, array destino, posición inicio array destino, nªde elementos a copiar)
 
@@ -654,7 +658,7 @@ System.arraycopy(nums, 2, numeros, 1, 3)
 ```java
 
 ```
-#### MATRICES: ARRAYS DE VARIAS DIMENSIONES: [Matrix.java](EclipseWorkSpace\1.2.FundamentosJava\src\arrays\Matrixays.java)
+### MATRICES: ARRAYS DE VARIAS DIMENSIONES: [Matrix.java](EclipseWorkSpace\1.2.FundamentosJava\src\arrays\Matrixays.java)
 
 * Para declarar matrices utilizamos tantos grupos de corchetes como dimensiones queremos en el array.
 
@@ -665,7 +669,7 @@ System.arraycopy(nums, 2, numeros, 1, 3)
     int [][] numeros;
     ```
 
-#### <u>Crear Matrices cuadradas:</u>
+### <u>Crear Matrices cuadradas:</u>
 
 * = Nº de columnas para todas las filas
 
@@ -676,7 +680,7 @@ numeros = new int[3][2];
 alumnos = new alumno[2][2];
 ```
 
-#### <u>Crear Matrices no cuadradas:</u>
+### <u>Crear Matrices no cuadradas:</u>
 
 * != Nº de columnas para todas las filas
 
@@ -722,7 +726,7 @@ int numeros2[][] = {{5,1,3}, {9,2,8,5},  {3,7}};
 System.out.println(numeros[0][2])
 ```
 
-#### <u>Recorrer una matriz</u>
+### <u>Recorrer una matriz</u>
 
 
 **BUCLE FOR**
@@ -815,9 +819,9 @@ Ayuda: Para crear un número aleatorio en Java
 [**Solución**](EclipseWorkSpace/EjercicioFeedback1.2.4-Bucles/src/ejercicio124Bucles/ejercicio124Bucles.java/)
 
 _________________________________________________________________________________
-### Módulo 1 - TEMA 3 - POO - Programación Orientada a Objetos
+## TEMA 3 - POO - Programación Orientada a Objetos
 
-**1.3.1. POO - Programación Orientada a Objetos** <a name="id131"></a>
+## **3.1. POO - Programación Orientada a Objetos** <a name="id131"></a>
 
 **POO (Programación Orientada a Objetos)**
 * Las aplicaciones informáticas han aumentado su complejidad.
@@ -1133,7 +1137,7 @@ Los datos del espectador y la película pueden ser totalmente aleatorios.
 
 _________________________________________________________________________________
 
-**1.3.2. Clases Avanzadas** <a name="id132"></a>
+## 3.2. Clases Avanzadas <a name="id132"></a>
 
 **HERENCIA** 
 
@@ -1266,9 +1270,65 @@ public void println(String s);
 
 _________________________________________________________________________________
 
-**1.3.3. Excepciones y Aserciones** <a name="id133"></a>
+## 3.3. Excepciones y Aserciones <a name="id133"></a>
 
 _________________________________________________________________________________
 
-**1.3.4. Colecciones** <a name="id134"></a>
+## 3.4. Colecciones <a name="id134"></a>
 _________________________________________________________________________________
+
+
+# TEMA 4 - Mecanismos de Entrada / Salida
+
+## 4.1 - Gestión de E/S por terminal y ficheros<a name="id141"></a>
+
+
+# TEMA 5 - Diseño de interfaces
+
+## 5.1 - Diseño de interfaces gráficas con Swing<a name="id151"></a>
+
+### POO en Eclipse con interfaz gráfica
+
+* Necesitamos instalar windows builder para trabajar con Swing en el IDE Eclipse:
+
+![img](img/01.png)
+
+<u>Crear un proyecto para trabajar con Swig:</u>
+
+* Archivo - nuevo proyecto - Otro - WindowBuilder - SWT Designer - SWT/JFace Java Project
+![img](img/03.png)
+![img](img/05.png)
+
+* Es importante elegir JavaSE-1.8
+![img](img/02.png)
+
+* Agregamos una ventana a nuestro proyecto para poder trabajar de forma gráfica:
+src - botón derecho - new - other
+![img](img/06.png)
+![img](img/07.png)
+
+* Damos nombre a la ventana
+![img](img/08.png)
+
+*  Seleccionamos nuestra ventana y pulsamos en Design para ver la interfaz gráfica:
+![img](img/09.png)
+
+* Si ejecutamos nuestra aplicación ya nos va a saltar una ventana en el escritorio
+
+* Podemos modificar las dimensiones de esa ventana de forma gráfica
+
+* Podemos modificar sus propiedades con el menú
+
+![img](img/10.png)
+
+* ContentPane hace referencia al interior de la ventana donde voy a trabajar.
+
+* Para poder trabajar aquí tene mos que arrastrar la propiedad "Layout - absolute layout" del menú de la imagen anterior, hasta el interior de la ventana
+
+* En nuestra App ventana principal probamos los diferentes componentes
+![img](img/12.png)
+
+
+* Dotar de funcionalidad a un botón:
+![img](img/11.png)
+
