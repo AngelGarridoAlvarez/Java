@@ -1288,6 +1288,7 @@ ________________________________________________________________________________
 ## 5.1 - Diseño de interfaces gráficas con Swing<a name="id151"></a>
 
 ### POO en Eclipse con interfaz gráfica
+*  [App ventana principal](EclipseWorkSpace\pruebaGraficos\src\pruebaGraficos\ventanaPrincipal.java)
 
 * Necesitamos instalar windows builder para trabajar con Swing en el IDE Eclipse:
 
@@ -1325,10 +1326,36 @@ src - botón derecho - new - other
 
 * Para poder trabajar aquí tene mos que arrastrar la propiedad "Layout - absolute layout" del menú de la imagen anterior, hasta el interior de la ventana
 
-* En nuestra App ventana principal probamos los diferentes componentes
+* En nuestra [App ventana principal](EclipseWorkSpace\pruebaGraficos\src\pruebaGraficos\ventanaPrincipal.java) probamos los diferentes componentes
 ![img](img/12.png)
 
 
-* Dotar de funcionalidad a un botón:
+### Dotar de funcionalidad a un botón:
 ![img](img/11.png)
 
+**JOptionPane.showMessageDialog:** ventana emergente
+
+* Introduzco la línea de código: JOptionPane.showMessageDialog(null, "Has pulsado el botón") en el códgio del botón;
+
+* En un principio no me reconoce JOptionPane; es porque la importación no se ha hecho, en eclipse lo resuelvo con " CTRL + SHIFT + O " para que me haga todas las importaciones automaticamente.
+
+```java
+JButton btnNewButton = new JButton("JButton");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, "Has pulsado el botón");
+			}
+		});
+```
+
+Transformamos el botón para que nos muesre en el Jtext la ciudad seleccionada en el comboBox;
+
+```java
+JButton btnNewButton = new JButton("JButton");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, "Has pulsado el botón, se va a cambiar el texto de JTextField con la ciudad " + comboBox.getSelectedItem().toString() + " seleccionada.");
+				txtJtextfieldEsUna.setText("La ciudad seleccionada es " + comboBox.getSelectedItem().toString());
+			}
+		});
+```
