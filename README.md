@@ -289,12 +289,15 @@ ________________________________________________________________________________
 
 ## 2.1. Introducción a JAVA <a name="id121"></a>
 Java es un conjunto de: 
-    * un lenguaje
-    * una plataforma de desarrollo (JDK - Java Development Kit)
-    * un entorno de ejecución para los programas compilados (JRE - Java Runtime Environment)
-        * Portabilidad: gratuito y disponible principales SO 
-        * Los programas se compilan en un lenguaje intermedio, ByteCode que es interpretado por la máquina virtual (JVM) del entorno de ejecución (JRE) y así se obtiene la portabilidad. 
-        * JRE intermediario entre el código ByteCode y los distintos sistemas operativos existentes.
+* un lenguaje
+* una plataforma de desarrollo (JDK - Java Development Kit)
+* un entorno de ejecución para los programas compilados (JRE - Java Runtime Environment)
+    * Portabilidad: gratuito y disponible principales SO 
+    
+    * Los programas se compilan en un lenguaje intermedio, ByteCode que es interpretado por la máquina virtual (JVM) del entorno de ejecución (JRE) y así se obtiene la portabilidad. 
+    
+    * JRE intermediario entre el código ByteCode y los distintos sistemas operativos existentes.
+    
     * un conjunto de librerías de desarrollo. (Java API - Java Application Programming Interface).
 
 * Desarrollado por Sun Microsystems, 1995.
