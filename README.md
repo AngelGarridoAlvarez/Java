@@ -17,16 +17,13 @@ Resúmenes teóricos y ejercicios prácticos realizados por Ángel Garrido Álva
 2.2. [ Programación con JAVA](#id122)
 
 2.3. [ Estructuras de Control](#id123)
-* [**Ejercicio Feedback 1.2.**](#id12e)
 
 2.4. [ Arrays](#id124)
 
-* [**Ejercicio Feedback 1.2.4 - Bucles**](#id124e)
 
 ## 3 - POO - Programación Orientada a Objetos
 
 3.1. [ POO - Programación Orientada a Objetos](#id131)
-* [**Ejercicio Feedback 1.3.1 - POO**](#id131e)
 
 3.2. [ Clases Avanzadas](#id132)
 
@@ -41,6 +38,17 @@ Resúmenes teóricos y ejercicios prácticos realizados por Ángel Garrido Álva
 ## 5 - Diseño de interfaces
 
 5.1 [Diseño de interfaces gráficas con Swing](#id151)
+
+
+## EJERCICIOS
+* [**Ejercicio Feedback 1.2. - Estructuras de Control**](#id12e)
+* [**Ejercicio Feedback 1.2.4 - Bucles**](#id124e)
+* [**Ejercicio Feedback 1.3.1 - POO**](#id131e)
+
+* [EJERCICIOS ARRAYS](Ejercicios/1.2.4.Arrays)
+* [EJERCICIOS POO](Ejercicios/1.3.1.POO)
+* [EJERCICIOS HERENCIAS](Ejercicios/1.3.2.ClasesAvanzadas/Herencia)
+* [EJERCICIOS Static y Final](Ejercicios/1.3.2.ClasesAvanzadas/StaticYFinal)
 
 _________________________________________________________________________________
 
@@ -778,7 +786,7 @@ System.out.println();
 
 }
 ```
-[EJERCICIOS CON SOLUCIONES](Ejercicios/1.2.4.Arrays)
+[EJERCICIOS ARRAYS](Ejercicios/1.2.4.Arrays)
 
 [**Ejercicio Feedback 1.2.4 - Bucles**](EclipseWorkSpace/EjercicioFeedback1.2.4-Bucles/src/ejercicio124Bucles/ejercicio124Bucles.java/) 
 <a name="id124e"></a>
@@ -1090,7 +1098,7 @@ Vehiculo mi_vehiculo = new Vehiculo(“5858 BPP”,”Renault”,”Megane Coupe
 
 ![sobre carga constructor](img/constructoressobrecarga.png)
 
-[Ejercicios y soluciones de repaso](Ejercicios/1.3.1.POO)
+[EJERCICIOS POO](Ejercicios/1.3.1.POO)
 
 
 [**Ejercicio Feedback 1.3.1 - Bucles**](EclipseWorkSpace/EjercicioFeedback1.3.1-POO) 
@@ -1266,11 +1274,475 @@ public void println(String s);
     * Debe escribirlo el programador,
     * Si éste no lo escribe, debe usar el constructor predeterminado.
 
-[EJERCICIOS HERENCIAS](Ejercicios/1.3.2.ClasesAvanzadas)
+[EJERCICIOS HERENCIAS](Ejercicios/1.3.2.ClasesAvanzadas/Herencia)
 
 
-**LA CLASE OBJECT**
+### **LA CLASE OBJECT - Métodos Heredados**
 
+* La clase Object es la raíz de todas las clases en Java. 
+* Si se declara una clase sin cláusula extends, el compilador agrega automáticamente el código extends Object a la declaración.
+* Por tanto, cualquier objeto que declaremos hereda todos los métodos de la clase Object.
+
+```java
+public class Persona{
+}
+
+// Equivale a poner:
+
+public class Persona extends Object{
+}
+```
+
+**Métodos Heredados de la clase Object**
+
+![metodos clase object](img/metodos_clase_object.png)
+
+Los métodos equals y toString son los más utilizados:
+
+<u>**Método equals**</u>
+* El operador == realiza una comparación para determinar la equivalencia de dos términos. 
+
+* La clase Object del paquete java.lang contiene el método public boolean equals(Object obj)
+
+* compara dos objetos para comprobar su igualdad. 
+
+* Si no se sobrescribe, el método equals() de un objeto devuelve true únicamente si las dos referencias comparadas se refieren al mismo objeto. 
+
+* No obstante, la intención de equals() es comparar el contenido de dos objetos siempre que es posible. Ésta es la razón por la que se sobrescribe con frecuencia. 
+
+* Por ejemplo, el método equals() en la clase String devuelve true únicamente si el argumento no es null y es un objeto String que representa la misma secuencia de caracteres que el objeto String con el que se ha llamado al método. 
+
+* En conclusión, el operador == compara si dos variables contienen la misma referencia mientras que con el método equals podemos comparar las propiedades del objeto para verificar si son iguales o no. 
+
+* Se debería sobrescribir el método hashCode cada vez que sobrescriba equals.
+    * Devuelve el código hash asociado al objeto invocado
+        * HashCode es un identificador de 32 bits que se almacena en un Hash en la instancia de la clase
+        * Función criptográfica hash / “hash”
+            * Algoritmo matemático que transforma cualquier bloque arbitrario de datos en una nueva serie de caracteres de longitud fija. 
+            * Independientemente de la longitud de los datos de entrada, el valor hash de salida tendrá siempre la misma longitud.
+
+    * Una implementación sencilla podría usar un XOR de bits en los códigos hash de los elementos cuya equivalencia se quiera comprobar.
+        * Una operación bit a bit o bitwise opera sobre números binarios a nivel de sus bits individuales.
+        * Ejemplos: NOT, AND, OR, XOR, EXOR (disyunción exclusiva)
+        * XOR y desigualdad son sinónimos: A<>B
+
+* En el siguiente ejemplo, la clase MyDate sobrescribe el método equals con @Override que compara los atributos de año, mes y día.
+
+* También sobrescribimos con @Override el método hashCode implementa un XOR de bits de los atributos de fecha. 
+
+* Esto hace que el código hash de los objetos iguales de MyDate tenga el mismo valor y ofrece la posibilidad de que fechas diferentes devuelvan valores diferentes.
+
+**EJEMPLO**
+
+* Creamos la clase MyDate:
+
+```java
+package app.ejemplo;
+
+public class MyDate {
+	
+	private int dia;
+	private int mes;
+	private int anyo;
+	
+	public MyDate() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public MyDate(int dia, int mes, int anyo) {
+        
+        //la palabra super() siempre es la primera línea de un constructor e invoca al constructor de la clase superior que comparta el mismo tipo de parametrización.
+
+        //Aunque nosotros no pongamos la palabra super() esta siempre será añadida salvo que nosotros la añadamos. 
+        
+        //Si nuestros constructores tienen parámetros debermos añadir las claúsulas super
+		super(); 
+    		
+        this.dia = dia;
+		this.mes = mes;
+		this.anyo = anyo;
+	}
+
+	public int getDia() {
+		return dia;
+	}
+
+	public void setDia(int dia) {
+		this.dia = dia;
+	}
+
+	public int getMes() {
+		return mes;
+	}
+
+	public void setMes(int mes) {
+		this.mes = mes;
+	}
+
+	public int getAnyo() {
+		return anyo;
+	}
+
+	public void setAnyo(int anyo) {
+		this.anyo = anyo;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + anyo;
+		result = prime * result + dia;
+		result = prime * result + mes;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MyDate other = (MyDate) obj;
+		if (anyo != other.anyo)
+			return false;
+		if (dia != other.dia)
+			return false;
+		if (mes != other.mes)
+			return false;
+		return true;
+	}
+	
+}
+```
+*  Creamos un programa que compara dos objetos MyDate que:
+    * NO son idénticos, pero... 
+    * Son iguales en cuanto a la comparación de año-mes-día:
+
+```java
+package app.ejemplo;
+
+public class AppMain {
+
+	public static void main(String[] args) {
+		MyDate date1 = new MyDate(14, 3, 1976);
+		MyDate date2 = new MyDate(14, 3, 1976);
+
+		if (date1 == date2) {
+			System.out.println("date1 es identica a date2");
+		} else {
+			System.out.println("date1 no es identica a date2");
+		}
+
+		if (date1.equals(date2)) {
+			System.out.println("date1 es igual a date2");
+		} else {
+			System.out.println("date1 no es igual a date2");
+		}
+
+		System.out.println("set date2 = date1");
+		date2 = date1;
+
+		if (date1 == date2) {
+			System.out.println("date1 es identica a date2");
+		} else {
+			System.out.println("date1 no es identica a date2");
+		}
+
+	}
+
+}
+```
+Respuesta por consola:
+
+```console
+date1 no es idéntica a date2
+date1 es igual que date2
+set date2 = date1;
+date1 es idéntica a date2
+```
+
+<u>**Método toString**</u>
+
+* El método toString convierte un objeto en una representación de cadena o String. 
+* El compilador hace referencia a él cuando se produce una conversión automática de cadenas. 
+* Por ejemplo, la llamada System.out.println():
+```java
+Fecha fecha = new Fecha(14, 3, 1976);
+System.out.println(fecha);
+		
+//Es igual a:
+		
+Fecha fecha = new Fecha(14, 3, 1976);
+System.out.println(fecha.toString());
+```
+
+* La clase Object define un método toString que devuelve el nombre de la clase y su dirección de referencia (normalmente de escasa utilidad). 
+* Muchas clases sobrescriben toString para proporcionar información de mayor utilidad. 
+* En el siguiente ejemplo creamos la clase Fecha sin sobreescribir el método toString:
+
+```java
+public class Fecha {
+	
+	private int dia;
+	private int mes;
+	private int anyo;
+	
+	public Fecha() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Fecha(int dia, int mes, int anyo) {
+		super();
+		this.dia = dia;
+		this.mes = mes;
+		this.anyo = anyo;
+	}
+
+	public int getDia() {
+		return dia;
+	}
+
+	public void setDia(int dia) {
+		this.dia = dia;
+	}
+
+	public int getMes() {
+		return mes;
+	}
+
+	public void setMes(int mes) {
+		this.mes = mes;
+	}
+
+	public int getAnyo() {
+		return anyo;
+	}
+
+	public void setAnyo(int anyo) {
+		this.anyo = anyo;
+	}
+
+}
+```
+* En la clase principal, creamos una instancia de Fecha e imprimimos el objeto creado.
+
+```java
+	public static void main(String[] args) {
+		Fecha fecha = new Fecha(14, 3, 1976);
+		System.out.println(fecha);
+		
+	
+		FechaConToString otraFecha = new FechaConToString(14, 3, 1976);
+		System.out.println(otraFecha);
+
+	}
+```
+* Al ejecutar la clase vemos como se imprime el objeto fecha. 
+* Es una representación que no nos aporta ninguna información de utilidad: 
+* sólo se muestra el paquete, el nombre de la clase y el código del objeto.
+
+* Creamos la clase FechaConToString donde sobrescribimos el método toString usando con @Override para obtener una representación textual del objeto:
+```java
+public class FechaConToString {
+	
+	private int dia;
+	private int mes;
+	private int anyo;
+	
+	public FechaConToString() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public FechaConToString(int dia, int mes, int anyo) {
+		super();
+		this.dia = dia;
+		this.mes = mes;
+		this.anyo = anyo;
+	}
+
+	public int getDia() {
+		return dia;
+	}
+
+	public void setDia(int dia) {
+		this.dia = dia;
+	}
+
+	public int getMes() {
+		return mes;
+	}
+
+	public void setMes(int mes) {
+		this.mes = mes;
+	}
+
+	public int getAnyo() {
+		return anyo;
+	}
+
+	public void setAnyo(int anyo) {
+		this.anyo = anyo;
+	}
+
+	@Override
+	public String toString() {
+		return "FechaConToString [dia=" + dia + ", mes=" + mes + ", anyo="
+				+ anyo + "]";
+	}
+}
+```
+Al generar la instancia de esta última clase e imprimirlo, vemos que esta vez muestra la representación textual del objeto, aportándonos una mayor información.
+
+### **Recursos Estáticos**
+
+* La palabra static declara miembros (atributos, métodos y clases anidadas) que están asociados a una clase en vez de a una instancia de la clase.
+
+
+* Es decir, solo se puede acceder a estos métodos a través de la clase original y no a través de los objetos intanciados a partir de esa clase.
+
+* Una variable statica pertenece a la clase, no a la instancia de la clase.
+
+* Static modifier is used to create variables and methods that will exist independently of any instance created for the class. 
+
+* Static members exists before any instance of the class is created.
+
+* Also there will be only one copy of the static member.
+
+* Utilizamos el nombre de la clase para invocar a sus métodos estáticos ya que estos métodos no dependen de las instancias de la clase.
+
+* Si una variable static no se marca como private, es posible acceder a ella desde fuera de la clase. Para hacerlo, no se necesita ninguna instancia de la clase, basta hacer referencia a ella mediante el nombre de la clase.
+
+```java
+    Cricket.displayRuns(); //invocamos el método displayRuns de la clase Cricket
+```
+
+* A veces resulta útil tener una variable compartida por todas las instancias de una clase. <u>Utilidades:</u>
+    * como base para la comunicación entre instancias.
+    * llevar el control del número de instancias que se han creado.
+
+    ![static](img/static.png)
+
+<u>Ejemplo contador de las clases que se han creado</u>
+```java
+public class Cliente {
+	
+	// Propiedades de instancia
+	private int codigo;
+	private String nombre;
+	private String email;
+	
+	// Propiedades de la clase
+	public static int contador=0;
+	
+	static{
+		// codigo para inicializar contador
+	}
+	
+	public Cliente() {
+		
+		codigo = contador++;
+		// TODO Auto-generated constructor stub
+	}
+}
+```
+
+* A cada objeto que se crea se le asigna un número de serie exclusivo que empieza desde 1 y continúa en sentido ascendente. 
+* Todas las instancias comparten la variable counter.
+* Cuando el constructor de un objeto incrementa counter, el siguiente objeto que se crea recibe el valor incrementado.
+
+**Public vs Static vs Private vs Final**
+
+* A public variable is accessible from anywhere (well, anywhere where the class is accessible).
+
+* A private variable is only accessible inside the class.
+
+
+* private static method means you can not invoke the method from outside the class as the method is private to the class.
+
+* A final variable means that it cannot be modified once it is set.
+
+
+
+**MÉTODOS ESTÁTICOS**
+* Cuando no hay disponible ninguna instancia de un determinado objeto, es necesario acceder al código del programa. 
+
+* Los métodos marcados con la palabra static pueden utilizarse de esta forma y algunas veces se denominan métodos de clase.
+
+* Debe acceder a los métodos estáticos utilizando el nombre de la clase en lugar de una referencia al objeto
+
+* Dado que puede llamar a un método static sin necesidad de tener una instancia de la clase a la que pertenece, no existe ningún valor this. 
+
+    * un método static no puede acceder a ninguna variable salvo a las variables locales, los atributos static y sus parámetros. 
+
+    * Cualquier intento de acceder a atributos que no sean estáticos provoca un error de compilación. 
+    
+    * Los atributos no estáticos se limitan a una instancia y sólo se puede acceder a ellos mediante referencias a esa instancia.
+
+**Consideraciones sobre métodos estáticos**:
+* No es posible sobrescribir un método static pero sí puede ocultarse. 
+
+* Para poder sobrescribir un método, tiene que ser no estático. 
+
+* La existencia de dos métodos estáticos con la misma firma en una jerarquía de clases simplemente significa que son dos métodos de clase independientes. 
+
+* Si se aplica un método de clase a una referencia de objeto, el método llamado será el correspondiente a la clase para la que se haya declarado la variable.
+
+* El método main() es un método static porque JVM no crea ninguna instancia de la clase cuando lo ejecuta. Por tanto, si tiene datos de miembros, debe crear un objeto para acceder a ellos.
+
+**Recursos Finales**
+
+* Cuando declaramos una propiedad final estamos creando una constante. 
+
+* Es decir, una variable cuyo valor no se puede modificar. 
+
+
+```java
+public class Coche {
+
+	private int kilometros;
+	private final String bastidor; // Atributo estático
+	private string matricula;
+	
+	public Coche(){
+		this.bastidor = "885485DCV";  // Este dato no podra ser cambiado
+		
+	}
+
+}
+```
+
+**Métodos Finales**
+* Cuando declaramos un método como final, este no se puede sobrescribir.
+
+```java
+public final void mostrarInformacion(){
+	
+		System.out.println("Matricula: " + matricula + "Bastidor: " + bastidor +...)
+	
+}
+```
+
+**Clases Finales**
+* Una clase final es una clase que no soporta herencia, esto es, no se puede crear una subclase de ella.
+
+[EJERCICIOS Static y Final](Ejercicios/1.3.2.ClasesAvanzadas/StaticYFinal)
+
+
+
+```java
+
+```
+
+```java
+
+```
+
+```java
+
+```
 _________________________________________________________________________________
 
 ## 3.3. Excepciones y Aserciones <a name="id133"></a>
