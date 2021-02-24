@@ -1,6 +1,6 @@
 ![Java](java.jpg)
 
-Resúmenes teóricos y ejercicios prácticos realizados por Ángel Garrido Álvarez durante el Máster en Diseño y Programación de Aplicaciones Java JEE - Universidad de Alcalá
+Resúmenes teóricos y ejercicios prácticos realizados por Ángel Garrido Álvarez durante el Máster en Diseño y Programación de Aplicaciones Java JEE - Universidad de Alcalá - Grupo Atrium. Profesores: Antonio Otero y Antonio Cardador
 
 # Módulo 1
 
