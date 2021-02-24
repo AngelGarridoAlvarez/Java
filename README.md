@@ -39,16 +39,20 @@ Resúmenes teóricos y ejercicios prácticos realizados por Ángel Garrido Álva
 
 5.1 [Diseño de interfaces gráficas con Swing](#id151)
 
-
 ## EJERCICIOS
-* [**Ejercicio Feedback 1.2. - Estructuras de Control**](#id12e)
-* [**Ejercicio Feedback 1.2.4 - Bucles**](#id124e)
-* [**Ejercicio Feedback 1.3.1 - POO**](#id131e)
-
 * [EJERCICIOS ARRAYS](Ejercicios/1.2.4.Arrays)
 * [EJERCICIOS POO](Ejercicios/1.3.1.POO)
 * [EJERCICIOS HERENCIAS](Ejercicios/1.3.2.ClasesAvanzadas/Herencia)
 * [EJERCICIOS Static y Final](Ejercicios/1.3.2.ClasesAvanzadas/StaticYFinal)
+* [EJERCICIOS Clases Abstractas](Ejercicios/1.3.2.ClasesAvanzadas/ClasesAbstractas)
+* [EJERCICIOS Interfaces](Ejercicios/1.3.2.ClasesAvanzadas/Interfaces)
+* [EJERCICIOS ClasesEnvolventes](Ejercicios/1.3.2.ClasesAvanzadas/ClasesEnvolventes)
+
+## EJERCICIOS FEEDBACK
+* [**Ejercicio Feedback 1.2. - Estructuras de Control**](#id12e)
+* [**Ejercicio Feedback 1.2.4 - Bucles**](#id124e)
+* [**Ejercicio Feedback 1.3.1 - POO**](#id131e)
+* [**Ejercicio Feedback 1.3.2 - POO - Clases Avanzadas**](#id132e)
 
 _________________________________________________________________________________
 
@@ -1730,8 +1734,30 @@ public final void mostrarInformacion(){
 
 [EJERCICIOS Static y Final](Ejercicios/1.3.2.ClasesAvanzadas/StaticYFinal)
 
+### **Clases Abstractas**
 
+[EJERCICIOS Clases Abstractas](Ejercicios/1.3.2.ClasesAvanzadas/ClasesAbstractas)
 
+### **Interfaces**
+
+[EJERCICIOS Interfaces](Ejercicios/1.3.2.ClasesAvanzadas/Interfaces)
+
+### **Polimorfismo**
+
+### **Tipos Enumerados**
+
+### **Clases Envolventes**
+
+[EJERCICIOS ClasesEnvolventes](Ejercicios/1.3.2.ClasesAvanzadas/ClasesEnvolventes)
+
+[**Ejercicio Feedback 1.3.2 - POO - Clases Avanzadas**](EclipseWorkSpace/EjercicioFeedback1.3.2-POO-ClasesAvanzadas) 
+<a name="id132e"></a>
+
+### **Librerías del JRE System Library**
+
+### **La Clase Math al Detalle**
+
+### **Clases para manejo de fechas**
 ```java
 
 ```
