@@ -1736,9 +1736,152 @@ public final void mostrarInformacion(){
 
 ### **Clases Abstractas**
 
+Hemos visto como crear una subclase extendiendo de otra clase utilizando herencia. También hemos visto como podemos sobreescribir un método que hemos heredado.
+
+Muchas veces nos vamos a encontrar con el siguiente caso: Creamos la superclase con un método que ya sabemos de antemano que se debe sobreescribir en la subclase porque su implementación debe variar.
+
+Entonces, qué sentido tiene implementar el método? El lenguaje Java permite diseñar las clases de modo que los métodos declarados en las superclases no proporcionen ninguna implementación. Este tipo de métodos se denominan métodos abstractos. La implementación del método viene proporcionada por las subclases. Una clase que tenga uno o varios métodos abstractos se denomina clase abstracta. Veamos el siguiente ejemplo.
+
+```java
+public abstract class Figura {
+	
+	private int x;
+	private int y;
+	
+	public Figura() {
+		
+	}
+	
+	public Figura(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	public abstract  double area();
+
+
+	public String posicion(){
+		return "[ " + x+" , " + y +" ]";
+	}
+
+}
+```
+Hemos creado una clase Figura donde hemos declarado dos métodos: El método mostrarPosición está implementado. Este método lo heredarán todas las subclases y su implementación no cambiará ya que todas las figuras tienen una posición en el espacio representada por los puntos x e y.
+
+El método calcularArea es un método abstracto y por supuesto no está implementado. Observemos que los métodos abstractos terminan en punto y coma (;), si un método tiene llave de apertura y cierre ya está implementado aunque no tenga código en su interior.
+
+El motivo por el cual el método calcularArea es abstracto es porque sabemos que las subclases han de sobreescribir este método ya que la forma de calcular el área de cada figura es diferente.
+
+También observamos que la clase está declarada como abstracta, esto nos los indica el compilador. Si una clase tiene uno o más métodos abstractos, se debe declarar como abstracta. En caso contrario genera un error de compilación.
+
+A continuación vamos a ver las subclases creadas. Como el método heredado calcularArea es abstracto por definición las subclases también lo son hasta que se implemente dicho método.
+
+No estamos obligados a implementarlo, pero si no lo hacemos debemos declarar las subclases como abstractas. Qué problema tendremos entonces? Pues que una clase abstracta realmente es una clase inacabada por lo cual no se puede instanciar.
+```java
+public class Rectangulo extends Figura {
+	
+	private double base;
+	private double altura;
+	
+	
+	
+	public double getBase() {
+		return base;
+	}
+	public void setBase(double base) {
+		this.base = base;
+	}
+	public double getAltura() {
+		return altura;
+	}
+	public void setAltura(double altura) {
+		this.altura = altura;
+	}
+	
+	@Override
+	public double area() {
+		// TODO Auto-generated method stub
+		return base * altura;
+	}
+}
+```
+En la clase Rectangulo implementamos el método calcularArea con el algoritmo adecuado para calcular el área de los rectángulos. A continuación vemos la implementación del mismo método en la clase Circulo.
+```java
+public class Circulo extends Figura{
+	
+	private int radio;
+	
+	public Circulo(int x, int y, int radio) {
+		super(x, y);
+		this.radio = radio;
+	}
+
+	@Override
+	public double area() {
+		return Math.PI * Math.pow(radio, 2);
+	}
+	
+	public int getRadio() {
+		return radio;
+	}
+	
+	public void setRadio(int radio) {
+		this.radio = radio;
+	}
+
+}
+```
+
+Desde la clase principal creamos tres instancias:
+
+La primera de ellas, es una instancia de la clase Figura que genera un error de compilación puesto que dicha clase es abstracta y no se puede instanciar.
+
+Creamos una instancia de la clase Rectangulo donde pasamos los siguientes argumentos al constructor: puntos x e y, base y altura del rectángulo.
+
+También se crea una instancia de la clase Circulo con los siguientes datos: puntos x e y además del radio del circulo.
+```java
+public class Principal {
+	
+	public static void main(String[] args) {
+		
+		// La clase Figura es abstracta, esta inacabada
+		// por la puedo instanciar
+		//Figura f = new Figura();
+		
+		// Crear una clase anonima
+		Figura f = new Figura() {
+			double lado;
+			
+			@Override
+			public double area() {
+				// TODO Auto-generated method stub
+				return lado * lado /2;
+			}
+			
+		};
+		
+		
+		
+		// Crear la instancia de Circulo
+		Circulo c = new Circulo(4, 6, 8);
+		System.out.println(c.posicion());
+		System.out.println("Area: " + c.area() );
+	}
+
+}
+```
+UML utiliza letras en cursiva para indicar elementos abstractos en los diagramas de clases. También se pueden marcar las clases abstractas con el indicador {abstract} en la sección de nombre.
+
+![Clases Abstractas](img/ClasesAbstractas.png)
+
+
 [EJERCICIOS Clases Abstractas](Ejercicios/1.3.2.ClasesAvanzadas/ClasesAbstractas)
 
 ### **Interfaces**
+
+```java
+
+```
 
 [EJERCICIOS Interfaces](Ejercicios/1.3.2.ClasesAvanzadas/Interfaces)
 
@@ -1758,17 +1901,7 @@ public final void mostrarInformacion(){
 ### **La Clase Math al Detalle**
 
 ### **Clases para manejo de fechas**
-```java
 
-```
-
-```java
-
-```
-
-```java
-
-```
 _________________________________________________________________________________
 
 ## 3.3. Excepciones y Aserciones <a name="id133"></a>
