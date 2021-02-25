@@ -1736,12 +1736,18 @@ public final void mostrarInformacion(){
 
 ### **Clases Abstractas**
 
-Hemos visto como crear una subclase extendiendo de otra clase utilizando herencia. También hemos visto como podemos sobreescribir un método que hemos heredado.
+Muchas veces nos vamos a encontrar con el siguiente caso: 
 
-Muchas veces nos vamos a encontrar con el siguiente caso: Creamos la superclase con un método que ya sabemos de antemano que se debe sobreescribir en la subclase porque su implementación debe variar.
+* Creamos la superclase con un método que ya sabemos de antemano que se debe sobreescribir en la subclase porque su implementación debe variar.
 
-Entonces, qué sentido tiene implementar el método? El lenguaje Java permite diseñar las clases de modo que los métodos declarados en las superclases no proporcionen ninguna implementación. Este tipo de métodos se denominan métodos abstractos. La implementación del método viene proporcionada por las subclases. Una clase que tenga uno o varios métodos abstractos se denomina clase abstracta. Veamos el siguiente ejemplo.
+*  El lenguaje Java permite diseñar las clases de modo que los métodos declarados en las superclases no proporcionen ninguna implementación. 
 
+* Este tipo de métodos se denominan métodos abstractos. 
+
+* La implementación del método viene proporcionada por las subclases. 
+* Una clase que tenga uno o varios métodos abstractos se denomina clase abstracta. 
+
+Ejemplo
 ```java
 public abstract class Figura {
 	
@@ -1766,17 +1772,26 @@ public abstract class Figura {
 
 }
 ```
-Hemos creado una clase Figura donde hemos declarado dos métodos: El método mostrarPosición está implementado. Este método lo heredarán todas las subclases y su implementación no cambiará ya que todas las figuras tienen una posición en el espacio representada por los puntos x e y.
+Hemos creado una clase Figura donde hemos declarado dos métodos: 
+* El método mostrarPosición está implementado y  lo heredarán todas las subclases sin cambiar y su implementación.
 
-El método calcularArea es un método abstracto y por supuesto no está implementado. Observemos que los métodos abstractos terminan en punto y coma (;), si un método tiene llave de apertura y cierre ya está implementado aunque no tenga código en su interior.
+* El método calcularArea es un método abstracto y por supuesto no está implementado. 
 
-El motivo por el cual el método calcularArea es abstracto es porque sabemos que las subclases han de sobreescribir este método ya que la forma de calcular el área de cada figura es diferente.
+* Los métodos abstractos terminan en punto y coma (;) sin llave de apertura y cierre. 
 
-También observamos que la clase está declarada como abstracta, esto nos los indica el compilador. Si una clase tiene uno o más métodos abstractos, se debe declarar como abstracta. En caso contrario genera un error de compilación.
+* Si un método tiene llave de apertura y cierre ya está implementado aunque no tenga código en su interior.
 
-A continuación vamos a ver las subclases creadas. Como el método heredado calcularArea es abstracto por definición las subclases también lo son hasta que se implemente dicho método.
+* El motivo por el cual el método calcularArea es abstracto es porque sabemos que las subclases han de sobreescribir este método ya que la forma de calcular el área de cada figura es diferente.
 
-No estamos obligados a implementarlo, pero si no lo hacemos debemos declarar las subclases como abstractas. Qué problema tendremos entonces? Pues que una clase abstracta realmente es una clase inacabada por lo cual no se puede instanciar.
+* Si una clase tiene uno o más métodos abstractos, se debe declarar como abstracta. En caso contrario genera un error de compilación.
+
+* Como el método heredado calcularArea es abstracto, por definición las subclases también lo son hasta que se implemente dicho método.
+
+* No estamos obligados a implementarlo, pero si no lo hacemos debemos declarar las subclases como abstractas. 
+
+* Qué problema tendremos entonces? Pues que una clase abstracta realmente es una clase inacabada por lo cual no se puede instanciar.
+
+* En la clase Rectangulo implementamos el método calcularArea con el algoritmo adecuado para calcular el área de los rectángulos:
 ```java
 public class Rectangulo extends Figura {
 	
@@ -1805,7 +1820,9 @@ public class Rectangulo extends Figura {
 	}
 }
 ```
-En la clase Rectangulo implementamos el método calcularArea con el algoritmo adecuado para calcular el área de los rectángulos. A continuación vemos la implementación del mismo método en la clase Circulo.
+
+
+* A continuación vemos la implementación del mismo método en la clase Circulo:
 ```java
 public class Circulo extends Figura{
 	
@@ -1832,13 +1849,15 @@ public class Circulo extends Figura{
 }
 ```
 
+
 Desde la clase principal creamos tres instancias:
 
-La primera de ellas, es una instancia de la clase Figura que genera un error de compilación puesto que dicha clase es abstracta y no se puede instanciar.
+* La primera de ellas, es una instancia de la clase Figura que genera un error de compilación puesto que dicha clase es abstracta y no se puede instanciar.
 
-Creamos una instancia de la clase Rectangulo donde pasamos los siguientes argumentos al constructor: puntos x e y, base y altura del rectángulo.
+* Creamos una instancia de la clase Rectangulo donde pasamos los siguientes argumentos al constructor: puntos x e y, base y altura del rectángulo.
 
-También se crea una instancia de la clase Circulo con los siguientes datos: puntos x e y además del radio del circulo.
+* También se crea una instancia de la clase Circulo con los siguientes datos: puntos x e y además del radio del circulo.
+
 ```java
 public class Principal {
 	
@@ -1877,7 +1896,23 @@ UML utiliza letras en cursiva para indicar elementos abstractos en los diagramas
 
 [EJERCICIOS Clases Abstractas](Ejercicios/1.3.2.ClasesAvanzadas/ClasesAbstractas)
 
+
 ### **Interfaces**
+
+* En Java solo es posible la herencia simple: una clase tan sólo puede heredar de otra clase, nunca de varias. 
+
+* Inferfaces: es la forma de simular una herencia múltiple. 
+
+* Todos los métodos declarados en una interfaz son públicos (public) y abstractos (abstract). 
+
+* Todos los atributos son public, static y final: sólo se pueden declarar atributos constantes.
+
+* Los nombres de interfaz se utilizan como tipos de variables de referencia:
+    * Un grupo de objetos que comparten la misma habilidad: pueden volar. 
+    * Creo interfaz pública llamada ObjetoVolador que admite tres operaciones: despegar, aterrizar y volar.
+
+![Interface](img/interface.png =100x)
+
 
 ```java
 
