@@ -1911,24 +1911,271 @@ UML utiliza letras en cursiva para indicar elementos abstractos en los diagramas
     * Un grupo de objetos que comparten la misma habilidad: pueden volar. 
     * Creo interfaz pública llamada ObjetoVolador que admite tres operaciones: despegar, aterrizar y volar.
 
-![Interface](img/interface.png =100x)
+![Interface](img/interface.png)
 
+En el diagrama UML: 
+* Las interfaces se marcan con el indicador <> en la sección de nombre. 
+* Utilizamos una flecha discontinua para indicar la clase que implementa una interface.
 
+Interface
 ```java
+public interface ObjetoVolador{
+	public void despegar();
 
+	public void aterrizar();
+
+	public void volar();
+}
 ```
+Clase
+```java
+public class Avion implements ObjetoVolador{
+	public void despegar(){
+		// Código
+	};
+
+	public void aterrizar(){
+		// Código
+	};
+
+	public void volar(){
+		// Código
+	};
+}
+```
+
+[EJEMPLOS DE INTERFACES](Ejercicios/Ejemplo_Interfaces)
+
+**MULTIPLES INTERFACES**
+
+* Una clase puede implementar varias interfaces.
+* La clase Hidroavion amplía la clase Avion, con lo que hereda esa implementación de la interfaz ObjetoVolador. 
+* La clase Hidroavión también implementa la interfaz Nautico.
+
+![Interface](img/interfaces2.png)
+
+
+CUANDO UTILIZAR INTERFACES
+
+Las interfaces se utilizan para:
+
+* Declarar métodos que serán implementados por una o varias clases.
+
+* Dar a conocer la interfaz de programación de un objeto sin revelar el  verdadero cuerpo de la clase (esto puede ser útil al distribuir un paquete de clases a otros desarrolladores).
+
+* Identificar las similitudes entre clases no relacionadas sin tener que establecer ninguna relación entre ellas.
+
+* Simular la herencia múltiple declarando una clase que implemente varias interfaces.
+
+CLASES ABSTRACTAS VS INTERFACES
+
+
+* Generalmente, si nuestra clase abstracta solamente define métodos, lo mejor es crear una interfaz y reemplazarla. 
+
+* Usamos la clase abstracta cuando queremos reutilizar comportamiento (código) en común entre varias clases similares.
+
+DIFERENCIAS
+* Tienen propósitos distintos. 
+	* Las clases abstractas sirven para establecer una jerarquía de tipos y proveer un comportamiento básico. 
+	* Las interfaces son definiciones de protocolos, determinan el comportamiento de un tipo. 
+
+* Código: 
+	* las clases abstractas pueden incluir código, definir atributos, tener métodos estáticos, etc. 
+	* Las interfaces son sólo declaraciones de mensajes.
+
+* las interfaces son mucho menos restrictivas que las clases abstractas 
+	* No fuerzan nada más que lo necesario, solamente el protocolo.
+
+	* Una clase abstracta podría definir un atributo de instancia, eso ya es una restricción de implementación,  ya que todas las subclases tienen como peso ese atributo (incluso si no lo usan). 
+	
+	* Solo podemos heredar de una clase. 
+	
+	* Podemos implementar todas las interfaces necesarias (clase polifacética).
+
 
 [EJERCICIOS Interfaces](Ejercicios/1.3.2.ClasesAvanzadas/Interfaces)
 
+
 ### **Polimorfismo**
+
+![Interface](img/polimorfismo1.png)
+
+![Interface](img/polimorfismo2.png)
+
+El lenguaje Java, orientado a POO, permite hacer referencia a un objeto con una variable que es uno de los tipos de una superclase:
+
+```java
+Empleado e = new Gerente()
+```
+* Utilizando la variable "e" solo se pueden acceder a las partes del objeto que son empleado.
+
+* No nos permite asignar e.departamento = "Ventas"
+	* la variable se declara como tipo Empleado
+	* a pesar de que el objetop Gerente tiene ese atributo
+
+### **Llamadas a métodos virtuales (polimorfismo)**
+
+* "Java virtual method": 
+	* son metodos que una subclase hereda de una clase padre y que pasan a ser sobrescritos dandole un comportamiento polimorfo. 
+	* Este proceso tambien es comunmente llamado sobreescritura de metodos.
+
+* Para que un metodo sea valido para ser sobreescrito no pueden ser de tipo staticos ni finales y como minimo deben tener protected como modificador de acceso.
+
+Supongamos que tenemos la siguente Clase padre Mammal
+```java
+public class Mammal {
+
+
+    public void swim() {
+        System.out.println("A mammal swimming");
+    }
+}
+```
+
+Estas dos subclases Elephant y Hippo que heredan de Mammal y sobreescriben el metodo public void swim() de la misma.
+```java
+public class Elephant extends Mammal {
+
+    @Override
+    public void swim() {
+        System.out.println("An Elephant swiming");
+    }
+}
+
+public class Hippo extends Mammal {
+
+
+    @Override
+    public void swim() {
+        System.out.println("A hippo swiming");
+    }
+}
+```
+Si ejecutamos el siguente ejemplo podemos ver como obtenemos resultados distintos llamando el mismo metodo de la clase Mammal cuando asignamos a la variable una nueva instancia de cada subtipo.
+```java
+public static void main(String ...args) {
+
+        Mammal mammal = new Elephant();
+        mammal.swim();
+
+        mammal = new Hippo();
+        mammal.swim();
+
+    }
+```
+al final obtenemos.
+```java
+An Elephant swiming
+A hippo swiming
+BUILD SUCCESSFUL (total time: 1 second)
+```
+**COLECCIONES HETEROGÉNEAS**
+
+* Colección Homogenea: Colecciones de objetos que tienen una clase común.
+```java
+MyDate[] dates = new MyDate[];
+dates[0] = new MyDate(17, 08, 1951);
+dates[1] = new MyDate(28, 07, 2018);
+```
+
+* COLECCIÓN HETEROGÉNEA:
+* Una colección heterogénea es aquella que se compone de elementos dispares. 
+*  Java incluye la clase Object que permite crear colecciones de todos los tipos de elementos porque todas las clases amplían la clase Object. 
+* Todas ellas tienen una clase de origen común: la clase Object. 
+
+Ejemplo:
+
+```java
+Empleado [] personal = new Empleado[1024];
+personal[0] = new Gerente();
+personal[1] = new Empleado();
+personal[2] = new Ingeniero();
+```
+
+* Es posible escribir incluso un método de ordenación que coloque los empleados por orden de edad o salario, con independencia de que algunos de esos empleados sean gerentes.
+
+
+OPERADOR INSTANCEOF
+
+Nos sirve para diferenciar tipos de objetos.
+
+Dado que es posible pasar objetos de un lugar a otro utilizando referencias a sus superclases, a veces conviene saber de qué objetos reales se dispone. Éste es el  propósito del operador instanceof.
+
+Si recibe un objeto utilizando una referencia del tipo Empleado, puede que resulte ser un Gerente o un Ingeniero. Puede comprobarlo utilizando instanceof de la forma siguiente:
+
+```java
+public void hacerAlgo(Empleado e){
+	if( e instanceof Gerente){
+		// procesar un gerente
+	} else if(e instanceof Ingeniero){
+		// procesar in ingeniero
+	} else {
+		// Procesar cualquier otro empleado
+	}
+}
+```
+**CONVERSIÓN DE OBJETOS**
+* En casos en los que:
+	1. Se ha recibido una referencia a una clase de nivel superior y 
+	2. se ha comprobado mediante el operador instanceof que el objeto es una subclase concreta
+
+* es posible acceder a toda la funcionalidad del objeto convirtiendo la referencia.
+
+```java
+public void hacerAlgo(Empleado e){
+	if ( e instanceof Gerente) {
+		Gerente m = (Gerente) e;
+		System.out.println("Éste es el gerente de " + m.getDepartamento());
+	}
+	// resto de la operación
+}
+```
+
+* Si no realiza la conversión, el intento de ejecutar e.getDepartamento() fracasará porque el compilador no puede localizar ningún método llamado getDepartamento en la clase Empleado.
+
+* Si no realiza la comprobación con instanceof, corre el riesgo de que falle la conversión. En general, cualquier intento de convertir una referencia a un objeto se somete a diferentes comprobaciones:
+
+ 
+
+* Las conversiones en dirección ascendente dentro de la jerarquía de clases siempre están permitidas y, de hecho, no precisan el operador de conversión. Se pueden hacer mediante una simple asignación.
+
+* En el caso de las conversiones en dirección descendente, el compilador debe poder considerar que la conversión es, al menos, posible. Por ejemplo, no se permitirá ningún intento de convertir una referencia a Gerente en una referencia a Ingeniero, porque el Ingeniero no es un Gerente. 
+
+* La clase de destino de la conversión tiene que ser una subclase del tipo de referencia actual.
+
+* Si el compilador permite la conversión, el tipo de objeto se comprueba durante el tiempo de ejecución. 
+
+* Ejemplo: si se omite la comprobación instanceof en el código y el objeto que se va a convertir en realidad no es del tipo en el que se va a convertir, se producirá un error de tiempo de ejecución (excepción).
+
+
+```java
+```
 
 ### **Tipos Enumerados**
 
+```java
+```
+
+```java
+```
+
+```java
+```
+
 ### **Clases Envolventes**
+
+```java
+```
+
+```java
+```
+
+```java
+```
 
 [EJERCICIOS ClasesEnvolventes](Ejercicios/1.3.2.ClasesAvanzadas/ClasesEnvolventes)
 
-[**Ejercicio Feedback 1.3.2 - POO - Clases Avanzadas**](EclipseWorkSpace/EjercicioFeedback1.3.2-POO-ClasesAvanzadas) 
+[**Ejercicio Feedback 1.3.2 - POO - Clases Avanzadas**](EclipseWorkSpace/EjercicioFeedback1.3.2-POO-ClasesAvanzadas)
 <a name="id132e"></a>
 
 ### **Librerías del JRE System Library**
@@ -1936,7 +2183,6 @@ UML utiliza letras en cursiva para indicar elementos abstractos en los diagramas
 ### **La Clase Math al Detalle**
 
 ### **Clases para manejo de fechas**
-
 _________________________________________________________________________________
 
 ## 3.3. Excepciones y Aserciones <a name="id133"></a>
