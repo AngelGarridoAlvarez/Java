@@ -2148,30 +2148,235 @@ public void hacerAlgo(Empleado e){
 * Ejemplo: si se omite la comprobación instanceof en el código y el objeto que se va a convertir en realidad no es del tipo en el que se va a convertir, se producirá un error de tiempo de ejecución (excepción).
 
 
-```java
-```
 
 ### **Tipos Enumerados**
 
-```java
-```
+* Una práctica habitual en programación es tener un número finito de nombres simbólicos que representan los valores de un atributo. 
+* Por ejemplo, sería posible crear un conjunto de símbolos que representasen los palos de una baraja de cartas: PICAS, CORAZONES, TREBOLES y DIAMANTES. 
+* Esta forma de representación se suele denominar tipo enumerado.
+
+* Java SE incluye una modalidad de tipos enumerados que mantiene la seguridad de los tipos (typesafe enum). 
+* En el siguiente ejemplo se muestra un tipo enumerado para representar los palos de una baraja de cartas. 
+* Piense en el tipo Palo como en una clase con un conjunto finito de valores que reciben los nombres simbólicos incluidos en la definición del tipo. 
+* Por ejemplo, Palo.PICAS es del tipo Palo.
 
 ```java
+public enum Palo{
+	
+	PICAS,
+	CORAZONES,
+	TRBOLES,
+	DIAMANTES
+}
 ```
+* El siguiente código muestra cómo la clase NaipeBaraja utiliza el tipo Palo para el tipo de datos del atributo palo.
+
+
+![enumerados](img/enumerados.png)
+
+Veamos otro ejemplo, queremos definir los diferentes estados civiles que puede tener una persona.
+
 
 ```java
+public enum EstadoCivil {
+
+	// Estaticos y finales
+	SOLTERO, CASADO, VIUDO, DIVORCIADO;
+	
+}
+```
+Al crear la clase en el atributo estadoCivil indicaremos que es del tipo «EstadoCivil», por lo que solo podrá adquirir los valores tipificados en la clase Enum
+
+```java
+public class Persona {
+	
+	private String nombre;
+	private int edad;
+	private EstadoCivil estadoCivil;
+	
+	public Persona(String nombre, int edad, EstadoCivil estadoCivil) {
+		this.nombre = nombre;
+		this.edad = edad;
+		this.estadoCivil = estadoCivil;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public EstadoCivil getEstadoCivil() {
+		return estadoCivil;
+	}
+
+	public void setEstadoCivil(EstadoCivil estadoCivil) {
+		this.estadoCivil = estadoCivil;
+	}
+
+	@Override
+	public String toString() {
+		return "Persona [nombre=" + nombre + ", edad=" + edad
+				+ ", estadoCivil=" + estadoCivil + "]";
+	}
+	
+}
+```
+Para crear el objeto siempre tenemos que definir cual de los valores de las opciones disponible tomara el atributo:
+
+```java
+public class Main {
+	
+	public static void main(String[] args) {
+		
+		Persona p = new Persona("Juan", 23, EstadoCivil.SOLTERO);
+		
+		System.out.println(p);
+	}
+
+}
+```
+**TIPOS ENUMERADOS AVANZADOS**
+* Existe otra forma de trabajar con tipos Enumerados para facilitar la lectura al usuario.
+* en los ejempos anteriores mostraria el nombre simbolico, y puede que queramos imprimirlo con otro nombre.
+
+* El siguiente código muestra una versión mejorada de una clase Enumerada con un atributo alias y un método ver. 
+* Observe cómo se oculta la información de la forma adecuada con el atributo “private” y el método de acceso “public”.
+
+```java
+public enum PuntosCardinales {
+	
+	NORTE ('N'), 
+	SUR ('S'), 
+	ESTE ('E'), 
+	OESTE ('O');
+	
+	private char alias;
+	
+    private PuntosCardinales(char letra){
+    	alias = letra;
+    }	
+    
+    public char ver(){
+    	return alias;
+    }
+    
+    public static void main(String[] args) {
+    	
+		PuntosCardinales p = PuntosCardinales.NORTE;
+		System.out.println(p.ver());
+		
+	}
+    
+}
 ```
 
 ### **Clases Envolventes**
 
+* Clases que proporcionan métodos que permiten manipular el tipo de dato primitivo como si fuese un objeto.
+* El lenguaje Java no considera los tipos de datos primitivos como objetos. 
+* Por ejemplo, los datos numéricos, booleanos y de caracteres se tratan de forma primitiva para mantener la eficiencia. 
+* A fin de poder manejar los tipos primitivos como objetos, Java proporciona las llamadas clases envoltorio o clases envolventes. 
+* Estos elementos quedan envueltos por un objeto que se crea en torno a ellos.
+* Cada tipo primitivo en Java tiene una clase envoltorio asociada en el paquete java.lang. 
+* Cada clase envoltorio encapsula un único valor primitivo.
+
+* Las clases envolventes implementan objetos inmutables. 
+	* Esto significa que, una vez inicializado el valor primitivo en su envoltorio, no hay forma de cambiar ese valor. 
+
+Tabla de clases envolventes:
+
+![Clases Envolventes](img/envolventes1.png)
+
+
+
+
+* Las conversiones entre los tipos primitivos y sus clases envolventes se realizan con Boxing/Unboxing.
+
+	* Boxing: Convertir un tipo primitivo en su clase Wrapper.
+	* Unboxing: Convertir un objeto de una clase  Wrapper en su tipo primitivo.
 ```java
+//Ejemplo de Boxing:
+
+double x = 29.95;
+Double y;
+y = x; // boxing      
+
+//Ejemplo de Unboxing:
+
+double x;
+Double y = 29.95;
+x = y; // unboxing     
 ```
+* Dada la gran cantidad de métodos de estas clases, lo recomendado es hacer uso de la [API de Java](https://docs.oracle.com/javase/10/docs/api/java/lang/Integer.html) para estudiar las opciones que tenemos.
+
+* [API clase char](https://docs.oracle.com/javase/10/docs/api/java/lang/Integer.html)
 
 ```java
+import java.util.Scanner;
+
+public class MainJavaApplication {
+
+    public static void main(String[] args) {
+ 
+        Scanner sc = new Scanner(System.in);
+        String texto;
+        int cuentaCifras = 0, cuentaLetras = 0;                                                                   
+  
+        System.out.println("Introduce texto ");
+        texto = sc.nextLine();
+  
+        for (int i = 0; i < texto.length(); i++) {
+            if (Character.isDigit(texto.charAt(i))) {
+                cuentaCifras++;
+            } else if (Character.isLetter(texto.charAt(i))) {
+                cuentaLetras++;
+            }
+        }
+  
+        System.out.println("El texto contiene " + cuentaCifras + " dígitos");                                     
+        System.out.println("El texto contiene " + cuentaLetras + " letras");
+    }
+}
 ```
+**AUTOBOXING**
+
+* El siguiente ejemplo contiene dos casos sencillos de conversión y recuperación automática de primitivos (autoboxing y autounboxing).
 
 ```java
+public class Main {
+
+	public static void main(String[] args) {
+		
+		int num = 4;
+		
+		// Java 1.4
+		Integer numInt = new Integer(num); // Boxing
+		int numero = numInt.intValue(); // UnBoxing
+		
+		
+		// Java 5
+		Integer numInt2 = num; // AutoBoxing
+		int numero2 = numInt2; //AutoUnBoxing
+
+	}
+
+}
 ```
+* El compilador de J2SE  ahora creará el objeto envoltorio automáticamente cuando se asigne un primitivo a una variable del tipo de clase envoltorio.
+
+* Asimismo, el compilador extraerá el valor primitivo cuando realice la asignación de un objeto envoltorio a una variable de tipos primitivos. Esto puede hacerse al pasar parámetros a métodos o, incluso, dentro de las expresiones aritméticas.
+
 
 [EJERCICIOS ClasesEnvolventes](Ejercicios/1.3.2.ClasesAvanzadas/ClasesEnvolventes)
 
@@ -2180,9 +2385,77 @@ public void hacerAlgo(Empleado e){
 
 ### **Librerías del JRE System Library**
 
-### **La Clase Math al Detalle**
+* Una librería Java es un conjunto de clases que, por medio de sus métodos, resuelven tareas comunes para el desarrollo de software. 
 
-### **Clases para manejo de fechas**
+* Cada librería está empaquetada en un archivo .jar y puede servir a múltiples proyectos.
+
+* Las librerías de clases Java están organizadas en paquetes. Recuerda que un paquete es una carpeta en el sistema de archivos.
+
+* Todos los proyectos, de manera implícita, tienen incluidas un conjunto de librerías, se trata de las librerías del “JRE System Library” o librerías del Sistema de Java Runtime Environment.
+
+* La siguiente imagen resume la estructura de paquetes más importantes de la JRE SystemLibrary.
+
+![librerías de Java](img/librerias.png)
+
+Todas las clases de la JRE System Library están organizadas en dos grandes paquetes:
+
+1. java: existente desde los orígenes de Java, pero todavía vigente y creciendo.
+2. javax: apareció después del paquete java, es más moderno.
+
+A continuación vamos a comentar brevemente los paquetes más importantes:
+
+* java.lang
+	* Contiene las clases fundamentales del lenguaje (Math, String, Integer, Long, etc.). Se carga de manera implícita, no es necesario importarlo.
+	* [Documentación de Oracle sobre el paquete java.lang.](https://docs.oracle.com/javase/8/docs/api/java/lang/package-summary.html)
+
+* java.util
+	* Contiene principalmente clases para manejo de distintos tipos de colecciones
+	* (ArrayList, LinkedList, Stack, etc.).
+	* [Documentación de Oracle sobre el paquete java.util.](https://docs.oracle.com/javase/8/docs/api/java/util/package-summary.html)
+
+* java.io
+	* Contiene todas las clases relacionadas con operaciones de entrada / salida
+	* (File, FileInputStream, FileOutputStream, etc.).
+	* [Documentación de Oracle sobre el paquete java.io.](https://docs.oracle.com/javase/8/docs/api/java/io/package-summary.html)
+
+* java.math
+	* Clases relacionadas con aritmética de enteros.
+	* [Documentación de Oracle sobre el paquete java.math.](https://docs.oracle.com/javase/8/docs/api/java/math/package-summary.html)
+
+* java.awt
+	* Clases relacionadas con interfaces gráficas y dibujo de figuras. 
+	* Se utiliza para el desarrollo de aplicaciones de escritorio a base de ventanas y diálogos.
+	* [Documentación de Oracle sobre el paquete java.awt.](https://docs.oracle.com/javase/8/docs/api/java/awt/package-summary.html)
+
+* java.sql
+	* Clases relacionadas con operaciones de acceso a bases de datos.
+	* [Documentación de Oracle sobre el paquete java.sql.](https://docs.oracle.com/javase/8/docs/api/java/sql/package-summary.html)
+
+* java.net
+	* Clases relacionadas con trabajo en red e Internet.
+	* [Documentación de Oracle sobre el paquete java.net.](https://docs.oracle.com/javase/8/docs/api/java/net/package-summary.html)
+
+* javax.swing
+	* Clases de interfaz de usuario mejoradas con respecto a la librería java.awt.
+	* [Documentación de Oracle sobre el paquete javax.swing.](https://docs.oracle.com/javase/8/docs/api/javax/swing/package-summary.html)
+
+* javax.imageio
+	* Clases especiales para trabajar con imágenes.
+	* [Documentación de Oracle sobre el paquete javax.imageio.](https://docs.oracle.com/javase/8/docs/api/javax/imageio/package-summary.html)
+
+* javax.crypto
+	* Clases especializadas en trabajos de criptografía.
+	* [Documentación de Oracle sobre el paquete javax.crypto.](https://docs.oracle.com/javase/8/docs/api/javax/crypto/package-summary.html)
+
+* javax.sql
+	* Clases especializadas en la gestión de bases de datos del lado del servidor.
+	* [Documentación de Oracle sobre el paquete javax.sql.](https://docs.oracle.com/javase/8/docs/api/javax/sql/package-summary.html)
+
+* javax.xml
+	* Clases especializadas en lectura y manipulación de documentos xml.
+	* [Documentación de Oracle sobre el paquete javax.xml.](https://docs.oracle.com/javase/8/docs/api/javax/xml/parsers/package-summary.html)
+
+
 _________________________________________________________________________________
 
 ## 3.3. Excepciones y Aserciones <a name="id133"></a>
