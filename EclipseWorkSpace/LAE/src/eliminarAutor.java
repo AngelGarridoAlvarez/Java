@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class InsertarAutor extends JFrame {
+public class eliminarAutor extends JFrame {
 
 	private JPanel contentPane;
 
@@ -16,7 +16,7 @@ public class InsertarAutor extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InsertarAutor frame = new InsertarAutor();
+					eliminarAutor frame = new eliminarAutor();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -28,7 +28,8 @@ public class InsertarAutor extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public InsertarAutor() {
+	public eliminarAutor() {
+		setTitle("Eliminar Autor");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

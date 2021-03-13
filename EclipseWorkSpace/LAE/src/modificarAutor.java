@@ -4,10 +4,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
 
-public class LAE2 extends JFrame {
+public class modificarAutor extends JFrame {
 
 	private JPanel contentPane;
 
@@ -18,7 +16,7 @@ public class LAE2 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LAE2 frame = new LAE2();
+					modificarAutor frame = new modificarAutor();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,20 +28,14 @@ public class LAE2 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LAE2() {
+	public modificarAutor() {
+		setTitle("Modificar Autor");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 939, 300);
-		
-		JMenuBar menuBar_1 = new JMenuBar();
-		setJMenuBar(menuBar_1);
+		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setToolTipText("Autor");
-		menuBar.setBounds(10, 33, 101, 22);
-		contentPane.add(menuBar);
 	}
+
 }

@@ -2609,3 +2609,376 @@ JButton btnNewButton = new JButton("JButton");
 			}
 		});
 ```
+
+### Creando Menús interrelacionados
+
+* Creamos un nuevo proyecto como en procesos anteriores:
+	* File--> New --> Other --> WindowBuilder --> SWT/IFace Java Project
+		* Le llamamos LAE
+* Creamos una ventana con JFrame:
+	* src --> botón derecho --> new --> Other --> WindowBuilder --> Swing Designer --> JFrame
+		* Le llamamos principal
+	* Pulsamos en la pestaña inferior "Design"
+	* Layout --> Absolute Layout
+	* Menu --> JMenu bar --> dentro de este JMenu Bar añadimos diferentes JMenu:
+	 	* Libro
+	 	* Autor
+	 	* Editorial
+
+![JMenu](img/13.png)
+
+Dentro de Autor añadimos 4 JMenuItem:
+
+![JMenu](img/14.png)
+
+Vamos a necesitar nuevas ventanas, así que creamos nuevos JFrame
+* src --> botón derecho --> new --> Other --> WindowBuilder --> Swing Designer --> JFrame
+* Le ponemos el título de InsertarAutor:
+
+![JMenu](img/15.png)
+
+Para poder llamar desde principal a Autor vamos a tener que referenciarla como si fuera un nuevo objeto:
+
+
+![JMenu](img/16.png)
+
+Esto nos redirige al código e insertamos lo siguiente para que se abra InsertarAutor cuando pulsemos sobre el correspondiente JMenuItem:
+
+```
+InsertarAutor ia = new InsertarAutor();
+ia.setVisible(true);
+```
+Quedando así:
+
+```java
+JMenuItem mntmNewMenuItem = new JMenuItem("Insertar Autor");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				InsertarAutor ia = new InsertarAutor();
+				ia.setVisible(true);
+			}
+		});
+```
+
+Ahora si ejecutamos la aplicación y pulsamos sobre Insertar Autor, se nos abre la ventana correspondiente.
+
+Hacemos lo mismo con el resto de menús.
+
+Insertamos una serie de campos en el JFrame Insertar Autor usando:
+* JLabel
+* JtextField
+* JButton
+
+![InsertarAutor](img/17.png)
+
+Añadimos un JButton cerrar, y logramos dicha funcionalidad con:
+	* Add event handler --> action
+	* Insertando el método "dispose()" en el código del JButton:
+
+```java
+JButton btnNewButton_1_1 = new JButton("Cerrar");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
+```
+
+Añadimos un JButton resetear, y logramos dicha funcionalidad con:
+	* Add event handler --> action
+	* Insertando el método "textField.setText("")" en el código del JButton.
+	*Tenemos varios text field, con diferentes nombres, por lo que el código a insertar será:
+
+
+```java
+		JButton btnResetear = new JButton("Resetear");
+		btnResetear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				textField.setText("");
+				textField_1.setText("");
+				textField_2.setText("");
+				textField_3.setText("");
+				textField_4.setText("");
+			}
+		});
+```
+
+Creamos la clase Autor para poder trabajar con los atuores:
+
+```java
+
+public class Autor {
+	private int id;
+	private String nombre;
+	private String apellidos;
+	private String nacionalidad;
+	private String f_nacimiento;
+	
+	public Autor(int id, String nombre, String apellidos, String nacionalidad, String f_nacimiento) {
+		this.id = id;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.nacionalidad = nacionalidad;
+		this.f_nacimiento = f_nacimiento;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+
+	public String getNacionalidad() {
+		return nacionalidad;
+	}
+
+	public void setNacionalidad(String nacionalidad) {
+		this.nacionalidad = nacionalidad;
+	}
+
+	public String getF_nacimiento() {
+		return f_nacimiento;
+	}
+
+	public void setF_nacimiento(String f_nacimiento) {
+		this.f_nacimiento = f_nacimiento;
+	}
+		
+}
+
+```
+
+A falta de una base de datos, en nuestro programa principal creamos un Array de Objetos Autor, cada objeto deberás ser inicializado con "new".
+
+También creamos un contador para ayudarnos a decir dónde tiene que ir insertando
+
+**principal.java**
+```java
+	Autor[] mis_autores = new Autor[10];
+	int contador = 0;
+```
+
+Para poder usar Autor[] en insertarAutor:
+
+**principal.java**
+```java
+		JMenuItem mntmNewMenuItem = new JMenuItem("Insertar Autor");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				insertarAutor ia = new insertarAutor(mis_autores, contador);
+				ia.setVisible(true);
+			}
+		});
+```
+Insertamos el Array Autor[] mis_autores y el contador en **insertarAutor.java**:
+```java
+...
+	public static void main(String[] args, Autor[] mis_autores, int contador) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					insertarAutor frame = new insertarAutor(mis_autores, contador);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public insertarAutor(Autor[] mis_autores, int contador) {
+...
+```
+
+Con el contador vamos a saber la posición que ocupa en el array
+
+Primero vamos a comprobar que hay datos en el array para ver si se puede o no se puede introducir:
+
+insertarAutor.java:
+```java
+boolean comprobar() {
+		
+		boolean valor;
+		int cont = 0;
+		
+		if(textField.getText().length()!= 0) {
+			cont++;			
+		}
+		if(textField_1.getText().length()!= 0) {
+			cont++;			
+		}
+		if(textField_2.getText().length()!= 0) {
+			cont++;			
+		}
+		if(textField_3.getText().length()!= 0) {
+			cont++;			
+		}
+		if(textField_4.getText().length()!= 0) {
+			cont++;			
+		}
+		if (cont==5) {
+			valor = true;
+		} else {
+			valor = false;
+		}
+		return valor;
+	}
+
+	...
+
+			JButton btnNewButton = new JButton("Insertar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (comprobar())
+				{
+					//Significa que tengo datos para insertar
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "Debes introducir datos en las cajas de texto");
+				}
+			}
+		});
+```
+
+Ahora vamos a dar funcionalidad al JButton "insertar":
+
+insertarAutor.java:
+```java
+		JButton btnNewButton = new JButton("Insertar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (comprobar())
+				{
+					//Significa que tengo datos para insertar
+					
+					int id=Integer.parseInt(textField.getText());
+					mis_autores[contador] = new Autor(id, textField_1.getText(), textField_2.getText(), textField_3.getText(), textField_4.getText());
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "Debes introducir datos en las cajas de texto");
+				}
+			}
+		});
+```
+
+Creamos un método que nos devuelva la infomación del autor:
+
+Autor.java
+```java
+public String info_Autor() {
+		return this.id+" " + this.nombre + " " + this.apellidos + " " + this.nacionalidad + " " + this.f_nacimiento;
+	}
+```
+Ahora lo utilizamos en nuestra ventana insertar:
+
+```java
+	JButton btnNewButton = new JButton("Insertar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (comprobar())
+				{
+					//Significa que tengo datos para insertar
+					
+					int id=Integer.parseInt(textField.getText());
+					mis_autores[contador] = new Autor(id, textField_1.getText(), textField_2.getText(), textField_3.getText(), textField_4.getText());
+					
+					JOptionPane.showMessageDialog(null, mis_autores[contador].info_Autor());
+					JOptionPane.showMessageDialog(null, "Autor insertado Correctamente");
+					dispose(); //Cerramos la ventana
+
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "Debes introducir datos en las cajas de texto");
+				}
+			}
+		});
+```
+
+A continuación damos lógica a **consultarAutor.java"
+
+Pasamos mis_autores a Consultar Autor en principal.java
+```java
+	JMenuItem mntmNewMenuItem_1 = new JMenuItem("Consultar Autor");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				consultarAutor ca = new consultarAutor(mis_autores);
+				ca.setVisible(true);
+			}
+		});
+```
+
+Pasamos mis_autores a consultarAutor.java
+
+```java
+...
+	public static void main(String[] args, Autor[] mis_autores) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					consultarAutor frame = new consultarAutor(mis_autores);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	...
+	
+	public consultarAutor(Autor[] mis_autores) {
+		...
+```
+Tocamos el diseño de consultar autor e insertamos la lógica pra que nos muestr por pantalla los datos del autor:
+[img](img/18.png)
+
+```java
+	//Aprovechamos los datos del Array y cargamos al primer autor
+		
+		String una = String.valueOf(mis_autores[0].getId());
+		textField.setText(una);
+		textField_1.setText(mis_autores[0].getNombre());
+		textField_2.setText(mis_autores[0].getApellidos());
+		textField_3.setText(mis_autores[0].getNacionalidad());
+		textField_4.setText(mis_autores[0].getF_nacimiento());
+```
+
+```java
+
+```
+
+```java
+
+```
+
+```java
+
+```
+
+```java
+
+```
