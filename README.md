@@ -2967,18 +2967,14 @@ Tocamos el diseño de consultar autor e insertamos la lógica pra que nos muestr
 		textField_4.setText(mis_autores[0].getF_nacimiento());
 ```
 
-```java
+### ArrayList vs Array
+* Array es estático (si tiene tamaño 10 no puedo incluir más autores)
+* ArrayList es dinámico, puendo introducir más autores.
 
-```
+Cambiamos el funcionamiento de nuestra aplicación introduciendo:
 
-```java
+* ArrayList mis_autores = new ArrayList<Autor>();
 
-```
+y quitando 
 
-```java
-
-```
-
-```java
-
-```
+* Autor[] mis_autores = new Autor[10];
