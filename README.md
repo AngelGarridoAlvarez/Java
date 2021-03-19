@@ -39,6 +39,15 @@ Resúmenes teóricos y ejercicios prácticos realizados por Ángel Garrido Álva
 
 5.1 [Diseño de interfaces gráficas con Swing](#id151)
 
+## 6 - Bases de Datos
+6.1 [Manipulación de datos con JDBC](#id61)
+
+## 7 [Modelo Vista Controlador](#id7)
+## 7 Modelo Vista Controlador <a name="id7"></a>
+
+
+
+
 ## EJERCICIOS
 * [EJERCICIOS ARRAYS](Ejercicios/1.2.4.Arrays)
 * [EJERCICIOS POO](Ejercicios/1.3.1.POO)
@@ -47,6 +56,8 @@ Resúmenes teóricos y ejercicios prácticos realizados por Ángel Garrido Álva
 * [EJERCICIOS Clases Abstractas](Ejercicios/1.3.2.ClasesAvanzadas/ClasesAbstractas)
 * [EJERCICIOS Interfaces](Ejercicios/1.3.2.ClasesAvanzadas/Interfaces)
 * [EJERCICIOS ClasesEnvolventes](Ejercicios/1.3.2.ClasesAvanzadas/ClasesEnvolventes)
+* [EJERCICIOS Excepciones y Aserciones](Ejercicios/1.3.3.ExcepcopnesAserciones)
+
 
 ## EJERCICIOS FEEDBACK
 * [**Ejercicio Feedback 1.2. - Estructuras de Control**](#id12e)
@@ -2522,9 +2533,312 @@ ________________________________________________________________________________
 
 ## 3.3. Excepciones y Aserciones <a name="id133"></a>
 
+
+Una excepción es un error que ocurre en tiempo de ejecución haciendo que el programa termine de forma inesperada.
+
+Para evitar que el programa termine al generarse una excepción, tenemos la opción de capturarla y de esta forma la ejecución continúa.
+
+Una excepción es un objeto de tipo Exception: 
+* Cuando la máquina virtual se encuentra con un error que no puede resolver genera una instancia de una clase que hereda de Exception. 
+* El tipo de clase elegido será el del tipo de problema encontrado. 
+* Bloque try-catch para capturar excepciones:
+	* Evitamos que se interrumpa la ejecución. 
+	* Utilizamos el bloque try para encerrar aquellas instrucciones «peligrosas» donde se podría generar una excepción. 
+	* El bloque catch es donde capturamos la excepción (ese objeto generado por la maquina virtual. ).
+
+Podemos utilizar múltiples bloques catch: 
+ * pero debemos seguir la regla de declararlos del más especifico al más genérico. 
+ * En caso contrario se genera un error de compilación. 
+
+También podemos utilizar try-catch-finally: 
+* El bloque finally nos asegura que se ejecutará siempre haya excepción o no. 
+* Un buen ejemplo de uso del bloque finally es cuando abrimos una conexión a la base de datos y siempre se debería de cerrar se haya producido una excepción o no. 
+* El cierre de la conexión iría dentro del bloque finally.
+
+
+Ejemplo excepción:
+
+Creamos el siguiente programa que suma los argumentos que paso por el menu de eclipse "run" --> "run configurations" --> pestaña "arguments"--> "program arguments" --> escribo los argumentos separados por "espacio":
+```java
+
+public class main {
+	public static void main (String args[]) {
+		int sum = 0;
+		for (String arg: args) {
+			sum += Integer.parseInt(arg);
+		}
+		System.out.println("Sum = " + sum);
+	}
+
+}
+//Sum = 0
+// IDE ECLIPSE: Run --> Run configurations --> pestaña Arguments --> program arguments --> 1 2 4 6
+// Sum = 10
+```
+Si introdujeramos los argumentos en un formato no especificado, por ejemplo: 1 two 4 6:
+	* Se produce una excepción
+	* Se detiene la ejecución del programa
+
+```java
+
+public class main {
+	public static void main (String args[]) {
+		int sum = 0;
+		for (String arg: args) {
+			sum += Integer.parseInt(arg);
+		}
+		System.out.println("Sum = " + sum);
+	}
+
+}
+// IDE ECLIPSE: Run --> Run configurations --> pestaña Arguments --> program arguments --> 1 two 3 4
+
+
+/*
+Exception in thread "main" java.lang.NumberFormatException: For input string: "two"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:68)
+	at java.base/java.lang.Integer.parseInt(Integer.java:652)
+	at java.base/java.lang.Integer.parseInt(Integer.java:770)
+	at Ejemplo1.main(Ejemplo1.java:6)
+*/
+
+```
+
+Bloque try-catch para capturar excepciones:
+	* Evitamos que se interrumpa la ejecución. 
+	* Utilizamos el bloque try para encerrar aquellas instrucciones «peligrosas» donde se podría generar una excepción. 
+	* El bloque catch es donde capturamos la excepción (ese objeto generado por la maquina virtual. ).
+```java
+
+public class Ejemplo2 {
+	public static void main(String args[]) {
+		try {
+			int sum = 0;
+			for (String arg : args) {
+				sum += Integer.parseInt(arg);
+			}
+			System.out.println("Sum = " + sum);
+		} catch (NumberFormatException excepcionFormatoNumero) {
+			System.err.println("uno de los elementos introducidos en la línea de comandos no es un integer");
+		}
+	}
+}
+
+// IDE ECLIPSE: Run --> Run configurations --> pestaña Arguments --> program arguments --> 1 two 3 4
+
+// uno de los elementos introducidos en la línea de comandos no es un integer
+
+
+```
+
+Aquí vemos que captura el error y nos muestra el mensaje que hemos puesto, pero se para la ejecución, si queremos que se ejecute podríamos hacerlo de la siguiente forma:
+
+```java
+
+public class main {
+
+	public static void main(String args[]) {
+		try {
+			int sum = 0;
+			for (String arg : args) {
+				sum += Integer.parseInt(arg);
+			}
+			System.out.println("Sum = " + sum);
+		} catch (NumberFormatException excepcionFormatoNumero) {
+			System.err.println("uno de los elementos introducidos en la línea de comandos no es un integer");
+		}
+	}
+}
+
+//IDE ECLIPSE: Run --> Run configurations --> pestaña Arguments --> program arguments --> 1 two 3 four
+
+/*
+[two] no es un ineteger y no se incluirá en la suma
+[four] no es un ineteger y no se incluirá en la suma
+Sum = 4
+
+ */
+```
+
+**MANEJO DE EXCEPCIONES MÚLTIPLES**
+
+* Podemos tener diferentes ecepciones, y capturarlas todas con un solo bloque de código:
+
+```java
+public void newMultiCatch( ){ 
+	try{ 
+     	methodThatThrowsThreeExceptions( ); 
+	}catch(ExceptionOne | ExceptionTwo | ExceptionThree e){
+	} 
+}
+```
+* Pero si queremos que a cada excepción se le de un tratamiento distinto:
+```java
+public void newMultiMultiCatch( ){ 
+try{ 
+     methodThatThrowsThreeExceptions( ); 
+	}catch (ExceptionOne e){ 
+     //maneja ExceptionOne 
+	}catch (ExceptionTwo | ExceptionThree e){ 
+    //maneja ExceptionTwo y ExceptionThree
+	}
+}
+```
+
+**API EXCEPTION**
+* Permite ver las diferentes clases de las excepciones y la forma en que están organizadas.
+* La clase Exception y la clase Error heredan de la clase Throwable.
+* Los errores no se pueden capturar. 
+	* Cuando ocurren el programa termina sin que podamos hacer nada.
+
+![img](img/22.png)
+
+**PROPAGAR EXCEPCIONES - método throws**
+* La palabra clave throws se utiliza para identificar la lista posible de excepciones que un método puede lanzar.
+* Si el tipo de excepción es Error o RuntimeException, o cualquiera de sus subclases, no se aplica esta regla, dado que no se espera que se produzcan como resultado del funcionamiento normal del programa.
+* Si el programa intenta lanzar una excepción sin tener código para capturarla(try -catch), y tampoco utiliza throws para declarar que se lanza esta excepción, el código no será posible compilarlo.
+
+* The caller has to handle the exception: 
+	* using a try-catch block 
+	* or propagate the exception 
+* We can throw either checked or unchecked exceptions.
+
+* The throws keyword allows the compiler to help you write code that handles this type of error, but it does not prevent the abnormal termination of the program. 
+
+
+```java
+void testMethod() throws ArithmeticException, ArrayIndexOutOfBoundsException {
+    // rest of code
+}
+```
+**SOBREESCRITURA DE MÉTODOS QUE LANZAN EXCEPCIONES: Reglas**
+* Se puede sobreescribir el método eliminando la clausula throw
+* No se puede sobreescribir para que lance más excepciones que las definidas
+* Puede lanzar excepciones de una subclase de la definidia orginalmente
+* No puede lanzar excepciones que sean de la superclase de la definidia en un principio
+
+
+**EXCEPCIONES PERSONALIZADAS**
+
+Para crear y lanzar una excepción propia tenemos que definir la clase ExcepcionIntervalo derivada de la clase base Exception.
+
+ExcepcionIntervalo.java
+```java
+public class ExcepcionIntervalo extends Exception {
+    public ExcepcionIntervalo(String msg) {
+        super(msg);
+    }
+
+```
+Usamos throws para definir el método que puede lanzar una excepción, este lo incluiremos dentro de nuestro controlador:
+```java
+static void rango(int num, int den)throws ExcepcionIntervalo{
+        if((num>100)||(den<-5)){
+            throw new ExcepcionIntervalo("Números fuera del intervalo");
+        }
+```
+
+Controlador: ExcepcionApp.java
+```java
+public class ExcepcionApp {
+    public static void main(String[] args) {
+        String str1="120";
+	String str2="3";
+        String respuesta;
+	int numerador, denominador, cociente;
+        try{
+            numerador=Integer.parseInt(str1);
+            denominador=Integer.parseInt(str2);
+            rango(numerador, denominador);
+            cociente=numerador/denominador;
+            respuesta=String.valueOf(cociente);
+        }catch(NumberFormatException ex){
+            respuesta="Se han introducido caracteres no numéricos";
+        }catch(ArithmeticException ex){
+            respuesta="División entre cero";
+        }catch(ExcepcionIntervalo ex){
+            respuesta=ex.getMessage();
+        }
+        System.out.println(respuesta);
+    }
+
+     static void rango(int num, int den)throws ExcepcionIntervalo{
+        if((num>100)||(den<-5)){
+            throw new ExcepcionIntervalo("Números fuera de rango");
+        }
+    }
+}
+```
+### ASERCIONES
+* Una aserción es una comprobación que se hace en un punto del programa 
+* Verifican que estamos utilizando los datos correctos. 
+
+```java
+assert(expresion_booleana);
+assert(expresion_booleana):"mensaje_error"
+```
+* Si la expresión booleana se evalúa a false, entonces se lanza un AssertionError. 
+* Los errores no se pueden capturar y el programa finaliza. 
+
+Ejemplo: 
+* Estamos ejecutando un código y pensamos que x <= 0. 
+* Las aserciones permiten verificar esta suposición. 
+* Si x vale 0, la expresión de la aserción se evaluará como true y el programa continuará según lo previsto. 
+* Pero si x toma un valor negativo entonces la expresión devolverá false y se generará un AssertionError haciendo que el programa se detenga. 
+
+Sin aserciones:
+```java
+if(x>0){
+//do this
+}else{
+//do that
+}
+```
+Con aserción
+```java
+if(x>0){
+ //do this 
+}else{ 
+assert(x==0):"Mensaje de Error"
+//do that, unless x is negative
+}
+```
+Ejemplo
+```java
+public class Main {
+	
+	public static void main(String[] args) {
+		int x = -1;
+		
+		if (x > 0){
+			System.out.println("Es mayor que cero");
+		}else{
+			// Por defecto las aserciones estan deshabilitadas
+			assert (x == 0 ) : "Error no es cero"; // AssertionError
+			System.out.println("Es cero");		
+		}
+	}
+
+}
+```
+**HABILITAR Y DESHABILITAR ASERCIONES**
+* Por defecto están deshabilitadas
+* Opciones
+	* java -enableassertions MyProgram
+	* java -ea My Program
+
+[Ejercicios Excepciones y Aserciones](Ejercicios/1.3.3.ExcepcopnesAserciones)
+
 _________________________________________________________________________________
 
 ## 3.4. Colecciones <a name="id134"></a>
+
+### Colecciones vs Array:
+* Los Arrays son más limitados
+* Los Arrays son estáticos, tiene un tamaño determinado.
+
+**ArrayList**
+* 
 _________________________________________________________________________________
 
 
@@ -2978,3 +3292,107 @@ Cambiamos el funcionamiento de nuestra aplicación introduciendo:
 y quitando 
 
 * Autor[] mis_autores = new Autor[10];
+
+# 6. BASES DE DATOS SQL
+
+Puedes consultar más apuntes sobre SQL siguiendo [este enlace](https://github.com/AngelGarridoAlvarez/SQL).
+
+## 6.1. Manipulación de datos con JDBC <a name="id61"></a>
+
+### API JDBC
+* JDBC (Java Database Connectivity)
+* Permite conexión de programas java a bases de datos
+* Está compuesto por un conjunto de clases e interfaces:
+	* java.sql
+	* javax.sql
+* Controlador/Driver: implementación de la API JDBC a un gestor de bases de datos concretos: MySQL, Oracle, ...
+
+### Proceso de obtención de resultados:
+![img](img/19.png)
+
+* **IMPORTANTE**: A partir de JDK 6, los drivers JDBC 4 ya se registran automáticamente y no es necesario el Class.forName(), sólo que estén en el classpath de la JVM.
+
+* La interfaz Connection es la que se encarga de la conexión con la base de datos. Mediante el método getConnection(), obtenemos un objeto de la clase Connection. Esta clase contiene todos los métodos que nos permiten manipular la base de datos. 
+
+![img](img/20.png)
+
+* Para cerrar la conexión utilizamos el método close() de la interfaz Connection. 
+
+```java
+conexion.close(); // Cerrar conexión
+```
+
+### CREAR CONSULTAS CON SQL 
+
+ podemos utilizar 3 interfaces diferentes:
+
+ * Statement 
+ 	* Para ejecutar querys completas.
+	* Si tenemos todos los datos de la query.
+
+* PreparedStatement
+	* Para ejecutar querys parametrizadas. 
+	* No tenemos todos los datos en este momento y utilizamos parámetros.
+
+* CallableStatement
+	* Para ejecutar querys a través de procedimientos definidos en la BBDD. 
+
+### Statement
+* Sentencias update:
+	* No devuelven retorno
+	* INSERT, UPDATE, DELETE, CREATE
+
+* Sentencias query:
+	* No retornan ningún resultado
+	* SELECT
+
+![img](img/21.png)
+
+### PreparedStatement
+* Define métodos para trabajar con instrucciones SQL pre compiladas, que son más eficientes. 
+
+* También se usan para poder utilizar instrucciones SQL parametrizadas. 
+	* Para establecer parámetros en una instrucción SQL basta con sustituir el dato por un signo de interrogación. (Select * from Tabla where Nombre=?).
+
+* PreparedStatement no utiliza los métodos de Statement para ejecutar las querys, en su lugar, se pasa la query en el propio constructor. 
+
+* Igual que antes podemos ejecutar dos tipos de consultas query y update
+
+###Metadatos
+* Información adicional a los datos que almacena la tabla. 
+
+* Se utiliza un objeto ResultSetMetaData para recoger los metadatos de una consulta. Dicho objeto expone los siguientes métodos: 
+	* getColumnName(); devuelve el nombre de la columna.
+	* getColumnCount(); nos indica el numero de columnas de la consulta. 
+	* getTableName(); devuelve el nombre de la tabla.
+	* getColumnType(); nos dice el tipo de datos de la columna.
+	* isReadOnly(); especifica si los datos son de solo lectura.
+
+
+## Conectamos una APP a una BBDD
+
+Creamos el proyecto en Eclipse
+
+File --> New --> Other --> Web --> Dynamic Web Project
+
+
+# 7 Modelo Vista Controlador <a name="id7"></a>
+
+3 paquetes principales donde vamos a almacenar nuestros CÓDIGO:
+
+MODELO
+* Las Clases
+
+VISTA
+* Interfaz
+	* Frames de SWING
+	* JSP
+	* JSF
+	* Android
+
+CONTROLADOR
+* El que decide usando las clases de la vista y las clases del modelo
+	* Cuando se instancia un objeto
+	* Qué datos tiene
+	* Qué vista usa
+* (habitualmente nuestra clase main)
