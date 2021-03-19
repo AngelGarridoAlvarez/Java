@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-import excepcionesThrows.ExcepcionIntervalo;
-
 public class Ejemplo4 {
 	static float num1;
 	static float num2;

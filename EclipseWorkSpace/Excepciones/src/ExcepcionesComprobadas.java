@@ -11,7 +11,6 @@ static int total = 0;
 			}
 			System.out.println("Sum = " + sum);
 		} catch (NumberFormatException excepcionFormatoNumero) {
-			System.err.println("uno de los elementos introducidos en la línea de comandos no es un integer");
 		}
 		chorrada();
 		

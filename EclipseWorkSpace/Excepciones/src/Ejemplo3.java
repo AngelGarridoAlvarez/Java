@@ -13,12 +13,9 @@ public class Ejemplo3 {
 		System.out.println("Sum = " + sum);
 	}
 }
-
-//IDE ECLIPSE: Run --> Run configurations --> pestaña Arguments --> program arguments --> 1 two 3 four
-
 /*
-[two] no es un ineteger y no se incluirá en la suma
+ 
+ [two] no es un ineteger y no se incluirá en la suma
 [four] no es un ineteger y no se incluirá en la suma
 Sum = 4
-
 */

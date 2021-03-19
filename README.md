@@ -2833,12 +2833,265 @@ ________________________________________________________________________________
 
 ## 3.4. Colecciones <a name="id134"></a>
 
-### Colecciones vs Array:
-* Los Arrays son más limitados
-* Los Arrays son estáticos, tiene un tamaño determinado.
+### Limitaciones Arrays:
 
-**ArrayList**
-* 
+* Son estáticos: es necesario saber previamente la longitud o número de elementos que tendrá cada array.
+* Los arrays no se pueden redimensionar ya que son estructuras estáticas.
+* Todos los elementos del array deben ser del mismo tipo
+
+### Colecciones como alternativa a los arrays:
+
+* Los elementos de las colecciones se almacenan como Object por lo cual me permite guardar cualquier tipo de elemento.
+* No necesitamos  especificar  de  inicio  el  número  de  elementos  que  va  a contener.
+* Son estructuras dinámicas  por lo cual puedo  ir añadiendo  tantos  elementos como quiera que la colección los admite sin problemas.
+
+### API COLLECTIONS
+
+![img](img/23.png)
+ contiene  interfaces  que permiten  agrupar  objetos  en una de las siguientes colecciones:
+
+* Collection
+	* Las clases que implementan la interfaz Collection representan una colección dinámica de objetos(elementos).
+	* la implementación determina   si  
+		* guardan   un  orden   específico
+		* si  se  permiten   elementos duplicados.
+
+* Set
+	* Conjuntos: los elementos que se añaden no se sitúan en el orden natural en que se van introduciendo.
+	* Es un tipo de colección donde no se garantiza que se conserve el orden de entrada de los elementos. 
+	* Tampoco permite elementos duplicados.
+
+* List
+	* se  garantiza  el  orden  de  entrada
+	* se  que  se permiten los elementos duplicados.
+
+* Iterable
+	* Las clases que implementan la interfaz Iterable tienen la característica de que sus elementos pueden recorrerse con una estructura de tipo foreach
+	* poseen el método iterator(). 
+
+* Map 
+	* Los mapas asocian una clave a cada elemento, que servirá después como llave para acceder a dicho elemento. 
+
+* List
+	* Interfaz que implementa las colecciones de datos que se organizan en forma de lista
+	* un elemento detrás de otro en el orden en que se van introduciendo. 
+
+* Queue
+	* Las clases que implementan la interfaz Queue representan colecciones cuyos elementos se organizan en forma de cola. 
+	* Una cola es una estructura de datos en memoria RAM donde el primer elemento que entró, es el primero en salir. 
+	* También se denominan estructuras FIFO, abreviatura del inglés “First In, First Out”. 
+
+
+* HashMap
+	* Colección de elementos donde cada elemento tiene asociada una clave. 
+	* Los elementos no se sitúan en el orden en que se van añadiendo 
+
+* SortedMap
+	* Interfaces cuyas clases que la implementan representan mapas cuyos elementos quedan ordenados según la clave. 
+
+* TreeMap
+	* Colección de elementos donde cada elemento tiene asociada una clave. 
+	* Los elementos se sitúan en orden de clave. 
+
+* Vector: 
+	* Lista basada en un array tipo vector con una longitud inicial de 10 elementos, que irá creciendo en 10 elementos más cuando sea necesario, permitiendo que crezca dinámicamente. 
+	* Sus métodos son sincronizados, es decir, es útil cuando trabajamos con programas multitarea utilizando distintos hilos de ejecución. 
+
+* ArrayList
+	* Lista basada en un array tipo vector con una longitud inicial de 10 elementos, que irá creciendo en 10 elementos más cuando sea necesario, permitiendo que crezca dinámicamente. 
+	* A diferencia de la clase Vector, sus métodos no son sincronizados. 
+
+* LinkedList 
+	* Basado en una lista enlazada y con los elementos organizados en forma de cola. 
+	* Mucho más eficiente que Vector y ArrayListcuando hay que hacer muchas inserciones y eliminaciones. 
+
+* HashSet
+	* Colección de objetos que no guardan ningún tipo de orden. 
+	* Los elementos no se sitúan en el mismo orden que se han ido introduciendo. 
+	* Puesto que se trata de un conjunto, no admite duplicados, es decir, no admite ningún nuevo elemento que, aplicándole el método equals sobre cualquiera de los existentes, dé true. 
+
+* SortedSet
+	* Las clases que implementan esta interfaz representan colecciones de objetos que pueden ordenarse en función del método compareTo de cada elemento con el resto de los elementos
+	* no admiten duplicados, puesto que se trata de conjuntos. 
+
+* TreeSet
+	* Colección de objetos que pueden ordenarse en función del método compareTo de cada elemento con el resto de los elementos 
+	* no admiten duplicados, es decir, no admite ningún nuevo elemento que, aplicándole el método equals sobre cualquiera de los existentes, dé true. 
+
+* Iterable
+	* Las clases que implementan la interfaz Iterable tienen la característica de que sus elementos pueden recorrerse con una estructura de tipo foreach
+	* además poseen el método iterator(). 
+
+### Principales colecciones: LIST, SET Y MAP
+
+### LIST
+```java
+    // crear una coleccion de tipo List
+        List coleccionList = new ArrayList();
+        coleccionList.add("uno");
+        coleccionList.add("segundo");
+        coleccionList.add(new Integer(4));
+        coleccionList.add(new Float(3.15));
+        coleccionList.add("segundo");  // los repetidos SI se a??aden
+        System.out.println(coleccionList);
+
+		// [uno, segundo. 4, 3.15, segundo]
+```
+Algunos métodos de las listas:
+* int size(): El método size devuelve el número de elementos que contiene la lista. En el ejemplo anterior estamos utilizando este método para controlar cuándo deber terminar el bucle for.
+
+* boolean add(Object element): Añade el elemento pasado como argumento al final de la lista. Devuelve true si el elemento se ha añadido con éxito y devuelve false si, por alguna circunstancia, el elemento no se ha podido añadir. 
+
+* boolean remove(Object obj): Elimina de la colección el objeto pasado como argumento. Si el objeto no ha podido eliminarse por cualquier circunstancia, devuelve false, de lo contrario devuelve true. 
+
+* void clear(): Elimina todos los elementos dejando la colección vacía. 
+
+* boolean contains(Object o): Devuelve true si la colección contiene el objeto especificado como argumento, de lo contrario devuelve false. 
+
+* boolean isEmpty(): Devuelve true si la colección no contiene ningún elemento, de lo contrario devuelve false.
+
+* Object get(int pos): El método get devuelve el elemento que ocupa la posición especificada como argumento.
+
+* boolean add(int pos, Object element) : También es posible añadir un nuevo elemento en la posición deseada.
+
+* Object remove(int pos) : Elimina el elemento que ocupa la posición especificada en el argumento y retorna el elemento borrado. Puedes ponerlo en práctica añadiendo este código: 
+
+### SET
+
+
+```java
+         Set coleccionSet = new HashSet();
+        coleccionSet.add("uno");
+        coleccionSet.add("segundo");
+        coleccionSet.add(3);
+        coleccionSet.add(new Integer(4));
+        coleccionSet.add(new Float(3.15));
+        coleccionSet.add("segundo");  // los repetidos no se a??aden
+        System.out.println(coleccionSet);
+
+		//[4,3.15,segundo,uno]
+```
+
+* Los métodos que podemos usar en este tipo de colecciones son los mismos que los utilizados en las listas del punto anterior.
+
+### MAP
+
+* Un mapa no se considera una colección ya que no hereda de la interface Collection. Los elementos de un mapa se forman como clave-valor.
+* Los mapas asocian una clave a cada elemento, que servirá después como llave para acceder a dicho elemento. 
+* Las claves duplicadas no están permitidas.
+* Una clave solo puede referenciar un valor, no varios.
+
+Métodos de map: (algunos)
+* entrySet: Devuelve una colección de tipo Set con todos los elementos (clave- valor).
+* keySet: Devuelve una colección de tipo Set con todas las claves del mapa.
+* values: Devuelve un objeto de tipo Collection con todos los valores del mapa.
+
+
+```java
+     // crear un Mapa
+        // un mapa no permite claves duplicadas, valores duplicados si.
+        Map mapa = new HashMap();
+        mapa.put("1", "uno");
+        mapa.put("2", "dos");
+        mapa.put("1", "tres"); // sobreescribe el elemento
+
+        // mostrar todas las claves (keys)
+        System.out.println(mapa.keySet());
+
+        // mostrar todos los valores (values)
+        System.out.println(mapa.values());
+
+        // mostrar todos los elementos como pares key-value
+        System.out.println(mapa.entrySet());
+
+		/*
+		
+			1
+			2
+			3
+			[1,2]
+			[dos,tres]
+			[2=dos, 1=tres]
+		*/
+```
+
+### Colección VS mapa
+
+* Ambos representan un conjunto o colección de elementos
+
+* Los mapas no implementan las interfaces Iterable y Collection.
+
+* Técnicamente llamamos colecciones a las clases que implementan la interfaz Collection. Aunque en la práctica también se llama colecciones a los mapas, porque representan una colección o conjunto de elementos. De ahí que ambos conceptos se confundan a menudo. 
+
+* Ambos almacenan una colección o conjunto de objetos, pero los mapas asocian una clave a cada elemento, que servirá después como llave para acceder a dicho elemento. 
+
+ 
+
+Con tantas clases disponibles para construir colecciones de datos, ¿cómo saber la que más nos conviene? La siguiente imagen resume de manera esquemática cómo decidir el tipo de colección que necesitamos: 
+
+![img](img/24.png)
+
+### RECORRER COLECCIONES
+
+* Utilizamos bucles para recorrer colecciones
+* Ejemplo con arraylist:
+
+Definimos arraylist y añadimos elementos:
+
+[Ejemplo recorrer colecciones](EclipseWorkSpace/Colecciones)
+```java
+ArrayList<String> movies = new ArrayList<>();
+// Le agregamos datos
+movies.add("Juego de tronos");
+movies.add("Star Trek");
+movies.add("Star Wars)");	
+```
+
+Método 1: For each
+* for(Tipo variable: arrayList)
+
+```java
+ System.out.println("Recorriendo con método 1");
+// Método 1
+for (String titulo : movies) {
+  System.out.println(titulo);
+}
+```
+Método 2: Bucle for (ciclo de 0 a n)
+* obtenemos el índice en cada paso, y para obtener el valor del ArrayList invocamos a get, pasándole el índice.
+
+
+Método 3: Invoca el métodoa forEach degit  ArrayList y le pasa una función que será llamada por cada elemento.
+	* Lo único que hacemos es indicar la función que debe ser llamada por cada elemento
+	* después la misma será invocada pasando el valor como primer argumento.
+
+```java
+ // Método 3
+	movies.forEach((titulo) -> {
+  		System.out.println(titulo);
+});
+```
+
+```java
+ 
+```
+
+```java
+ 
+```
+
+```java
+ 
+```
+
+```java
+ 
+```
+
+```java
+ 
+```
+
 _________________________________________________________________________________
 
 
