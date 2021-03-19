@@ -3038,7 +3038,7 @@ Con tantas clases disponibles para construir colecciones de datos, ¿cómo saber
 
 Definimos arraylist y añadimos elementos:
 
-[Ejemplo recorrer colecciones](EclipseWorkSpace/Colecciones)
+[Ejemplo recorrer colecciones](EclipseWorkSpace/Colecciones/src/RecorrerArraylist.java)
 ```java
 ArrayList<String> movies = new ArrayList<>();
 // Le agregamos datos
