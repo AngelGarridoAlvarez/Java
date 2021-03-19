@@ -3070,10 +3070,47 @@ Método 3: Invoca el métodoa forEach degit  ArrayList y le pasa una función qu
 	movies.forEach((titulo) -> {
   		System.out.println(titulo);
 });
+
 ```
 
+### Ordenar Colecciones - Interfaces Comparable y Comparator
+
+**INTERFACE COMPARABLE**
+* La interface Comparable permite definir el orden natural de los elementos. 
+	* String; En los elementos de este tipo se define un orden alfabético
+	* Date; En los elementos de este tipo se define un orden cronológico
+	* Integer; En los elementos de este tipo se define un orden numérico
+
+* Método: int compareTo(Object o)
+	* 0; si los objetos a comparar son iguales
+	* 1; si la instancia en la cual estamos  es mayor  que  el objeto  pasado  como argumento.
+	* -1; si la instancia en la cual estamos  es menor que el objeto pasado  como argumento.
+
+
+[Ejemplo Ordenar Colecciones](EclipseWorkSpace/Colecciones/src/OrdenarColecciones)
+
 ```java
- 
+public class Main {
+
+    
+    public static void main(String[] args) {
+       // crear una coleccion clasifique los objetos --> TreeSet
+       Set arbol = new TreeSet();
+
+       arbol.add(new Cliente("Juan", 1500, "12345678-A"));
+       arbol.add(new Cliente("Jose", 1200, "1245778-A"));
+       arbol.add(new Cliente("Maria", 1800, "2222222-A"));
+       arbol.add(new Cliente("Laura", 1100, "88888888-A"));
+
+       Object[] array = arbol.toArray();
+
+       for (int i=0; i<array.length; i++){
+           System.out.println((Cliente)array[i]);
+       }
+               
+    }
+
+}
 ```
 
 ```java

@@ -1,6 +1,4 @@
-package app.modelo;
-
-
+package OrdenarColecciones;
 public class Cliente implements Comparable{
 
     String nombre;
