@@ -1,4 +1,5 @@
 package OrdenarColecciones;
+//Usamos comparable para ordenar por cifra de ventas
 public class Cliente implements Comparable{
 
     String nombre;
@@ -15,19 +16,10 @@ public class Cliente implements Comparable{
         }
         
         // 0 --> los objetos son iguales
-        if (cifraVentas == otroCliente.cifraVentas){
+        if (nombre == otroCliente.nombre){
             resultado = 0;
         }
-        // 1 --> es mayor
-        else if(cifraVentas > otroCliente.cifraVentas)
-        {
-            resultado = 1;
-        }
-        // -1 --> es menor
-        else if(cifraVentas < otroCliente.cifraVentas)
-        {
-            resultado = -1;
-        }
+      
         return resultado;
     }
 

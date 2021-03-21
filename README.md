@@ -57,6 +57,8 @@ Resúmenes teóricos y ejercicios prácticos realizados por Ángel Garrido Álva
 * [EJERCICIOS Interfaces](Ejercicios/1.3.2.ClasesAvanzadas/Interfaces)
 * [EJERCICIOS ClasesEnvolventes](Ejercicios/1.3.2.ClasesAvanzadas/ClasesEnvolventes)
 * [EJERCICIOS Excepciones y Aserciones](Ejercicios/1.3.3.ExcepcopnesAserciones)
+* [EJERCICIOS COLECCIONES](Ejercicios/1.3.4Colecciones)
+
 
 
 ## EJERCICIOS FEEDBACK
@@ -64,6 +66,8 @@ Resúmenes teóricos y ejercicios prácticos realizados por Ángel Garrido Álva
 * [**Ejercicio Feedback 1.2.4 - Bucles**](#id124e)
 * [**Ejercicio Feedback 1.3.1 - POO**](#id131e)
 * [**Ejercicio Feedback 1.3.2 - POO - Clases Avanzadas**](#id132e)
+* [**Ejercicio Feedback 1.3.4 - Colecciones**](#id134e)
+
 
 _________________________________________________________________________________
 
@@ -3075,7 +3079,9 @@ Método 3: Invoca el métodoa forEach degit  ArrayList y le pasa una función qu
 
 ### Ordenar Colecciones - Interfaces Comparable y Comparator
 
-**INTERFACE COMPARABLE**
+**INTERFACE COMPARABLE - **
+* La aplicamos a la clase del objeto que queremos ordenar
+
 * La interface Comparable permite definir el orden natural de los elementos. 
 	* String; En los elementos de este tipo se define un orden alfabético
 	* Date; En los elementos de este tipo se define un orden cronológico
@@ -3088,9 +3094,12 @@ Método 3: Invoca el métodoa forEach degit  ArrayList y le pasa una función qu
 
 
 [Ejemplo Ordenar Colecciones](EclipseWorkSpace/Colecciones/src/OrdenarColecciones)
+ 
+ Ordenar las instancias de tipo Cliente atendiendo a su cifra de ventas:
 
+OrdenarColecciones.java
 ```java
-public class Main {
+public class OrdenarColecciones {
 
     
     public static void main(String[] args) {
@@ -3112,22 +3121,360 @@ public class Main {
 
 }
 ```
-
+Es la clase cliente la que establece el método de ordenación
+Cliente.java
 ```java
- 
+public class Cliente implements Comparable{
+
+    String nombre;
+    double cifraVentas;
+    String nif;
+
+    @Override
+    public int compareTo(Object o) {
+        Cliente otroCliente = null;
+        int resultado = 0;
+        
+        if (o instanceof Cliente){
+            otroCliente = (Cliente) o; // ClassCastException
+        }
+        
+        // 0 --> los objetos son iguales
+        if (cifraVentas == otroCliente.cifraVentas){
+            resultado = 0;
+        }
+        // 1 --> es mayor
+        else if(cifraVentas > otroCliente.cifraVentas)
+        {
+            resultado = 1;
+        }
+        // -1 --> es menor
+        else if(cifraVentas < otroCliente.cifraVentas)
+        {
+            resultado = -1;
+        }
+        return resultado;
+    }
+
+    public Cliente(String nombre, double cifraVentas, String nif) {
+        this.nombre = nombre;
+        this.cifraVentas = cifraVentas;
+        this.nif = nif;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + " nombre=" + nombre + " cifraVentas=" + cifraVentas + " nif=" + nif + '}';
+    }
+}
 ```
 
+**INTERFACE  COMPARATOR**
+* Al implementar la interface Comparable en la clase Cliente, estamos dando por hecho que todos los objetos Cliente siempre los vamos a ordenar por su cifra de ventas.
+
+* Ahora bien. Y si resulta que unas veces quiero ordenarlos por el nombre y otras veces por el nif por ejemplo. La solución nos la aporta la interface Comparator.
+
+* La interface Comparator define un único método:
+	* int compare(Object o1, Object o2)
+
+* También devolvemos un numero entero con el mismo significado que antes.
+	* 0; si los objetos a comparar son iguales
+	* 1; si la instancia en la cual estamos  es mayor  que  el objeto  pasado  como argumento.
+	* -1; si la instancia en la cual estamos  es menor que el objeto pasado  como argumento.
+
+Ejemplo:
+
+Clase Cliente
 ```java
- 
+
+public class ClienteSimple{
+
+    private String nombre;
+    private double cifraVentas;
+    private String nif;
+    
+    public ClienteSimple() {
+		// TODO Auto-generated constructor stub
+	}
+
+    public ClienteSimple(String nombre, double cifraVentas, String nif) {
+        this.nombre = nombre;
+        this.cifraVentas = cifraVentas;
+        this.nif = nif;
+    }
+   
+
+    public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public double getCifraVentas() {
+		return cifraVentas;
+	}
+
+	public void setCifraVentas(double cifraVentas) {
+		this.cifraVentas = cifraVentas;
+	}
+
+	public String getNif() {
+		return nif;
+	}
+
+	public void setNif(String nif) {
+		this.nif = nif;
+	}
+
+	@Override
+    public String toString() {
+        return "Cliente{ " + "nombre=" + nombre + " cifraVentas=" + cifraVentas + " nif=" + nif + '}';
+    }
+}
 ```
 
-```java
- 
-```
+* Generamos  un  comparador  en  una  clase  aparte.  En  este  caso  para  ordenar  por nombre.
+
 
 ```java
- 
+ package comparator;
+
+import java.util.Comparator;
+
+
+public class ComparadorNombre implements Comparator{
+
+	@Override
+    public int compare(Object o1, Object o2) {
+        return (((ClienteSimple)o1).getNombre().compareTo(((ClienteSimple)o2).getNombre()) );
+    }
+
+}
 ```
+También nos podemos generar otro comparador para ordenar por el nif.
+
+
+```java
+ package comparator;
+
+import java.util.Comparator;
+
+public class ComparadorNif implements Comparator{
+
+	@Override
+    public int compare(Object o1, Object o2) {
+        return (((ClienteSimple)o1).getNif().compareTo(((ClienteSimple)o2).getNif()) );
+    }
+
+}
+```
+
+A la hora de crear la colección que nos permite tener ordenados los objetos, debemos pasarle una instancia del comparador elegido. Esto especifica si queremos ordenar los elementos por el nombre o por el nif. Veamos como:
+
+```java
+package comparator;
+
+import java.util.Comparator;
+import java.util.TreeSet;
+
+import compararobjetos.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// crear una coleccion clasifique los objetos --> TreeSet
+		ComparadorNombre c = new ComparadorNombre();
+		ComparadorNif nif = new ComparadorNif();
+
+		// Elegimos ordenar los clientes por su nombre
+		//TreeSet arbol = new TreeSet(c);
+		TreeSet arbol = new TreeSet(nif);
+
+		arbol.add(new ClienteSimple("Juan", 1500, "1111-A"));
+		arbol.add(new ClienteSimple("Jose", 1200, "3333-B"));
+		arbol.add(new ClienteSimple("Maria", 1800, "2222-C"));
+		arbol.add(new ClienteSimple("Laura", 1100, "0000-D"));
+
+		Object[] array = arbol.toArray();
+
+		for (int i = 0; i < array.length; i++) {
+			System.out.println((ClienteSimple) array[i]);
+		}
+	}
+
+}
+```
+
+### Tipos Genéricos
+
+Una colección almacena todos sus elementos como Object 
+	* A la hora de recuperar dichos elementos debemos efectuar el casting apropiado:
+
+```java
+ArrayList list = new ArrayList();
+list.add(0, new Integer(42));
+int total = ((Integer) list.get(0).intValue());
+```
+
+Pero si utilizamos un tipo genérico cuando creamos la colección:
+* Eliminamos la necesidad de casting
+* Controlamos que en tiempo de compilación todos los elementos son del tipo genérico
+
+```java
+ArrayList<Integer> list = new ArrayList<Integer>();
+list.add(0, new Integer(42));
+int total = list.get(0).intValue();
+```
+Ejemplo con genérico String:
+```java
+        Set<String> coleccionSet = new HashSet<>();
+        coleccionSet.add("uno");
+        coleccionSet.add("segundo");
+
+        // si no es de tipoString genera un error de compilacion
+//         coleccionSet.add(new Integer(4));
+//         coleccionSet.add(new Float(3.15));
+        coleccionSet.add("segundo");  // los repetidos no se a??aden
+        System.out.println(coleccionSet);
+
+        for (String elemento : coleccionSet)
+                System.out.println(elemento);
+```
+
+Ejemplo utilizar genéricos con mapas.
+```java
+Map<Integer, Double> mapa = new HashMap<>();
+        mapa.put(new Integer(7), 6.3);
+        mapa.put(9, 7.2);
+        
+        
+        
+        System.out.println("*********************************************");
+        Object[] miArray = coleccionSet.toArray();
+        
+        System.out.println(miArray);
+        for(Object o : miArray){
+        	String texto = (String) o;
+        	System.out.println(texto.length());
+        }
+```
+
+ Tabla: cómo utilizar los tipos genéricos:
+ ![img](img/25.png)
+
+### Iteradores
+* Para recorrer colecciones podemos utilizar: 
+	* Bucles
+	* iteradores (métodos específicos)
+
+* Todas las clases que implementan la interfaz Collection también implementan indirectamente la interfaz Iterable,
+	* Sus objetos son colecciones de elementos iterables.
+
+EJEMPLO - ITERAR CON INTERADORES: 
+* .iterator(), .hasNext() y .Next()
+```java
+List<Student> list = new ArrayList<Student>();
+Iterator<Student> elements = list.iterator();
+while(elements.hasNext()){
+System.out.print(elements.next())
+}
+```
+![img](img/26.png)
+
+EJEMPLO - ITERAR CON BULCES: 
+
+```java
+for (Object t : trians) { 
+// Bloque de sentencias 
+}
+```
+* El bucle se ejecuta tantas veces como elementos tenga la colección trians. 
+* En cada iteración guardará el elemento correspondiente en la variable t. 
+
+MÉTODO ITERATOR
+
+* El método iterator() retorna un objeto de la clase Iterator que provee de un mecanismo para recorrer secuencialmente los elementos de una colección a través de un cursor. 
+
+* Llamamos cursor a una marca que se va desplazando y que va posicionándose en el siguiente elemento a leer dentro de la colección. 
+
+```java
+import java.util.ArrayList; 
+import java.util.Iterator; 
+
+public class Principal { 
+	public static void main(String[] args) { 
+		ArrayList<Triangulo> trians = new ArrayList<Triangulo>();
+		trians.add(new Triangulo(1, 2, 3)); 
+		trians.add(new Triangulo(1, 1, 2)); 
+		trians.add(new Triangulo(1, 1, 1));
+
+		//Obtener el objeto Iterator al que llamamos itera y que está asociado a la colección trians. 
+
+		Iterator<Triangulo> itera = trians.iterator(); 
+		Triangulo cadaTriangulo;
+		
+		while (itera.hasNext()) {
+			//hasNext() devuelve true mientras sigan quedando elementos para iterar en la colección
+	
+		cadaTriangulo = itera.next();
+			//Object next() Devuelve el siguiente elemento de la colección. 
+		System.out.println(cadaTriangulo.verTipo()); 
+		} 
+	}
+}
+```
+ITERANDO CON MAPAS
+
+* Las colecciones de tipo Map no descienden de Iterable
+* No son colecciones iterables.
+* Las clases que implementan la interfaz Map tienen un par de métodos para salvar esta situación: 
+
+	* objMap.keySet(); // Devuelve un objeto de tipo Set con las claves. 
+	* objMap.values(); // Devuelve un objeto de tipo Set con los valores, sin las claves.
+
+* Los objetos devueltos por estos métodos sí son iterables, ya que son conjuntos. 
+
+```java
+//Recorrer el mapa
+Set<String> claves = nombres.keySet();
+ for (String key : claves) { 
+    System.out.println(key + " - " + nombres.get(key));
+ }
+```
+
+
+RECUERDA  QUE…
+
+* Las colecciones es la forma de poder almacenar varios objetos de forma dinámica
+
+* Podemos ordenar  los  objetos  de  una  colección  con  las  interfaces: Comparable y Comparator.
+
+* Los tipos genéricos
+	*  Ayudan a comprobar el tipo de los objetos agregados en una colección en tiempo de compilación.
+	* Eliminan la necesidad de casting
+	* Controlamos que en tiempo de compilación todos los elementos son del tipo genérico
+
+[EJERCICIOS COLECCIONES](Ejercicios/1.3.4Colecciones)
+
+**Ejercicio Feedback 1.3.4** - Colecciones <a name="id134e"></a>
+
+Crea un programa para almacenar los datos de objetos películas y los almacene en una colección de Java.
+
+El programa debe tener un pequeño menú que nos solicite las siguientes opciones:
+
+1. Insertar Película.
+2. Ver datos de una pelicula (indicando la posición en la lista con un número).
+3. Número total de películas en la lista. 
+4. Imprimir todas las peliculas.
+5. Salir.
+
+En la opción de insertar una pelicula el programa pedira los siguientes datos uno a uno:
+Título, duración, protagonista, idioma. 
+
+[Solución](EclipseWorkSpace/EjercicioFeedback1.3.4-Colecciones)
+
 
 _________________________________________________________________________________
 
@@ -3136,6 +3483,21 @@ ________________________________________________________________________________
 
 ## 4.1 - Gestión de E/S por terminal y ficheros<a name="id141"></a>
 
+```java
+
+```
+
+```java
+
+```
+
+```java
+
+```
+
+```java
+
+```
 
 # TEMA 5 - Diseño de interfaces
 
