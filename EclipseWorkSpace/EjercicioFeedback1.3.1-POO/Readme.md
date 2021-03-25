@@ -41,21 +41,21 @@ app.clases se encuentran las 4 clases que he creado:
 
 
 1. Crear clase Cine:
-	* Pel�cula
+	* Pelicula
 	* Precio
 	* Asientos
-	* M�todos
+	* Métodos
 		* .mostrarDatos()
 		* .mostrarAsientos()
 		* .asignarAsiento()
 		
 	
-2. Crear clase Pel�cula
-	* T�tulo
-	* Duraci�n
-	* Edad m�nima
+2. Crear clase Pelicula
+	* Titulo
+	* Duracion
+	* Edad minima
 	* Director
-	* M�todos
+	* Metodos
 		* .mostrarDatos()
 
 
@@ -63,16 +63,15 @@ app.clases se encuentran las 4 clases que he creado:
 	* Nombre
 	* Edad
 	* Dinero disponible
-		* M�todos
+		* Metodos
 		* .mostrarDatos()
 
 4. Crear una clase Asiento
 	* Fila
 	* Columna
-	* idAsiento (representaci�n gr�fica)
+	* idAsiento (representacion grafica)
 	
 	
-P.D. Me he quedado con ganas de hacer que los asientos se asignen aleatoriamente, pero quer�a seguir avanzando con el m�ster y no invertir m�s tiempo en este problema... lo perfecto es enemigo de lo bueno
 	____________________________________________________________
 	
 	Enunciado
@@ -81,13 +80,13 @@ P.D. Me he quedado con ganas de hacer que los asientos se asignen aleatoriamente
 
 Nos piden hacer un programa orientado a objetos sobre un cine (solo de una sala) tiene un conjunto de asientos (8 filas por 9 columnas, por ejemplo).
 
-Del cine nos interesa conocer la pel�cula que se est� reproduciendo y el precio de la entrada en el cine.
+Del cine nos interesa conocer la película que se está reproduciendo y el precio de la entrada en el cine.
 
-De las pel�culas nos interesa saber el t�tulo, duraci�n, edad m�nima y director.
+De las películas nos interesa saber el título, duración, edad mínima y director.
 
 Del espectador, nos interesa saber su nombre, edad y el dinero que tiene.
 
-Los asientos son etiquetados por una letra (columna) y un n�mero (fila), la fila 1 empieza al final de la matriz como se muestra en la tabla. Tambi�n deberemos saber si est� ocupado o no el asiento.
+Los asientos son etiquetados por una letra (columna) y un número (fila), la fila 1 empieza al final de la matriz como se muestra en la tabla. También deberemos saber si está ocupado o no el asiento.
 
  
 
@@ -109,11 +108,11 @@ Los asientos son etiquetados por una letra (columna) y un n�mero (fila), la fi
 
  
 
-Realizaremos una peque�a simulaci�n, en el que generaremos muchos espectadores y los sentaremos aleatoriamente (no podemos donde ya este ocupado).
+Realizaremos una pequeña simulación, en el que generaremos muchos espectadores y los sentaremos aleatoriamente (no podemos donde ya este ocupado).
 
-En esta versi�n sentaremos a los espectadores de uno en uno.
+En esta versión sentaremos a los espectadores de uno en uno.
 
-Solo se podr� sentar si tienen el suficiente dinero, hay espacio libre y tiene edad para ver la pel�cula, en caso de que el asiento este ocupado le buscamos uno libre.
+Solo se podrá sentar si tienen el suficiente dinero, hay espacio libre y tiene edad para ver la película, en caso de que el asiento este ocupado le buscamos uno libre.
 
-Los datos del espectador y la pel�cula pueden ser totalmente aleatorios.
+Los datos del espectador y la película pueden ser totalmente aleatorios.
 	
