@@ -13,7 +13,7 @@ public class Pelicula {
 	
 	public Pelicula(String titulo, int duracion, String protagonista, String idioma) {
 		this.titulo = titulo;
-		this.duracion = 120; //Establezco que si no digo nada sean 120 min por defecto
+		this.duracion = duracion; //Establezco que si no digo nada sean 120 min por defecto
 		this.protagonista = protagonista;
 		this.idioma = idioma;
 	}

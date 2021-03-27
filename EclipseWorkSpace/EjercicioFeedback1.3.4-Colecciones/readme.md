@@ -29,7 +29,7 @@ Título, duración, protagonista, idioma.
 
 		
 * Crear clase controladora Main.java
-	* Crear Colección de objetos películas (ArrayList)
+	* Crear Colección de objetos Pelicula (ArrayList)
 	* Crear menú con funcionalidades:
 		* Insertar Película
 		* Ver datos de una película indicando la posicón en la lista con un número
