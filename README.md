@@ -4027,7 +4027,7 @@ conexion.close(); // Cerrar conexión
 
 La capa DAO contiene todos los métodos CRUD (create, read, update, delete), por lo general se tiene un DAO para cada tabla en la base de datos, y la implementación se la realiza de la siguiente manera.
 
-[Ejemplo DAO](ejemplosSQL/ejemploDAO)
+[Ejemplo DAO](EjemplosSQL/ejemploDAO)
 
 ## 6.1.3 EL PATRÓN SINGLETON <a name="id613"></a>
 ![img patrón singleton](img/27.png)
