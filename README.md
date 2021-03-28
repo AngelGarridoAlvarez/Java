@@ -43,7 +43,6 @@ Resúmenes teóricos y ejercicios prácticos realizados por Ángel Garrido Álva
 6.1 [Manipulación de datos con JDBC](#id61)
 
 ## 7 [Modelo Vista Controlador](#id7)
-## 7 Modelo Vista Controlador <a name="id7"></a>
 
 
 
@@ -4010,7 +4009,7 @@ conexion.close(); // Cerrar conexión
 
 * Igual que antes podemos ejecutar dos tipos de consultas query y update
 
-###Metadatos
+### Metadatos
 * Información adicional a los datos que almacena la tabla. 
 
 * Se utiliza un objeto ResultSetMetaData para recoger los metadatos de una consulta. Dicho objeto expone los siguientes métodos: 
@@ -4020,8 +4019,50 @@ conexion.close(); // Cerrar conexión
 	* getColumnType(); nos dice el tipo de datos de la columna.
 	* isReadOnly(); especifica si los datos son de solo lectura.
 
+## 6.1.2 EL PATRÓN DATA ACCES OBJECT (DAO) <a name="id612"></a>
 
-## Conectamos una APP a una BBDD
+* Da un orden a nuestro código separando las funciones de una clase frente a otras acciones
+* Facilita la adaptación o actualización a otros sistemas. 
+* Imagínate que tienes un sistema montado en producción con una base de datos MySQL y la quieres cambiar a Mongo, o utilizar Hibernate o a cualquier otro motor de base de datos.
+
+La capa DAO contiene todos los métodos CRUD (create, read, update, delete), por lo general se tiene un DAO para cada tabla en la base de datos, y la implementación se la realiza de la siguiente manera.
+
+[Ejemplo DAO](ejemplosSQL/ejemploDAO)
+
+## 6.1.3 EL PATRÓN SINGLETON <a name="id613"></a>
+![img patrón singleton](img/27.png)
+
+* Este patrón nos ayuda a no repetir un mismo proceso en diferentes instancias de otras clases.
+
+* Consiste en garantizar un punto de acceso global de el resto de clases de nuestra aplicación como puede ser la coenxión a la base de datos. 
+* No se encarga de la creación de objetos en sí, sino que se enfoca en la restricción en la creación de un objeto.
+
+El uso del patrón Singleton proporciona los siguientes beneficios:
+
+* Reduce el espacio de nombres.
+	* Ya no se reservan nombres para las variables globales, ahora solo existen instancias
+* Controla el acceso a la instancia única
+	* porque la clase Singleton encapsula la única instancia. 
+	* Así se obtiene control sobre cómo y cuándo se accede a ella.
+
+* Permite el refinamiento de las operaciones y la representación.
+* Permite un numero variable de instancias. 
+	* Facilmente configurable para permitir más de una instancia
+* Más flexible que las operaciones de clases
+
+* En el ejemplo del patron DAO vimos como en una clase resultaba útil implementar un método para conectarse y desconectarse el cual llamábamos desde los diferentes métodos de manipulación de los datos.
+
+	* Esto nos resuelve el problema de tener que codificar multiples veces el código de acceso a la BD en la clase. 
+	* ¿Qué ocurre sí tenemos que conectarnos desde diferentes clases?
+		* Para resolverlo haremos una clase utilizando este patrón
+			* La clase realiza una instalación de sí misma 
+			* mediante un método getConexion estático almacena la conexión en un atributo estático de la misma clase. 
+				* (Este atributo es estático para permitir su visibilidad desde la llamada del método).
+
+[Ejemplo DAO Singleton](EjemplosSQL/Ejemplo_DAO_SINGLETON)
+
+## Ejemplo Competo: Conectamos una APP a una BBDD
+[Paso a paso - Aplicación Gestión de Clientes](Apuntes/ejemploJDBC.pdf)
 
 Creamos el proyecto en Eclipse
 
