@@ -527,6 +527,18 @@ Fuente: Máster en Diseño y Programación de Aplicaciones Java JEE - Universida
 
 
 _______________________________
+
+#### Nota: pasos paracrear un nuevo proyecto en Eclipse:
+
+* File --> new --> Other --> Java Project
+* Crear Nombre
+* Seleccionar versión de Java
+* Desmarcar 'Create module-info.java file'
+* Finish
+* Si me sale ventana emergente preguntando --> decir no
+* Creamos una clase con el método principal dentro de src
+
+
 [**Ejercicio Feedback 1.2.**](EclipseWorkSpace/EjercicioFeedback1/src/ejercicio1/Ejercicio1.java)<a name="id12e"></a>
 
 Un centro de estudios nos ha solicitado que realicemos un algoritmo para saber la motivación que tienen los alumnos para estudiar programación.
